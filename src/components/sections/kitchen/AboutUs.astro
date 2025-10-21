@@ -1,0 +1,43 @@
+---
+import Section from '../../ui/Section.astro';
+import { Building2, Star, User, Hammer, CheckCircle } from '@lucide/astro';
+const sections = [
+  {
+    title: 'Кто мы',
+    content: 'Создаём кухни, в которых хочется жить, мечтать, вдохновляться, а не просто готовить',
+    icon: User
+  },
+  {
+    title: 'Бюджет',
+    content: 'Вы называете бюджет — мы подбираем варианты без переплат и компромиссов по качеству',
+    icon: CheckCircle
+  },
+  {
+    title: 'Под ключ',
+    content: 'От первого замера до последнего шурупа — идеальный результат «под ключ», без стрессов и переделок.',
+    icon: Hammer
+  },
+];
+---
+
+<Section padding="xl" class="py-20 overflow-hidden">
+  <div class="container mx-auto text-center mb-12">
+    <h2 class="text-4xl font-extrabold mb-4">О нас</h2>
+    <p class="text-gray-600 max-w-3xl mx-auto">Ваш кухонный гарнитур — это долгосрочная инвестиция в уют.</p>
+  </div>
+
+  <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+    {sections.map((section) => (
+      <div
+        class="relative bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center justify-start hover:scale-105 hover:shadow-2xl transition-transform duration-500 group"
+      >
+        <div class="bg-yellow-200 p-5 rounded-full mb-5 group-hover:bg-yellow-400 transition-colors duration-500">
+          <section.icon class="h-10 w-10 text-yellow-600"/>
+        </div>
+        <h3 class="text-2xl font-semibold mb-3 group-hover:text-yellow-600 transition-colors duration-500">{section.title}</h3>
+        <p class="text-gray-700 whitespace-pre-line">{section.content}</p>
+        <div class="absolute -top-10 -right-10 w-24 h-24 bg-yellow-100 rounded-full opacity-30 animate-pulse"></div>
+      </div>
+    ))}
+  </div>
+</Section>

@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/furniture-assembly/Hero.astro";
+import Compare from "../components/sections/furniture-assembly/Compare.astro";
+import TypeOfKitchen from "../components/sections/furniture-assembly/TypeOfKitchen.astro";
+import Prices from "../components/sections/furniture-assembly/Prices.astro";
+import WillMade from "../components/sections/furniture-assembly/WillMade.astro";
+import Form from "../components/sections/furniture-assembly/Form.astro";
+import Systems from "../components/sections/furniture-assembly/Systems.astro";
+import HowItWorks from "../components/sections/furniture-assembly/HowItWorks.astro";
+import Calculator from "../components/sections/furniture-assembly/Calculator.astro";
+import Reviews from "../components/sections/furniture-assembly/Reviews.astro";
+import FAQ from "../components/sections/furniture-assembly/FAQ.astro";
+import HowGoing from "../components/sections/furniture-assembly/HowGoing.astro";
+import Advantages from "../components/sections/furniture-assembly/Advantages.astro";
+import Companys from "../components/sections/furniture-assembly/Companys.astro";
+import AboutUs from "../components/sections/furniture-assembly/AboutUs.astro";
+import WhatTools from "../components/sections/furniture-assembly/WhatTools.astro";
+import AboutOurTeam from "../components/sections/furniture-assembly/AboutOurTeam.astro";
+
+const faqs = [
+  {
+    question: "А если у меня нет инструментов — нужно что-то готовить заранее?",
+    answer: "Нет, мастер приезжает полностью экипированным: от рулетки и уровня до полировочной машинки. Вам не нужно ни искать отвёртки, ни покупать расходники — всё включено в стоимость."
+  },
+  {
+    question: "Что если детали не подойдут или чего-то не хватает?",
+    answer: "Мы проверяем комплектность перед началом работы. Если обнаружится недостающая фурнитура, мастер предложит решение: докупить по пути или заменить аналогом из запасного комплекта."
+  },
+  {
+    question: "Сколько по времени всё занимает?",
+    answer: "В среднем — от часа до трёх, в зависимости от сложности конструкции. Мы не затягиваем процесс и не торопимся — результат важнее секундомера."
+  },
+  {
+    question: "Можно ли вызвать мастера в выходные или вечером?",
+    answer: "Да, работаем без выходных и приезжаем в удобное для вас время, включая поздние часы. График подстраиваем под клиента, а не наоборот."
+  },
+  {
+    question: "Что делать, если после сборки нужно переставить мебель в другое место?",
+    answer: "Просто сообщите мастеру — он аккуратно переместит и выровняет всё без дополнительных повреждений и следов на полу."
+  },
+  {
+    question: "Что если у меня новый гарнитур, и я боюсь, что при сборке повредят фасад?",
+    answer: "Мы используем защитные покрытия и инструменты с ограничением силы давления. Никаких царапин, сколов и «ой, не заметил»."
+  },
+  {
+    question: "Я часто переезжаю. Можно ли заказать сборку и разборку мебели с упаковкой?",
+    answer: "Конечно. Мы делаем аккуратную сборку и разборку мебели, маркируем детали и помогаем сохранить всё в целости при перевозке."
+  },
+  {
+    question: "Почему профессиональная сборка стоит своих денег, если я вроде могу собрать сам?",
+    answer: "Потому что после «самостоятельной» экономии часто вызывают нас всё переделывать. Профессиональная сборка мебели — это не просто скорость, а гарантия, что всё будет работать идеально и прослужит долгие годы."
+  },
+  {
+    question: "Можно ли быть уверенным, что не испортят напольное покрытие?",
+    answer: "Да, мы используем защитные накладки и мягкие подставки. После визита остаётся чистый пол и ровно стоящая конструкция, без вмятин и царапин."
+  },
+  {
+    question: "А если заказ срочный — сегодня купил, завтра нужно установить?",
+    answer: "Мы часто выезжаем «день в день». Просто уточните время — если мастер свободен, он приедет уже через пару часов. Срочность для нас — не проблема, а часть сервиса."
+  }
+];
+---
+
+<Layout
+  title="1️⃣ Сборка мебели в Алматы — выезд мастера за 30 минут"
+  description="Работаем по Алматы и области ⭐ Собираем любую мебель ⭐ Опыт мастеров более 10 лет ⭐ Закажите услугу и получите аккуратный монтаж без ошибок"
+>
+  <main>
+    <Hero />
+    <TypeOfKitchen />
+    <Advantages />
+    <Compare />
+    <Prices />
+    <HowItWorks />
+    <Calculator />
+    <WillMade />
+    <HowGoing />
+    <Form />
+    <WhatTools />
+    <AboutUs />
+    <AboutOurTeam />
+    <Companys />
+    <Reviews />
+    <FAQ faqs={faqs} />
+  </main>
+</Layout>

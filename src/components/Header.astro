@@ -1,0 +1,136 @@
+---
+import { Wrench, Menu } from "@lucide/astro"; // Изменил CalendarHeart на Wrench
+import Button from "./ui/Button.astro";
+
+/**
+ * Основные страницы сайта для навигации.
+ * Текст изменен на мебельную тематику.
+ */
+const ssoLinks = [
+  { href: "/", label: "Главная", item: "index.astro" },
+  { href: "/catalog/", label: "Каталог", item: "catalog.astro" },
+  { href: "/projects/", label: "Наши Проекты", item: "projects.astro" },
+];
+
+// Микроразметка для хлебных крошек (оставим без изменений, т.к. структура правильная)
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: ssoLinks.map((link, idx) => ({
+    "@type": "ListItem",
+    position: idx + 1,
+    name: link.label,
+    item: link.href,
+  })),
+};
+---
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(breadcrumbJsonLd)}
+/>
+
+<header
+  class="bg-white/95 backdrop-blur-sm border-b border-stone-200 sticky top-0 z-50 transition-all duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <div class="">
+        <a href="/" class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl flex items-center justify-center shadow-lg"
+          >
+            <Wrench class="w-6 h-6 text-white" />
+            {/* Иконка для сборки/мастерства */}
+          </div>
+          <div class="hidden sm:block">
+            <h1 class="text-xl font-extrabold text-amber-800 tracking-tight">
+              CRAFT
+            </h1>
+            <p class="text-xs text-stone-600">Кастомная мебель</p>
+            {/* Изменен текст */}
+          </div>
+        </a>
+      </div>
+
+      <nav class="hidden lg:flex items-center space-x-8">
+        {
+          ssoLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-stone-700 hover:text-amber-700 font-medium transition-colors duration-200 uppercase text-sm tracking-widest"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <Button
+          href="/request-project"
+          variant="primary"
+          size="sm"
+          class="w-full bg-amber-800 hover:bg-amber-900"
+        >
+          Рассчитать стоимость проекта
+        </Button>
+        <button
+          id="mobile-menu-button"
+          class="lg:hidden p-2 rounded-xl bg-stone-100 text-amber-800 hover:bg-stone-200 transition-colors duration-200"
+          aria-label="Открыть меню"
+        >
+          <Menu class="w-6 h-6" />
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="mobile-menu"
+      class="lg:hidden hidden border-t border-stone-200 py-4"
+    >
+      <nav class="flex flex-col space-y-4">
+        {
+          ssoLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-stone-700 hover:text-amber-700 font-medium transition-colors duration-200 py-2"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+        <div class="pt-2">
+          <Button
+            href="/request-project"
+            variant="primary"
+            size="sm"
+            class="w-full bg-amber-800 hover:bg-amber-900"
+          >
+            Рассчитать стоимость проекта
+          </Button>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle (скрипт остаётся без изменений)
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+
+  // Close mobile menu when clicking on links
+  const mobileLinks = mobileMenu?.querySelectorAll("a");
+  mobileLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+    });
+  });
+</script>

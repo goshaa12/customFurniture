@@ -1,5 +1,5 @@
 {
-  "name": "customfurniture",
+  "name": "custom-furniture",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.14.7"
+    "@astrojs/sitemap": "^3.5.1",
+    "@lucide/astro": "^0.542.0",
+    "@tailwindcss/vite": "^4.1.13",
+    "astro": "^5.13.5",
+    "tailwindcss": "^4.1.13"
   }
 }

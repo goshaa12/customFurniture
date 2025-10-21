@@ -1,0 +1,53 @@
+---
+import Section from '../ui/Section.astro';
+import { Building2, Star, User, Hammer, CheckCircle } from '@lucide/astro';
+const sections = [
+  {
+    title: 'Кто мы',
+    content: 'Мы — производственная компания по изготовлению мебели на заказ в Алматы с 2012 года.\n\nЗа это время наши мастера создали более 1000 проектов для квартир, домов и офисов.',
+    icon: Building2
+  },
+  {
+    title: 'Наши ценности',
+    content: 'Прямые поставки материалов — без посредников, что снижает цену на 15–20%\n- Контроль качества на каждом этапе** — от замера до установки\n- Соблюдение сроков — мебель изготавливается от 10 дней',
+    icon: Star
+  },
+  {
+    title: 'Наши мастера',
+    content: 'Команда состоит из опытных дизайнеров и сборщиков с опытом более 5 лет.\n\nКаждый проект выполняется под ваш интерьер с точной подгонкой размеров и подбором материалов.',
+    icon: User
+  },
+  {
+    title: 'Наше производство',
+    content: 'Мы имеем собственный цех с современным оборудованием и высокоточными станками.\n\nЭто позволяет создавать мебель с идеальной геометрией и долговечностью.',
+    icon: Hammer
+  },
+  {
+    title: 'Почему выбирают нас',
+    content: 'Более 1000 реализованных проектов в Алматы и области\n- Гарантия на мебель и фурнитуру до 3 лет\n- Бесплатный замер и 3D-дизайн-проект\n- Беспроцентная рассрочка до 12 месяцев',
+    icon: CheckCircle
+  },
+];
+---
+
+<Section padding="xl" class="py-20 overflow-hidden">
+  <div class="container mx-auto text-center mb-12">
+    <h2 class="text-4xl font-extrabold mb-4">О нас</h2>
+    <p class="text-gray-600 max-w-3xl mx-auto">Узнайте больше о нашей компании, мастерах и производстве</p>
+  </div>
+
+  <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+    {sections.map((section) => (
+      <div
+        class="relative bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center justify-start hover:scale-105 hover:shadow-2xl transition-transform duration-500 group"
+      >
+        <div class="bg-yellow-200 p-5 rounded-full mb-5 group-hover:bg-yellow-400 transition-colors duration-500">
+          <section.icon class="h-10 w-10 text-yellow-600"/>
+        </div>
+        <h3 class="text-2xl font-semibold mb-3 group-hover:text-yellow-600 transition-colors duration-500">{section.title}</h3>
+        <p class="text-gray-700 whitespace-pre-line">{section.content}</p>
+        <div class="absolute -top-10 -right-10 w-24 h-24 bg-yellow-100 rounded-full opacity-30 animate-pulse"></div>
+      </div>
+    ))}
+  </div>
+</Section>

@@ -1,0 +1,67 @@
+---
+import { Award, LayoutGrid, Ruler, ShieldCheck, FileCheck2, Leaf } from '@lucide/astro';
+import Section from "../../ui/Section.astro";
+---
+
+<Section padding='xl' id="price-factors" class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4 text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-6">
+      Преимущества при заказе угловой кухни от нас
+    </h2>
+  </div>
+
+  <div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-10">
+    {[
+      {
+        title: "Работаем с 2011 года — опыт, проверенный сотнями довольных клиентов",
+        text: `За это время реализовали сотни проектов в Алматы — от просторных домов до компактных квартир. Опыт позволяет нам точно понимать, как сделать красивую кухню под ваши нужды.`,
+        icon: Award,
+        bg: "from-green-400 to-teal-500"
+      },
+      {
+        title: "20+ моделей на выбор — найдётся та, о которой вы мечтали",
+        text: `Закажите кухню мечты — от компактных угловых до просторных П-образных моделей. Более 20 современных дизайнов на выбор. Производим на собственной фабрике — гарантируем качество и точность каждой детали`,
+        icon: LayoutGrid,
+        bg: "from-rose-400 to-pink-500"
+      },
+      {
+        title: "Что вы получаете бесплатно ещё до подписания договора?",
+        text: `Ещё до начала работ вы точно знаете, как будет выглядеть ваша кухня и во сколько она обойдётся. Мы делаем замер, 3D-дизайн и расчёт цены — бесплатно и заранее. Всё, чтобы кухня подошла по стилю и планировке.`,
+        icon: Ruler,
+        bg: "from-purple-400 to-indigo-500"
+      },
+      {
+        title: "12 месяцев гарантии — уверенность на каждый день",
+        text: `Каждое изделие проходит контроль качества, а гарантия 12 месяцев подтверждает нашу уверенность в результате. Гарнитур сохраняет безупречный внешний вид даже при ежедневном использовании.`,
+        icon: ShieldCheck,
+        bg: "from-blue-400 to-cyan-500"
+      },
+      {
+        title: "Работаем по двухстороннему договору — вы защищены на каждом этапе",
+        text: `Все условия прозрачны и закреплены документально. Изготовление угловых кухонь проходит точно по срокам, с учётом особенностей помещения. Мы сотрудничаем с частными клиентами, застройщиками и дизайнерами.`,
+        icon: FileCheck2,
+        bg: "from-green-400 to-teal-500"
+      },
+      {
+        title: "Эко-материалы и аккуратный монтаж — кухня, которую приятно установить и ещё приятнее использовать",
+        text: `Для малогабаритных и угловых кухонь мы используем только экологичные материалы — без запаха и вредных примесей. Монтаж проходит без пыли, шума и следов работ. После установки можно сразу наслаждаться кухней.`,
+        icon: Leaf,
+        bg: "from-rose-400 to-pink-500"
+      },
+    ].map((item, index) => (
+      <div 
+        class="group relative bg-white rounded-3xl p-8 flex flex-col items-start shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-500"
+        style={`transition-delay: ${index * 100}ms; min-height: 300px;`}
+      >
+        <!-- Gradient Icon Circle -->
+        <div class={`w-16 h-16 rounded-full bg-gradient-to-br ${item.bg} flex items-center justify-center mb-5 transform transition-transform duration-500 group-hover:scale-110`}>
+          <item.icon class="w-8 h-8 text-white" />
+        </div>
+
+        <!-- Text Content -->
+        <h3 class="text-lg font-semibold text-stone-800 mb-3">{item.title}</h3>
+        <p class="text-stone-600 text-base leading-relaxed whitespace-pre-line">{item.text}</p>
+      </div>
+    ))}
+  </div>
+</Section>

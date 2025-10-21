@@ -1,11 +1,58 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import Calculator from "../components/sections/Calculator.astro";
+import Promotions from "../components/sections/Promotions.astro";
+import Reviews from "../components/sections/Reviews.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import WhatImportant from "../components/sections/WhatImportant.astro";
+import Companys from "../components/sections/Companys.astro";
+import AboutUs from "../components/sections/AboutUs.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+const faqs = [
+  {
+    question: "Сколько времени занимает изготовление мебели?",
+    answer: "Стандартный срок изготовления — от 10 до 14 дней, в зависимости от сложности проекта и выбранных материалов.Срочные заказы выполняются за 5–7 дней."
+  },
+  {
+    question: "Какие гарантии вы предоставляете?",
+    answer: "Мы даём 3 года гарантии на мебель и корпус, до 10 лет на фурнитуру от брендов Blum, Hettich, Boyard. Любые дефекты устраняем бесплатно."
+  },
+  {
+    question: "Нужно ли вносить полную оплату заранее?",
+    answer: "Нет, работа проходит поэтапно: 10% предоплата при заключении договора, Остаток после доставки и установки мебели. Также возможна беспроцентная рассрочка до 12 месяцев"
+  },
+  {
+    question: "Предоставляете ли вы бесплатный замер?",
+    answer: "Да, наш специалист приезжает в удобное для вас время, делает точные замеры и предлагает 3D-дизайн-проект мебели. Вы увидите, как будет выглядеть мебель ещё до начала производства."
+  },
+  {
+    question: "Доставляете ли мебель по Алматы и области?",
+    answer: "Да, доставка по городу и ближайшему региону бесплатная, включая подъем на этаж. Мы также выполняем аккуратный монтаж без шума и пыли."
+  }
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="1️⃣ Изготовление мебели на заказ в Алматы — готово за 7 дней"
+  description="Изготовление мебели на заказ в Алматы  ⭐ Шкафы, кухни, кровати под ваши размеры ⭐ Гарантия качества 3 года ⭐ Сделайте интерьер уютным и удобным уже сегодня!"
+>
+  <main>
+    <Hero />
+    <Services />
+    <WhyUs />
+    <HowItWorks />
+    <Promotions />
+    <WhatImportant />
+    <Calculator />
+    <Companys />
+    <AboutUs />
+    <Reviews />
+    <FAQ faqs={faqs} />
+  </main>
 </Layout>

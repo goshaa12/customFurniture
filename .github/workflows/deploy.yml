@@ -1,0 +1,31 @@
+name: 🚀 Deploy Almaty site via FTP
+
+on:
+  push:
+    branches: [main] # или другая ветка, если используешь другую
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🧰 Setup Bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: 📦 Install dependencies
+        run: bun install
+
+      - name: 🔨 Build Astro project
+        run: bun run build
+
+      - name: 🚀 Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /www/toi1.kz/
+          local-dir: dist/

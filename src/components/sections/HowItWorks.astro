@@ -1,0 +1,53 @@
+---
+import { FileText, Users, Lightbulb, Workflow, Truck, ShieldCheck } from '@lucide/astro';
+import Section from "../ui/Section.astro";
+---
+
+<Section padding='xl' id="how-we-work" class="py-24 px-4 bg-white">
+  <div class="max-w-6xl mx-auto px-4 text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4">
+      Как мы работаем
+    </h2>
+    <p class="text-stone-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+      Прозрачный процесс от заявки до готовой мебели
+    </p>
+  </div>
+
+  <!-- Steps Grid -->
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+    {[
+      { step: "1", title: "Заявка или звонок", text: "Вы оставляете заявку на сайте или звоните. Менеджер уточняет ваши пожелания и удобное время для выезда замерщика.", icon: FileText, bg: "from-rose-400 to-pink-500" },
+      { step: "2", title: "Бесплатный выезд замерщика", text: "Специалист приезжает с образцами материалов, делает точные замеры и рассчитывает ориентировочную стоимость.", icon: Users, bg: "from-purple-400 to-indigo-500" },
+      { step: "3", title: "Разработка дизайн-проекта и сметы", text: "Дизайнер создаёт 3D-визуализацию будущей мебели. После согласования фиксируется цена и сроки.", icon: Lightbulb, bg: "from-blue-400 to-cyan-500" },
+      { step: "4", title: "Производство мебели", text: "Изготовление на нашем производстве с контролем качества каждого этапа — от распила до сборки.", icon: Workflow, bg: "from-green-400 to-teal-500" },
+      { step: "5", title: "Доставка и установка", text: "Доставляем по Алматы и области, аккуратно поднимаем и устанавливаем без шума и пыли.", icon: Truck, bg: "from-orange-400 to-red-500" },
+      { step: "6", title: "Гарантия и постсервис", text: "После установки предоставляем гарантию до 3 лет. Мастера при необходимости приедут для регулировки или мелкого ремонта.", icon: ShieldCheck, bg: "from-pink-400 to-rose-500" },
+    ].map((item) => (
+      <div class="group relative bg-neutral-100 rounded-3xl p-8 flex flex-col items-center justify-center space-y-4 hover:bg-neutral-200 transition-all duration-300">
+        
+        <!-- Gradient Number / Icon -->
+        <div class={`w-14 h-14 rounded-full bg-gradient-to-br ${item.bg} flex items-center justify-center text-white font-bold text-lg`}>
+          <span>{item.step}</span>
+        </div>
+
+        <!-- Icon -->
+        <div class="text-stone-800 w-16 h-16">
+          <item.icon class="w-16 h-16 mx-auto" />
+        </div>
+
+        <!-- Text -->
+        <div class="text-center space-y-2">
+          <h3 class="text-lg font-semibold text-stone-800">{item.title}</h3>
+          <p class="text-stone-600 text-sm leading-relaxed">{item.text}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- CTA Button -->
+  <div class="text-center">
+    <a href="/contact" class="inline-block bg-stone-800 text-white py-4 px-8 rounded-full text-lg font-medium hover:bg-stone-700 transition-all">
+      Оставить заявку
+    </a>
+  </div>
+</Section>

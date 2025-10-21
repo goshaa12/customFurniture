@@ -1,0 +1,164 @@
+---
+import { Box, Settings, Layers, ToolCase, Calendar, CheckSquare, UserPlus, Phone } from '@lucide/astro';
+import Section from '../ui/Section.astro';
+import Card from '../ui/Card.astro';
+import Button from '../ui/Button.astro';
+---
+
+<Section id="furniture-calculator" padding="xl">
+  <div class="text-center mb-8 sm:mb-12">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-stone-800 mb-4">
+      Калькулятор расчёта стоимости мебели
+    </h2>
+    <p class="text-stone-600 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+      Не нужно ждать звонка менеджера — рассчитайте примерную стоимость мебели прямо на сайте.
+    </p>
+  </div>
+
+  <Card background="white" class="max-w-full sm:max-w-5xl mx-auto p-6 sm:p-8 space-y-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+    <form class="space-y-8">
+
+      <!-- 1. Тип мебели -->
+      <div class="p-4 sm:p-6 bg-neutral-50 rounded-2xl border border-neutral-200 hover:border-rose-400 transition-all">
+        <div class="flex items-center mb-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-400 to-pink-500 flex items-center justify-center text-white font-bold mr-3">1</div>
+          <label class="text-base sm:text-lg font-semibold text-stone-800">Тип мебели</label>
+        </div>
+        <select class="w-full border border-stone-200 rounded-xl px-3 py-2 sm:px-4 sm:py-3 text-stone-700 focus:outline-none focus:border-rose-400 transition">
+          <option>Кухня</option>
+          <option>Шкаф / шкаф-купе</option>
+          <option>Гардеробная</option>
+          <option>Прихожая</option>
+          <option>Детская</option>
+          <option>Офисная мебель</option>
+          <option>Другое</option>
+        </select>
+      </div>
+
+      <!-- 2. Размеры мебели -->
+      <div class="p-4 sm:p-6 bg-neutral-50 rounded-2xl border border-neutral-200 hover:border-rose-400 transition-all">
+        <div class="flex items-center mb-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-indigo-500 flex items-center justify-center text-white font-bold mr-3">2</div>
+          <label class="text-base sm:text-lg font-semibold text-stone-800">Размеры мебели</label>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-2">
+          <input type="number" placeholder="Длина (см)" class="border border-stone-200 rounded-xl px-3 py-2 w-full focus:outline-none focus:border-rose-400 transition" />
+          <input type="number" placeholder="Высота (см)" class="border border-stone-200 rounded-xl px-3 py-2 w-full focus:outline-none focus:border-rose-400 transition" />
+          <input type="number" placeholder="Глубина (см)" class="border border-stone-200 rounded-xl px-3 py-2 w-full focus:outline-none focus:border-rose-400 transition" />
+        </div>
+        <label class="inline-flex items-center mt-2 text-sm sm:text-base">
+          <input type="checkbox" class="form-checkbox h-5 w-5 text-rose-500" />
+          <span class="ml-2 text-stone-700">Не знаю точные размеры — нужен замерщик</span>
+        </label>
+      </div>
+
+      <!-- 3. Материал фасадов -->
+      <div class="p-4 sm:p-6 bg-neutral-50 rounded-2xl border border-neutral-200 hover:border-rose-400 transition-all">
+        <div class="flex items-center mb-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white font-bold mr-3">3</div>
+          <label class="text-base sm:text-lg font-semibold text-stone-800">Материал фасадов</label>
+        </div>
+        <select class="w-full border border-stone-200 rounded-xl px-3 py-2 sm:px-4 sm:py-3 text-stone-700 focus:outline-none focus:border-rose-400 transition">
+          <option>ЛДСП (эконом)</option>
+          <option>МДФ (краска / плёнка / шпон)</option>
+          <option>Массив дерева (премиум)</option>
+          <option>Комбинированный вариант</option>
+        </select>
+      </div>
+
+      <!-- 4. Фурнитура -->
+      <div class="p-4 sm:p-6 bg-neutral-50 rounded-2xl border border-neutral-200 hover:border-rose-400 transition-all">
+        <div class="flex items-center mb-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-white font-bold mr-3">4</div>
+          <label class="text-base sm:text-lg font-semibold text-stone-800">Фурнитура</label>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="radio" name="hardware" class="form-radio text-rose-500" />
+            <span>Стандартная</span>
+          </label>
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="radio" name="hardware" class="form-radio text-rose-500" />
+            <span>Средний класс (Blum, Hettich, Boyard)</span>
+          </label>
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="radio" name="hardware" class="form-radio text-rose-500" />
+            <span>Премиум (Grass, Hafele, Blumotion)</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 5. Планировка / форма мебели -->
+      <div class="p-4 sm:p-6 bg-neutral-50 rounded-2xl border border-neutral-200 hover:border-rose-400 transition-all">
+        <div class="flex items-center mb-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold mr-3">5</div>
+          <label class="text-base sm:text-lg font-semibold text-stone-800">Планировка / форма мебели</label>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+          <label class="flex items-center justify-center p-4 border border-stone-200 rounded-2xl cursor-pointer hover:border-rose-400 transition">
+            <ToolCase class="w-5 h-5 mr-2" />
+            <span>Прямая</span>
+          </label>
+          <label class="flex items-center justify-center p-4 border border-stone-200 rounded-2xl cursor-pointer hover:border-rose-400 transition">
+            <ToolCase class="w-5 h-5 mr-2" />
+            <span>Угловая (Г-образная)</span>
+          </label>
+          <label class="flex items-center justify-center p-4 border border-stone-200 rounded-2xl cursor-pointer hover:border-rose-400 transition">
+            <ToolCase class="w-5 h-5 mr-2" />
+            <span>П-образная</span>
+          </label>
+          <label class="flex items-center justify-center p-4 border border-stone-200 rounded-2xl cursor-pointer hover:border-rose-400 transition">
+            <ToolCase class="w-5 h-5 mr-2" />
+            <span>Индивидуальный проект</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 6. Дополнительные опции -->
+      <div class="p-4 sm:p-6 bg-neutral-50 rounded-2xl border border-neutral-200 hover:border-rose-400 transition-all">
+        <div class="flex items-center mb-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center text-white font-bold mr-3">6</div>
+          <label class="text-base sm:text-lg font-semibold text-stone-800">Дополнительные опции</label>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <label class="inline-flex items-center"><input type="checkbox" class="form-checkbox text-rose-500" /><span class="ml-2">Подсветка</span></label>
+          <label class="inline-flex items-center"><input type="checkbox" class="form-checkbox text-rose-500" /><span class="ml-2">Встроенная техника</span></label>
+          <label class="inline-flex items-center"><input type="checkbox" class="form-checkbox text-rose-500" /><span class="ml-2">Доводчики</span></label>
+          <label class="inline-flex items-center"><input type="checkbox" class="form-checkbox text-rose-500" /><span class="ml-2">Стеклянные фасады / витрины</span></label>
+          <label class="inline-flex items-center"><input type="checkbox" class="form-checkbox text-rose-500" /><span class="ml-2">Выезд дизайнера</span></label>
+        </div>
+      </div>
+
+      <!-- 7. Срок изготовления -->
+      <div class="p-4 sm:p-6 bg-neutral-50 rounded-2xl border border-neutral-200 hover:border-rose-400 transition-all">
+        <div class="flex items-center mb-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white font-bold mr-3">7</div>
+          <label class="text-base sm:text-lg font-semibold text-stone-800">Срок изготовления</label>
+        </div>
+        <select class="w-full border border-stone-200 rounded-xl px-3 py-2 sm:px-4 sm:py-3 text-stone-700 focus:outline-none focus:border-rose-400 transition">
+          <option>Стандарт (10–15 дней)</option>
+          <option>Срочный (5–7 дней)</option>
+        </select>
+      </div>
+
+      <!-- 8. Контактные данные -->
+      <div class="p-4 sm:p-6 bg-neutral-50 rounded-2xl border border-neutral-200 hover:border-rose-400 transition-all">
+        <div class="flex items-center mb-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-lime-400 to-green-500 flex items-center justify-center text-white font-bold mr-3">8</div>
+          <label class="text-base sm:text-lg font-semibold text-stone-800">Контактные данные для отправки результата</label>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <input type="text" placeholder="Имя" class="border border-stone-200 rounded-xl px-3 py-2 focus:outline-none focus:border-rose-400 transition w-full" />
+          <input type="tel" placeholder="Телефон" class="border border-stone-200 rounded-xl px-3 py-2 focus:outline-none focus:border-rose-400 transition w-full" />
+          <input type="text" placeholder="Email или Telegram (опционально)" class="border border-stone-200 rounded-xl px-3 py-2 focus:outline-none focus:border-rose-400 transition w-full" />
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center mt-4">
+        <Button size="lg" variant="primary" class="w-full sm:w-auto">Рассчитать за 1 минуту</Button>
+      </div>
+
+    </form>
+  </Card>
+</Section>

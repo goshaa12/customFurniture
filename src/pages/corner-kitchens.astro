@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/corner-kitchens/Hero.astro";
+import Services from "../components/sections/corner-kitchens/Services.astro";
+import KitchensPrices from "../components/sections/corner-kitchens/KitchensPrices.astro";
+import WhyUs from "../components/sections/corner-kitchens/WhyUs.astro";
+import TypeOfKitchen from "../components/sections/corner-kitchens/TypeOfKitchen.astro";
+import Prices from "../components/sections/corner-kitchens/Prices.astro";
+import WillMade from "../components/sections/corner-kitchens/WillMade.astro";
+import Form from "../components/sections/corner-kitchens/Form.astro";
+import KitchenProduction from "../components/sections/corner-kitchens/KitchenProduction.astro";
+import HowItWorks from "../components/sections/corner-kitchens/HowItWorks.astro";
+import Calculator from "../components/sections/corner-kitchens/Calculator.astro";
+import Promotions from "../components/sections/corner-kitchens/Promotions.astro";
+import Reviews from "../components/sections/corner-kitchens/Reviews.astro";
+import FAQ from "../components/sections/corner-kitchens/FAQ.astro";
+import HowGoing from "../components/sections/corner-kitchens/HowGoing.astro";
+import Advantages from "../components/sections/corner-kitchens/Advantages.astro";
+import Companys from "../components/sections/corner-kitchens/Companys.astro";
+import AboutUs from "../components/sections/corner-kitchens/AboutUs.astro";
+
+const faqs = [
+  {
+    question: "Сколько по времени занимает изготовление кухни, если форма нестандартная?",
+    answer:
+      "Даже сложная кухня с углами, нишами или нестандартными размерами изготавливается за 10–14 дней. Мы заранее просчитываем все элементы, поэтому гарнитур приходит точно по размерам и собирается без подгонки на месте.",
+  },
+  {
+    question: "Можно ли сделать кухню, если помещение маленькое и неровное?",
+    answer:
+      "Да, такие мы делаем часто. Даже при нестандартных стенах и трубах гарнитур проектируется так, чтобы всё открывалось свободно, а рабочая зона была удобной. Мы подстраиваем кухню под пространство, а не наоборот.",
+  },
+  {
+    question: "Если у меня уже есть техника, сможете встроить её в новую кухню?",
+    answer:
+      "Конечно. Мы учитываем размеры и расположение техники ещё на этапе 3D-проекта. Ваша техника будет идеально встроена, а кухня сохранит общий стиль и симметрию.",
+  },
+  {
+    question: "Что, если после установки что-то окажется неудобным?",
+    answer:
+      "Мы тщательно согласовываем проект кухни до мельчайших деталей — вплоть до высоты полок и выдвижных ящиков. Но если понадобится доработка, наша команда всегда на связи: приедем, подкорректируем, доведём до идеала.",
+  },
+  {
+    question: "Что выбрать — глянцевую или матовую поверхность кухни?",
+    answer:
+      "Глянец визуально увеличивает кухню и отражает свет, мат — практичнее и не оставляет отпечатков. Мы подскажем, какой вариант лучше именно для вас по освещению, площади и стилю.",
+  },
+  {
+    question:
+      "Можно ли сделать кухню в рассрочку или оплатить частями?",
+    answer:
+      "Да, многие клиенты оформляют с оплатой в два этапа: аванс и остаток после установки. Это удобно — вы контролируете процесс и оплачиваете результат, когда гарнитур уже стоит.",
+  },
+  {
+    question:
+      "Почему стоит заказать кухню именно по индивидуальному проекту, а не готовую?",
+    answer:
+      "Потому что только индивидуальная кухня учитывает ваш рост, привычки, технику и пространство. Готовая мебель часто 'садится' плохо: остаются щели, неудобные углы, не хватает мест хранения. Заказывая кухню под себя, вы получаете идеальную эргономику, а не компромисс.",
+  },
+  {
+    question: "Можно ли сделать кухню под арку или с нестандартной стеной?",
+    answer:
+      "Да, такие кухни требуют точного замера, и это наша сильная сторона. Мы делаем замеры лазерным оборудованием и проектируем конструкцию, чтобы кухня смотрелась симметрично даже при сложной геометрии помещения.",
+  },
+  {
+    question:
+      "Что, если после установки кухни захочу что-то поменять?",
+    answer:
+      "Ничего страшного. Мы можем заменить фасады, фурнитуру или добавить новые секции — гарнитур проектируется так, чтобы всё можно было адаптировать без переделки всего гарнитура.",
+  },
+  {
+    question:
+      "Можно ли оформить установку, если я живу за пределами центра Алматы?",
+    answer:
+      "Да, выезд специалиста возможен в любой район города. Мы организуем доставку и монтаж так, чтобы не зависеть от локации — всё проходит по тому же графику и стандартам, как и в центре Алматы.",
+  },
+];
+---
+
+<Layout
+  title="1️⃣ Угловые кухни на заказ в Алматы - изготовление за 10 дней"
+  description="Угловые кухни на заказ в Алматы ⭐ Индивидуальный дизайн под ваш интерьер ⭐ Закажите кухню под ключ и получите проект бесплатно!"
+>
+  <main>
+    <Hero />
+    <Advantages />
+    <WhyUs />
+    <KitchensPrices />
+    <HowGoing />
+    <Calculator />
+    <KitchenProduction />
+    <TypeOfKitchen />
+    <Form />
+    <Services />
+    <AboutUs />
+    <Companys />
+    <Reviews />
+    <FAQ faqs={faqs} />
+  </main>
+</Layout>
