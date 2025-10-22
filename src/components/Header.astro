@@ -1,7 +1,6 @@
 ---
-import { Menu, X, ChevronDown, Phone, ChevronRight } from "@lucide/astro";
+import { Menu, X, ChevronDown, Phone, ChevronRight } from '@lucide/astro';
 
-// --- Обновленные данные навигации со структурой второго примера ---
 type MenuItem = {
   title: string;
   link: string;
@@ -17,7 +16,6 @@ const navigationData: MenuItem[] = [
         title: "Кухни",
         link: "/kitchen",
         submenu: [
-          // Третий уровень
           { title: "Угловые кухни", link: "/corner-kitchens" },
           { title: "Прямые кухни", link: "#" },
           { title: "Кухни из ЛДСП", link: "#" },
@@ -29,7 +27,6 @@ const navigationData: MenuItem[] = [
         title: "Гостиные",
         link: "#",
         submenu: [
-          // Третий уровень
           { title: "Стенки", link: "#" },
           { title: "ТВ-зоны/Тумбы под телевизор", link: "#" },
           { title: "Журнальные столики", link: "#" },
@@ -41,7 +38,6 @@ const navigationData: MenuItem[] = [
         title: "Спальни",
         link: "#",
         submenu: [
-          // Третий уровень
           { title: "Кровати", link: "#" },
           { title: "Тумбы прикроватные", link: "#" },
           { title: "Комоды", link: "#" },
@@ -52,7 +48,6 @@ const navigationData: MenuItem[] = [
         title: "Детская мебель",
         link: "#",
         submenu: [
-          // Третий уровень
           { title: "Детские столы", link: "#" },
           { title: "Детские шкафы", link: "#" },
           { title: "Детские кровати", link: "#" },
@@ -63,7 +58,6 @@ const navigationData: MenuItem[] = [
         title: "Мебель для ванных комнат",
         link: "#",
         submenu: [
-          // Третий уровень
           { title: "Тумбы под раковину", link: "#" },
         ],
       },
@@ -71,7 +65,6 @@ const navigationData: MenuItem[] = [
         title: "Мягкая мебель",
         link: "#",
         submenu: [
-          // Третий уровень
           { title: "Кресла", link: "#" },
           { title: "Диваны", link: "#" },
           { title: "Пуфы/банкетки", link: "#" },
@@ -81,7 +74,6 @@ const navigationData: MenuItem[] = [
         title: "Шкафы",
         link: "#",
         submenu: [
-          // Третий уровень
           { title: "Шкафы-купе", link: "#" },
           { title: "Встроенные шкафы", link: "#" },
           { title: "Угловые шкафы", link: "#" },
@@ -100,7 +92,6 @@ const navigationData: MenuItem[] = [
         title: "Прихожие",
         link: "#",
         submenu: [
-          // Третий уровень
           { title: "Шкафы в прихожую", link: "#" },
           { title: "Обувницы", link: "#" },
         ],
@@ -111,7 +102,7 @@ const navigationData: MenuItem[] = [
     title: "Дополнительные услуги",
     link: "#",
     submenu: [
-      { title: "Сборка и монтаж мебели", link: "#" },
+      { title: "Сборка и монтаж мебели", link: "/furniture-assembly" },
       { title: "Ремонт и реставрация мебели", link: "#" },
     ],
   },
@@ -144,85 +135,80 @@ const navigationData: MenuItem[] = [
     ],
   },
 ];
-// --- Конец обновленных данных ---
 ---
 
-<header
-  class="sticky top-0 left-0 right-0 z-50 bg-white border-b border-gray-200"
->
+<header class="sticky top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       {/* Logo */}
       <div class="flex-shrink-0">
-        <a
-          href="/"
-          class="text-2xl font-bold text-gray-900 hover:text-amber-600 transition-colors"
-        >
+        <a href="/" class="text-2xl font-bold text-gray-900 hover:text-amber-600 transition-colors">
           Мебель
         </a>
       </div>
 
-      {/* Desktop Navigation */}
+      {/* Desktop Navigation - Click to Open */}
       <div class="hidden lg:flex items-center space-x-1">
-        {
-          navigationData.map((item) => (
-            <div class="relative group">
-              <a
-                href={item.link}
-                class="px-3 py-2 text-sm text-gray-700 hover:text-amber-600 transition-colors rounded-lg hover:bg-gray-50 inline-flex items-center gap-1"
-              >
+        {navigationData.map((item, index) => (
+          <div class="relative" data-dropdown={`desktop-${index}`}>
+            <button
+              class="px-3 py-2 text-sm text-gray-700 hover:text-amber-600 transition-colors rounded-lg hover:bg-gray-50 inline-flex items-center gap-1"
+              data-dropdown-btn={`desktop-${index}`}
+            >
+              <a href={item.link} class="hover:text-amber-600">
                 {item.title}
-                {item.submenu && (
-                  <ChevronDown
-                    size={14}
-                    class="transition-transform duration-200 group-hover:rotate-180"
-                  />
-                )}
               </a>
-
-              {/* Desktop Dropdown (Уровень 2) */}
               {item.submenu && (
-                <div class="absolute left-0 mt-1 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-50">
-                  <div class="mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
-                    {item.submenu.map((subItem) => (
-                      // Вложенный div.group для поддержки третьего уровня
-                      <div class="relative group/sub">
-                        <a
-                          href={subItem.link}
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-colors inline-flex justify-between items-center w-full"
-                        >
-                          {subItem.title}
-                          {subItem.submenu && (
-                            <ChevronRight
-                              size={14}
-                              class="text-gray-400 group-hover/sub:text-amber-600 transition-colors"
-                            />
-                          )}
-                        </a>
-
-                        {/* Desktop Dropdown (Уровень 3) */}
-                        {subItem.submenu && (
-                          <div class="absolute left-full top-0 ml-1 w-56 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 pointer-events-none group-hover/sub:pointer-events-auto z-50">
-                            <div class="mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
-                              {subItem.submenu.map((nestedItem) => (
-                                <a
-                                  href={nestedItem.link}
-                                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-colors"
-                                >
-                                  {nestedItem.title}
-                                </a>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <ChevronDown size={14} class="dropdown-chevron transition-transform duration-200" />
               )}
-            </div>
-          ))
-        }
+            </button>
+
+            {/* Desktop Dropdown Level 2 */}
+            {item.submenu && (
+              <div 
+                class="dropdown-menu absolute left-0 mt-1 w-56 hidden opacity-0 pointer-events-none transition-all duration-200 z-50"
+                data-dropdown-menu={`desktop-${index}`}
+              >
+                <div class="mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                  {item.submenu.map((subItem, subIndex) => (
+                    <div class="relative" data-subdropdown={`desktop-${index}-${subIndex}`}>
+                      <button
+                        class="w-full flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-colors"
+                        data-subdropdown-btn={`desktop-${index}-${subIndex}`}
+                      >
+                        <a href={subItem.link} class="flex-1 text-left">
+                          {subItem.title}
+                        </a>
+                        {subItem.submenu && (
+                          <ChevronRight size={14} class="text-gray-400" />
+                        )}
+                      </button>
+
+                      {/* Desktop Dropdown Level 3 */}
+                      {subItem.submenu && (
+                        <div
+                          class="subdropdown-menu absolute left-full top-0 ml-1 w-56 hidden opacity-0 pointer-events-none transition-all duration-200 z-50"
+                          data-subdropdown-menu={`desktop-${index}-${subIndex}`}
+                        >
+                          <div class="bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                            {subItem.submenu.map((nestedItem) => (
+                              <a
+                                href={nestedItem.link}
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-colors"
+                              >
+                                {nestedItem.title}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
 
       {/* Contact Button */}
@@ -248,64 +234,44 @@ const navigationData: MenuItem[] = [
     </div>
 
     {/* Mobile Navigation */}
-    <div
-      id="mobile-menu"
-      class="hidden lg:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
-    >
+    <div id="mobile-menu" class="hidden lg:hidden overflow-y-auto max-h-[calc(100vh-4rem)]">
       <div class="py-4 space-y-1 border-t border-gray-200">
-        {
-          navigationData.map((item) => (
-            <details class="group">
-              {" "}
-              {/* Уровень 1 */}
-              <summary class="flex items-center justify-between py-2 px-2 cursor-pointer text-gray-700 hover:text-amber-600 hover:bg-gray-50 rounded-lg transition-colors list-none">
-                <a href={item.link} class="flex-1 font-medium">
-                  {item.title}
-                </a>
-                {item.submenu && (
-                  <ChevronDown
-                    size={16}
-                    class="transition-transform duration-300 group-open:rotate-180"
-                  />
-                )}
-              </summary>
-              {/* Уровень 2 */}
+        {navigationData.map((item) => (
+          <details class="group">
+            <summary class="flex items-center justify-between py-2 px-2 cursor-pointer text-gray-700 hover:text-amber-600 hover:bg-gray-50 rounded-lg transition-colors list-none">
+              <span class="flex-1 font-medium">{item.title}</span>
               {item.submenu && (
-                <div class="pl-4 mt-2 space-y-1">
-                  {item.submenu.map((subItem) => (
-                    <details class="group">
-                      <summary class="flex items-center justify-between py-2 px-3 cursor-pointer text-sm text-gray-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors list-none">
-                        <a href={subItem.link} class="flex-1 font-normal">
-                          {subItem.title}
-                        </a>
-                        {subItem.submenu && (
-                          <ChevronDown
-                            size={14}
-                            class="transition-transform duration-300 group-open:rotate-180 text-gray-400"
-                          />
-                        )}
-                      </summary>
-
-                      {/* Уровень 3 */}
-                      {subItem.submenu && (
-                        <div class="pl-4 mt-2 space-y-1">
-                          {subItem.submenu.map((nestedItem) => (
-                            <a
-                              href={nestedItem.link}
-                              class="block py-2 px-3 text-sm text-gray-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors"
-                            >
-                              {nestedItem.title}
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </details>
-                  ))}
-                </div>
+                <ChevronDown size={16} class="transition-transform duration-300 group-open:rotate-180" />
               )}
-            </details>
-          ))
-        }
+            </summary>
+            {item.submenu && (
+              <div class="pl-4 mt-2 space-y-1">
+                {item.submenu.map((subItem) => (
+                  <details class="group/sub">
+                    <summary class="flex items-center justify-between py-2 px-3 cursor-pointer text-sm text-gray-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors list-none">
+                      <span class="flex-1 font-normal">{subItem.title}</span>
+                      {subItem.submenu && (
+                        <ChevronDown size={14} class="transition-transform duration-300 group-open/sub:rotate-180 text-gray-400" />
+                      )}
+                    </summary>
+                    {subItem.submenu && (
+                      <div class="pl-4 mt-2 space-y-1">
+                        {subItem.submenu.map((nestedItem) => (
+                          <a
+                            href={nestedItem.link}
+                            class="block py-2 px-3 text-sm text-gray-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors"
+                          >
+                            {nestedItem.title}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </details>
+                ))}
+              </div>
+            )}
+          </details>
+        ))}
         <div class="pt-4">
           <a
             href="tel:+77001234567"
@@ -321,80 +287,117 @@ const navigationData: MenuItem[] = [
 </header>
 
 <script>
-  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const menuIcon = document.getElementById("menu-icon");
-  const closeIcon = document.getElementById("close-icon");
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
 
-  // Функция для принудительного закрытия всех вложенных <details>
-  const closeAllDetails = () => {
-    const details = mobileMenu?.querySelectorAll("details");
-    details?.forEach((detail) => detail.removeAttribute("open"));
-  };
-
-  // Функция для открытия/закрытия главного мобильного меню
-  const toggleMobileMenu = () => {
-    const isHidden = mobileMenu?.classList.contains("hidden");
-
+  mobileMenuBtn?.addEventListener('click', () => {
+    const isHidden = mobileMenu?.classList.contains('hidden');
+    
     if (isHidden) {
-      // Открытие
-      mobileMenu?.classList.remove("hidden");
-      menuIcon?.classList.add("hidden");
-      closeIcon?.classList.remove("hidden");
-      document.body.style.overflow = "hidden"; // Блокировка скролла
-      closeAllDetails(); // Закрываем все <details> при открытии
-
-      requestAnimationFrame(() => {
-        if (mobileMenu) {
-          mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
-        }
-      });
+      mobileMenu?.classList.remove('hidden');
+      menuIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     } else {
-      // Закрытие
-      if (mobileMenu) {
-        mobileMenu.style.maxHeight = "0";
-      }
-      menuIcon?.classList.remove("hidden");
-      closeIcon?.classList.add("hidden");
-      document.body.style.overflow = ""; // Снятие блокировки скролла
-      setTimeout(() => {
-        mobileMenu?.classList.add("hidden");
-      }, 3000);
+      mobileMenu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      document.body.style.overflow = '';
+      
+      // Close all details
+      const allDetails = mobileMenu?.querySelectorAll('details');
+      allDetails?.forEach(detail => detail.removeAttribute('open'));
     }
-  };
+  });
 
-  mobileMenuBtn?.addEventListener("click", toggleMobileMenu);
+  // Close mobile menu on link click
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+  });
 
-  // Обработка кликов по ссылкам
-  const mobileLinks = mobileMenu?.querySelectorAll("a");
-  mobileLinks?.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href");
+  // Desktop dropdown click functionality
+  let currentOpenDropdown: HTMLElement | null = null;
+  let currentOpenSubdropdown: HTMLElement | null = null;
 
-      // Предотвращаем прыжок страницы при клике на ссылки с href="#"
-      // которые используются для открытия подменю (находятся внутри <summary>)
-      if (href === "#") {
-        if (link.closest("summary")) {
-          e.preventDefault();
-          // Внимание: <details> управляет своим состоянием сам.
-          return;
-        }
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('[data-dropdown]') && currentOpenDropdown) {
+      currentOpenDropdown.classList.add('hidden', 'opacity-0', 'pointer-events-none');
+      currentOpenDropdown.previousElementSibling?.querySelector('.dropdown-chevron')?.classList.remove('rotate-180');
+      currentOpenDropdown = null;
+    }
+    if (!target.closest('[data-subdropdown]') && currentOpenSubdropdown) {
+      currentOpenSubdropdown.classList.add('hidden', 'opacity-0', 'pointer-events-none');
+      currentOpenSubdropdown = null;
+    }
+  });
+
+  // Main dropdown buttons
+  const dropdownBtns = document.querySelectorAll('[data-dropdown-btn]');
+  dropdownBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.getAttribute('data-dropdown-btn');
+      const menu = document.querySelector(`[data-dropdown-menu="${id}"]`) as HTMLElement;
+      const chevron = btn.querySelector('.dropdown-chevron');
+      
+      if (!menu) return;
+      
+      // Close other dropdowns
+      if (currentOpenDropdown && currentOpenDropdown !== menu) {
+        currentOpenDropdown.classList.add('hidden', 'opacity-0', 'pointer-events-none');
+        currentOpenDropdown.previousElementSibling?.querySelector('.dropdown-chevron')?.classList.remove('rotate-180');
       }
+      
+      // Toggle current
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+        menu.classList.add('opacity-100', 'pointer-events-auto');
+        chevron?.classList.add('rotate-180');
+        currentOpenDropdown = menu;
+      } else {
+        menu.classList.add('hidden', 'opacity-0', 'pointer-events-none');
+        menu.classList.remove('opacity-100', 'pointer-events-auto');
+        chevron?.classList.remove('rotate-180');
+        currentOpenDropdown = null;
+      }
+    });
+  });
 
-      // Закрываем главное меню, только если это настоящая навигационная ссылка
-      if (
-        href !== "#" &&
-        mobileMenu &&
-        !mobileMenu.classList.contains("hidden")
-      ) {
-        // Вызываем функцию закрытия для плавного исчезновения
-        if (!link.closest("details")) {
-          // Не закрываем сразу, если это не вложенная ссылка
-          toggleMobileMenu();
-        } else {
-          // Если это вложенная ссылка (не #), закрываем все
-          toggleMobileMenu();
-        }
+  // Subdropdown buttons
+  const subdropdownBtns = document.querySelectorAll('[data-subdropdown-btn]');
+  subdropdownBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.getAttribute('data-subdropdown-btn');
+      const menu = document.querySelector(`[data-subdropdown-menu="${id}"]`) as HTMLElement;
+      
+      if (!menu) return;
+      
+      // Close other subdrops
+      if (currentOpenSubdropdown && currentOpenSubdropdown !== menu) {
+        currentOpenSubdropdown.classList.add('hidden', 'opacity-0', 'pointer-events-none');
+      }
+      
+      // Toggle current
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+        menu.classList.add('opacity-100', 'pointer-events-auto');
+        currentOpenSubdropdown = menu;
+      } else {
+        menu.classList.add('hidden', 'opacity-0', 'pointer-events-none');
+        menu.classList.remove('opacity-100', 'pointer-events-auto');
+        currentOpenSubdropdown = null;
       }
     });
   });
