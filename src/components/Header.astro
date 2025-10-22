@@ -1,136 +1,407 @@
 ---
-import { Wrench, Menu } from "@lucide/astro"; // Изменил CalendarHeart на Wrench
-import Button from "./ui/Button.astro";
+import { Menu, X, ChevronDown, Phone, ChevronRight } from "@lucide/astro";
 
-/**
- * Основные страницы сайта для навигации.
- * Текст изменен на мебельную тематику.
- */
-const ssoLinks = [
-  { href: "/", label: "Главная", item: "index.astro" },
-  { href: "/catalog/", label: "Каталог", item: "catalog.astro" },
-  { href: "/projects/", label: "Наши Проекты", item: "projects.astro" },
-];
-
-// Микроразметка для хлебных крошек (оставим без изменений, т.к. структура правильная)
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: ssoLinks.map((link, idx) => ({
-    "@type": "ListItem",
-    position: idx + 1,
-    name: link.label,
-    item: link.href,
-  })),
+// --- Обновленные данные навигации со структурой второго примера ---
+type MenuItem = {
+  title: string;
+  link: string;
+  submenu?: MenuItem[];
 };
+
+const navigationData: MenuItem[] = [
+  {
+    title: "Каталог услуг",
+    link: "#",
+    submenu: [
+      {
+        title: "Кухни",
+        link: "/kitchen",
+        submenu: [
+          // Третий уровень
+          { title: "Угловые кухни", link: "/corner-kitchens" },
+          { title: "Прямые кухни", link: "#" },
+          { title: "Кухни из ЛДСП", link: "#" },
+          { title: "Кухни из МДФ", link: "#" },
+          { title: "Кухни из пластика", link: "#" },
+        ],
+      },
+      {
+        title: "Гостиные",
+        link: "#",
+        submenu: [
+          // Третий уровень
+          { title: "Стенки", link: "#" },
+          { title: "ТВ-зоны/Тумбы под телевизор", link: "#" },
+          { title: "Журнальные столики", link: "#" },
+          { title: "Стеллажи", link: "#" },
+          { title: "Полки", link: "#" },
+        ],
+      },
+      {
+        title: "Спальни",
+        link: "#",
+        submenu: [
+          // Третий уровень
+          { title: "Кровати", link: "#" },
+          { title: "Тумбы прикроватные", link: "#" },
+          { title: "Комоды", link: "#" },
+          { title: "Шкафы в спальню", link: "#" },
+        ],
+      },
+      {
+        title: "Детская мебель",
+        link: "#",
+        submenu: [
+          // Третий уровень
+          { title: "Детские столы", link: "#" },
+          { title: "Детские шкафы", link: "#" },
+          { title: "Детские кровати", link: "#" },
+          { title: "Шкафы в спальню", link: "#" },
+        ],
+      },
+      {
+        title: "Мебель для ванных комнат",
+        link: "#",
+        submenu: [
+          // Третий уровень
+          { title: "Тумбы под раковину", link: "#" },
+        ],
+      },
+      {
+        title: "Мягкая мебель",
+        link: "#",
+        submenu: [
+          // Третий уровень
+          { title: "Кресла", link: "#" },
+          { title: "Диваны", link: "#" },
+          { title: "Пуфы/банкетки", link: "#" },
+        ],
+      },
+      {
+        title: "Шкафы",
+        link: "#",
+        submenu: [
+          // Третий уровень
+          { title: "Шкафы-купе", link: "#" },
+          { title: "Встроенные шкафы", link: "#" },
+          { title: "Угловые шкафы", link: "#" },
+          { title: "Распашные шкафы", link: "#" },
+        ],
+      },
+      {
+        title: "Гардеробные",
+        link: "#",
+      },
+      {
+        title: "Офисная мебель",
+        link: "#",
+      },
+      {
+        title: "Прихожие",
+        link: "#",
+        submenu: [
+          // Третий уровень
+          { title: "Шкафы в прихожую", link: "#" },
+          { title: "Обувницы", link: "#" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Дополнительные услуги",
+    link: "#",
+    submenu: [
+      { title: "Сборка и монтаж мебели", link: "#" },
+      { title: "Ремонт и реставрация мебели", link: "#" },
+    ],
+  },
+  {
+    title: "Наши проекты",
+    link: "#",
+  },
+  {
+    title: "Отзывы",
+    link: "#",
+  },
+  {
+    title: "Блог",
+    link: "#",
+  },
+  {
+    title: "FAQ",
+    link: "#",
+  },
+  {
+    title: "О компании",
+    link: "#",
+    submenu: [
+      { title: "Доставка и оплата", link: "#" },
+      { title: "Акции", link: "#" },
+      { title: "Сотрудничество", link: "#" },
+      { title: "Материалы", link: "#" },
+      { title: "Вакансии", link: "#" },
+      { title: "Контакты", link: "#" },
+    ],
+  },
+];
+// --- Конец обновленных данных ---
 ---
 
-<script
-  type="application/ld+json"
-  set:html={JSON.stringify(breadcrumbJsonLd)}
-/>
-
 <header
-  class="bg-white/95 backdrop-blur-sm border-b border-stone-200 sticky top-0 z-50 transition-all duration-300"
+  class="sticky top-0 left-0 right-0 z-50 bg-white border-b border-gray-200"
 >
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16 md:h-20">
-      <div class="">
-        <a href="/" class="flex items-center space-x-3">
-          <div
-            class="w-10 h-10 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl flex items-center justify-center shadow-lg"
-          >
-            <Wrench class="w-6 h-6 text-white" />
-            {/* Иконка для сборки/мастерства */}
-          </div>
-          <div class="hidden sm:block">
-            <h1 class="text-xl font-extrabold text-amber-800 tracking-tight">
-              CRAFT
-            </h1>
-            <p class="text-xs text-stone-600">Кастомная мебель</p>
-            {/* Изменен текст */}
-          </div>
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      {/* Logo */}
+      <div class="flex-shrink-0">
+        <a
+          href="/"
+          class="text-2xl font-bold text-gray-900 hover:text-amber-600 transition-colors"
+        >
+          Da-Net
         </a>
       </div>
 
-      <nav class="hidden lg:flex items-center space-x-8">
+      {/* Desktop Navigation */}
+      <div class="hidden lg:flex items-center space-x-1">
         {
-          ssoLinks.map((link) => (
-            <a
-              href={link.href}
-              class="text-stone-700 hover:text-amber-700 font-medium transition-colors duration-200 uppercase text-sm tracking-widest"
-            >
-              {link.label}
-            </a>
+          navigationData.map((item) => (
+            <div class="relative group">
+              <a
+                href={item.link}
+                class="px-3 py-2 text-sm text-gray-700 hover:text-amber-600 transition-colors rounded-lg hover:bg-gray-50 inline-flex items-center gap-1"
+              >
+                {item.title}
+                {item.submenu && (
+                  <ChevronDown
+                    size={14}
+                    class="transition-transform duration-200 group-hover:rotate-180"
+                  />
+                )}
+              </a>
+
+              {/* Desktop Dropdown (Уровень 2) */}
+              {item.submenu && (
+                <div class="absolute left-0 mt-1 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-50">
+                  <div class="mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    {item.submenu.map((subItem) => (
+                      // Вложенный div.group для поддержки третьего уровня
+                      <div class="relative group/sub">
+                        <a
+                          href={subItem.link}
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-colors inline-flex justify-between items-center w-full"
+                        >
+                          {subItem.title}
+                          {subItem.submenu && (
+                            <ChevronRight
+                              size={14}
+                              class="text-gray-400 group-hover/sub:text-amber-600 transition-colors"
+                            />
+                          )}
+                        </a>
+
+                        {/* Desktop Dropdown (Уровень 3) */}
+                        {subItem.submenu && (
+                          <div class="absolute left-full top-0 ml-1 w-56 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 pointer-events-none group-hover/sub:pointer-events-auto z-50">
+                            <div class="mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                              {subItem.submenu.map((nestedItem) => (
+                                <a
+                                  href={nestedItem.link}
+                                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-colors"
+                                >
+                                  {nestedItem.title}
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))
         }
-      </nav>
-
-      <div class="flex items-center space-x-4">
-        <Button
-          href="/request-project"
-          variant="primary"
-          size="sm"
-          class="w-full bg-amber-800 hover:bg-amber-900"
-        >
-          Рассчитать стоимость проекта
-        </Button>
-        <button
-          id="mobile-menu-button"
-          class="lg:hidden p-2 rounded-xl bg-stone-100 text-amber-800 hover:bg-stone-200 transition-colors duration-200"
-          aria-label="Открыть меню"
-        >
-          <Menu class="w-6 h-6" />
-        </button>
       </div>
+
+      {/* Contact Button */}
+      <div class="hidden lg:flex items-center">
+        <a
+          href="tel:+77001234567"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors text-sm font-medium"
+        >
+          <Phone size={16} />
+          +7 (700) 123-45-67
+        </a>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 text-gray-700 hover:text-amber-600 transition-colors"
+        aria-label="Toggle menu"
+      >
+        <Menu size={24} id="menu-icon" />
+        <X size={24} id="close-icon" class="hidden" />
+      </button>
     </div>
 
+    {/* Mobile Navigation */}
     <div
       id="mobile-menu"
-      class="lg:hidden hidden border-t border-stone-200 py-4"
+      class="hidden lg:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
     >
-      <nav class="flex flex-col space-y-4">
+      <div class="py-4 space-y-1 border-t border-gray-200">
         {
-          ssoLinks.map((link) => (
-            <a
-              href={link.href}
-              class="text-stone-700 hover:text-amber-700 font-medium transition-colors duration-200 py-2"
-            >
-              {link.label}
-            </a>
+          navigationData.map((item) => (
+            <details class="group">
+              {" "}
+              {/* Уровень 1 */}
+              <summary class="flex items-center justify-between py-2 px-2 cursor-pointer text-gray-700 hover:text-amber-600 hover:bg-gray-50 rounded-lg transition-colors list-none">
+                <a href={item.link} class="flex-1 font-medium">
+                  {item.title}
+                </a>
+                {item.submenu && (
+                  <ChevronDown
+                    size={16}
+                    class="transition-transform duration-300 group-open:rotate-180"
+                  />
+                )}
+              </summary>
+              {/* Уровень 2 */}
+              {item.submenu && (
+                <div class="pl-4 mt-2 space-y-1">
+                  {item.submenu.map((subItem) => (
+                    <details class="group">
+                      <summary class="flex items-center justify-between py-2 px-3 cursor-pointer text-sm text-gray-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors list-none">
+                        <a href={subItem.link} class="flex-1 font-normal">
+                          {subItem.title}
+                        </a>
+                        {subItem.submenu && (
+                          <ChevronDown
+                            size={14}
+                            class="transition-transform duration-300 group-open:rotate-180 text-gray-400"
+                          />
+                        )}
+                      </summary>
+
+                      {/* Уровень 3 */}
+                      {subItem.submenu && (
+                        <div class="pl-4 mt-2 space-y-1">
+                          {subItem.submenu.map((nestedItem) => (
+                            <a
+                              href={nestedItem.link}
+                              class="block py-2 px-3 text-sm text-gray-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors"
+                            >
+                              {nestedItem.title}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </details>
+                  ))}
+                </div>
+              )}
+            </details>
           ))
         }
-        <div class="pt-2">
-          <Button
-            href="/request-project"
-            variant="primary"
-            size="sm"
-            class="w-full bg-amber-800 hover:bg-amber-900"
+        <div class="pt-4">
+          <a
+            href="tel:+77001234567"
+            class="flex items-center justify-center gap-2 px-4 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
           >
-            Рассчитать стоимость проекта
-          </Button>
+            <Phone size={18} />
+            +7 (700) 123-45-67
+          </a>
         </div>
-      </nav>
+      </div>
     </div>
-  </div>
+  </nav>
 </header>
 
 <script>
-  // Mobile menu toggle (скрипт остаётся без изменений)
-  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
 
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  }
+  // Функция для принудительного закрытия всех вложенных <details>
+  const closeAllDetails = () => {
+    const details = mobileMenu?.querySelectorAll("details");
+    details?.forEach((detail) => detail.removeAttribute("open"));
+  };
 
-  // Close mobile menu when clicking on links
+  // Функция для открытия/закрытия главного мобильного меню
+  const toggleMobileMenu = () => {
+    const isHidden = mobileMenu?.classList.contains("hidden");
+
+    if (isHidden) {
+      // Открытие
+      mobileMenu?.classList.remove("hidden");
+      menuIcon?.classList.add("hidden");
+      closeIcon?.classList.remove("hidden");
+      document.body.style.overflow = "hidden"; // Блокировка скролла
+      closeAllDetails(); // Закрываем все <details> при открытии
+
+      requestAnimationFrame(() => {
+        if (mobileMenu) {
+          mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+        }
+      });
+    } else {
+      // Закрытие
+      if (mobileMenu) {
+        mobileMenu.style.maxHeight = "0";
+      }
+      menuIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
+      document.body.style.overflow = ""; // Снятие блокировки скролла
+      setTimeout(() => {
+        mobileMenu?.classList.add("hidden");
+      }, 3000);
+    }
+  };
+
+  mobileMenuBtn?.addEventListener("click", toggleMobileMenu);
+
+  // Обработка кликов по ссылкам
   const mobileLinks = mobileMenu?.querySelectorAll("a");
   mobileLinks?.forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu?.classList.add("hidden");
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+
+      // Предотвращаем прыжок страницы при клике на ссылки с href="#"
+      // которые используются для открытия подменю (находятся внутри <summary>)
+      if (href === "#") {
+        if (link.closest("summary")) {
+          e.preventDefault();
+          // Внимание: <details> управляет своим состоянием сам.
+          return;
+        }
+      }
+
+      // Закрываем главное меню, только если это настоящая навигационная ссылка
+      if (
+        href !== "#" &&
+        mobileMenu &&
+        !mobileMenu.classList.contains("hidden")
+      ) {
+        // Вызываем функцию закрытия для плавного исчезновения
+        if (!link.closest("details")) {
+          // Не закрываем сразу, если это не вложенная ссылка
+          toggleMobileMenu();
+        } else {
+          // Если это вложенная ссылка (не #), закрываем все
+          toggleMobileMenu();
+        }
+      }
     });
   });
 </script>
+
+<style>
+  header {
+    backdrop-filter: blur(10px);
+  }
+</style>
