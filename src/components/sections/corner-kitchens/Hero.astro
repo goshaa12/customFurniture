@@ -64,7 +64,7 @@ const {
   buttonHref = "#calculator",
   imageSrc = "/images/home/corner-kitchens-hero.webp",
   secondaryButtonText = "Заказать кухню угловую",
-  secondaryButtonHref = undefined,
+  secondaryButtonHref = "#form",
   secondaryButtonVariant = undefined,
   thirdTitleText = "",
 } = Astro.props;
@@ -136,7 +136,7 @@ const {
           <span>{buttonText}</span>
         </Button>
         <Button
-          href={buttonHref}
+          href={secondaryButtonHref}
           variant="primary"
           size="md"
           class="flex justify-center items-center gap-2"
