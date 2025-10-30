@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/HingedWardrobes/Hero.astro";
+import Services from "../components/sections/HingedWardrobes/Services.astro";
+import KitchensPrices from "../components/sections/HingedWardrobes/KitchensPrices.astro";
+import WhyUs from "../components/sections/HingedWardrobes/WhyUs.astro";
+import TypeOfKitchen from "../components/sections/HingedWardrobes/TypeOfKitchen.astro";
+import Form from "../components/sections/HingedWardrobes/Form.astro";
+import KitchenProduction from "../components/sections/HingedWardrobes/KitchenProduction.astro";
+import Calculator from "../components/sections/HingedWardrobes/Calculator.astro";
+import Reviews from "../components/sections/HingedWardrobes/Reviews.astro";
+import FAQ from "../components/sections/HingedWardrobes/FAQ.astro";
+import HowGoing from "../components/sections/HingedWardrobes/HowGoing.astro";
+import Advantages from "../components/sections/HingedWardrobes/Advantages.astro";
+import Companys from "../components/sections/HingedWardrobes/Companys.astro";
+import AboutUs from "../components/sections/HingedWardrobes/AboutUs.astro";
+import Free3D from "../components/sections/HingedWardrobes/Free3D.astro";
+import CompanyText from "../components/sections/HingedWardrobes/CompanyText.astro";
+import News from "../components/sections/HingedWardrobes/News.astro";
+
+const faqs = [
+  {
+    question: "Что если распашной шкаф на заказ не подойдёт по размерам?",
+    answer:
+      "Перед началом работы мы проводим точный замер помещения и согласовываем чертеж с клиентом. Ошибки исключены: шкаф создаётся строго по параметрам, а монтаж выполняют опытные мастера.",
+  },
+  {
+    question: "Можно ли изменить проект, если после утверждения?",
+    answer:
+      "Да, если производство ещё не началось, мы внесём все корректировки — от цвета фасадов до внутреннего наполнения. Мы гибко подходим к изменениям, ведь важно, чтобы результат вас радовал на 100%.",
+  },
+  {
+    question: "Сколько прослужит шкаф, если выбрать недорогие материалы?",
+    answer:
+      "Даже в базовой комплектации изделие остаётся прочным и долговечным. Мы используем сертифицированные материалы и проверенную фурнитуру, а выбор делаем с учётом ваших условий эксплуатации и бюджета.",
+  },
+  {
+    question: "Что делать, если не могу определиться со стилем и цветом шкафа?",
+    answer:
+      "Наш дизайнер подберёт гармоничное решение под интерьер и освещение комнаты. Мы создадим визуализацию и покажем 3D-эскиз, чтобы вы заранее представили, как будет выглядеть готовый шкаф в вашем доме.",
+  },
+  {
+    question: "Выполняете ли вы установку, если стены в квартире неровные?",
+    answer:
+      "Да, подобные ситуации для нас не редкость. Монтажники используют регулируемые опоры и точные крепления, чтобы шкаф стоял ровно и стабильно, даже если помещение имеет перепады или неровные углы.",
+  },
+  {
+    question: "Правда ли, что распашной шкаф занимает больше места?",
+    answer:
+      "Визуально — немного, зато внутреннее пространство используется полностью. Двери открываются на 180°, что даёт удобный доступ к каждой полке и позволяет разместить больше вещей без потери комфорта.",
+  },
+  {
+    question: "Могу ли я быть уверен, что со временем шкаф не начнёт скрипеть?",
+    answer:
+      "Да, мы применяем надёжную фурнитуру и контролируем сборку на всех этапах. Конструкция рассчитана на длительное использование, поэтому двери не провисают, а шкаф сохраняет идеальную геометрию.",
+  },
+  {
+    question: "Можно ли сделать шкаф, если комната маленькая ?",
+    answer:
+      "Да, мы проектируем мебель под любые размеры и планировки. Используем углы, ниши и пустые зоны, чтобы каждый сантиметр приносил пользу, а шкаф выглядел лёгким и аккуратным, не загромождая комнату.",
+  },
+  {
+    question: "Что делать, если у меня нет готового дизайна?",
+    answer:
+      "Всё просто: вы оставляете заявку, наш специалист приезжает на замер и помогает определиться со стилем и материалами. Затем вы получаете 3D-эскиз, детальную смету и уверенность в правильном выборе.",
+  },
+  {
+    question: "Чем ваш распашной шкаф на заказ отличается от других компаний?",
+    answer:
+      "Мы делаем мебель без шаблонов и спешки. Каждый шкаф продумывается индивидуально, с учётом вашего пространства, привычек и стиля жизни. Результат — качество, удобство и ощущение, что всё на своём месте.",
+  },
+];
+---
+
+<Layout
+  title="1️⃣ Распашные шкафы на заказ в Алматы - быстро и надёжно"
+  description="Распашные шкафы на заказ в Алматы ⭐ Индивидуальный проект, подгонка под ваш интерьер. Стильно и под ключ ⭐ Оставьте заявку сейчас!"
+>
+  <main>
+    <Hero />
+    <Advantages />
+    <WhyUs />
+    <KitchensPrices />
+    <HowGoing />
+    <Calculator />
+    <Free3D />
+    <KitchenProduction />
+    <AboutUs />
+    <Form />
+    <CompanyText />
+    <Companys />
+    <News />
+    <Reviews />
+    <FAQ faqs={faqs} />
+  </main>
+</Layout>

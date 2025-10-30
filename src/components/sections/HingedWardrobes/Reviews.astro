@@ -1,0 +1,166 @@
+---
+import { Quote, Star, Heart, Repeat, Users } from "@lucide/astro";
+import Section from "../../ui/Section.astro";
+import Card from "../../ui/Card.astro";
+---
+
+<Section id="reviews" background="default" padding="xl">
+  <div class="text-center space-y-8 mb-20">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-stone-800">
+      Отзывы клиентов
+    </h2>
+    <p
+      class="text-lg md:text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed"
+    >
+      Нам доверяют и рекомендуют нас как надёжного производителя мебели на заказ
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+    {/* Review 1 */}
+    <Card
+      background="white"
+      class="relative group rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition duration-300"
+    >
+
+      <div class="space-y-6">
+        <div class="flex items-center space-x-2 mb-6">
+          {
+            Array.from({ length: 5 }).map(() => (
+              <Star class="w-5 h-5 text-yellow-400 fill-current" />
+            ))
+          }
+        </div>
+
+        <div class="pl-4 border-l-4 border-pink-400">
+          <p class="text-stone-600 leading-relaxed italic">
+             «Долго искала шкаф, который вместит всю одежду и при этом не займёт слишком много места. Распашной шкаф идеально вписался в мою спальню, всё рассчитано до сантиметра. Очень довольна результатом и качеством!»
+          </p>
+        </div>
+
+        <div class="flex items-center space-x-5 pt-6 border-t border-stone-100">
+          <div
+            class="w-12 h-12 bg-gradient-to-br from-pink-100 to-rose-200 rounded-full flex items-center justify-center"
+          >
+            <span class="text-pink-600 font-semibold text-lg">А</span>
+          </div>
+          <div>
+            <h4 class="font-semibold text-stone-800">Анна П.</h4>
+            <p class="text-sm text-stone-500">Алматы</p>
+          </div>
+        </div>
+      </div>
+    </Card>
+
+    {/* Review 2 */}
+    <Card
+      background="white"
+      class="relative group rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition duration-300"
+    >
+
+
+      <div class="space-y-6">
+        <div class="flex items-center space-x-2 mb-6">
+          {
+            Array.from({ length: 5 }).map(() => (
+              <Star class="w-5 h-5 text-yellow-400 fill-current" />
+            ))
+          }
+        </div>
+
+        <div class="pl-4 border-l-4 border-blue-400">
+          <p class="text-stone-600 leading-relaxed italic">
+            «Нужен был шкаф для гостиной с большим количеством полок и ящиков. Заказал распашной шкаф на заказ — замерщик учёл все нюансы, монтаж прошёл быстро. Теперь всё на своих местах, и интерьер стал аккуратнее».
+          </p>
+        </div>
+
+        <div class="flex items-center space-x-5 pt-6 border-t border-stone-100">
+          <div
+            class="w-12 h-12 bg-gradient-to-br from-blue-100 to-cyan-200 rounded-full flex items-center justify-center"
+          >
+            <span class="text-blue-600 font-semibold text-lg">Д</span>
+          </div>
+          <div>
+            <h4 class="font-semibold text-stone-800">Диас С.</h4>
+            <p class="text-sm text-stone-500">Астана</p>
+          </div>
+        </div>
+      </div>
+    </Card>
+
+    {/* Review 3 */}
+    <Card
+      background="white"
+      class="relative group rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition duration-300"
+    >
+
+      <div class="space-y-6">
+        <div class="flex items-center space-x-2 mb-6">
+          {
+            Array.from({ length: 5 }).map(() => (
+              <Star class="w-5 h-5 text-yellow-400 fill-current" />
+            ))
+          }
+        </div>
+
+        <div class="pl-4 border-l-4 border-orange-400">
+          <p class="text-stone-600 leading-relaxed italic">
+            «Стандартные шкафы не подходили по размерам, а распашной шкаф на заказ решил все проблемы. Получилось красиво, функционально и надёжно. Рада, что обратилась именно сюда — результат превзошёл ожидания!»
+          </p>
+        </div>
+
+        <div class="flex items-center space-x-5 pt-6 border-t border-stone-100">
+          <div
+            class="w-12 h-12 bg-gradient-to-br from-orange-100 to-yellow-200 rounded-full flex items-center justify-center"
+          >
+            <span class="text-orange-600 font-semibold text-lg">Г</span>
+          </div>
+          <div>
+            <h4 class="font-semibold text-stone-800">Гульмира М.</h4>
+            <p class="text-sm text-stone-500">Шымкент</p>
+          </div>
+        </div>
+      </div>
+    </Card>
+  </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Furniture",
+  "review": [
+    {
+      "@type": "Review",
+      "author": "Анна П.",
+      "reviewBody": "Долго искала шкаф, который вместит всю одежду и при этом не займёт слишком много места. Распашной шкаф идеально вписался в мою спальню, всё рассчитано до сантиметра. Очень довольна результатом и качеством!",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": "Диас С.",
+      "reviewBody": "Нужен был шкаф для гостиной с большим количеством полок и ящиков. Заказал распашной шкаф на заказ — замерщик учёл все нюансы, монтаж прошёл быстро. Теперь всё на своих местах, и интерьер стал аккуратнее.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": "Гульмира М.",
+      "reviewBody": "Стандартные шкафы не подходили по размерам, а распашной шкаф на заказ решил все проблемы. Получилось красиво, функционально и надёжно. Рада, что обратилась именно сюда — результат превзошёл ожидания!",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    }
+  ]
+}
+</script>
+</Section>
