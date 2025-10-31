@@ -16,67 +16,53 @@ interface Benefit {
   text: string;
 }
 
-interface ButtonConfig {
-  text: string;
-  href: string;
-  icon?: any;
-  variant?: "primary" | "secondary" | "outline";
-  size?: "sm" | "md" | "lg";
-  class?: string;
-}
-
 interface Props {
   title?: string;
   highlight?: string;
   subtitle?: string;
   benefits?: Benefit[];
-  // удаляю старые buttonText, buttonHref, secondaryButtonText, secondaryButtonHref, secondaryButtonVariant
-  buttons?: ButtonConfig[];
+  buttonText?: string;
+  buttonHref?: string;
   imageSrc?: string;
+  secondaryButtonText?: string;
+  secondaryButtonHref?: string;
+  secondaryButtonVariant?: string;
   thirdTitleText?: string;
 }
 
 const {
-  title = "Распашные шкафы на заказ в Алматы",
-  highlight = "от 3 дней",
-  subtitle = "Проектируем шкафы, которые точно подойдут вашему интерьеру. Оставьте заявку и узнайте стоимость мгновенно!",
+  title = "Полки на заказ в Алматы",
+  highlight = "за 7 дней",
+  subtitle = "Создайте интерьер, в который захочется возвращаться — узнайте стоимость полок под ваши пожелания уже сегодня!",
   benefits = [
     {
       icon: CalendarCheck,
       iconClass: "w-4 h-4 text-yellow-600",
       bgClass: "bg-yellow-100",
-      text: "Бесплатный выезд на замер",
+      text: "Производим без посредников",
     },
     {
       icon: CheckCircle,
       iconClass: "w-4 h-4 text-yellow-600",
       bgClass: "bg-yellow-100",
-      text: "Гарантия 12 месяцев",
+      text: "От 50 000 тенге под ключ",
     },
     {
       icon: Clock,
       iconClass: "w-4 h-4 text-yellow-600",
       bgClass: "bg-yellow-100",
-      text: "Более 2000 фактур и цветов",
+      text: "Замер и расчет — бесплатно",
     },
     {
       icon: Clock,
       iconClass: "w-4 h-4 text-yellow-600",
       bgClass: "bg-yellow-100",
-      text: "Рассрочка 0%, на 6 месяцев",
+      text: "Гарантия 24 месяца и пост-сервис",
     },
   ],
-  buttons = [
-    {
-      text: "Оставить заявку",
-      href: "#form",
-      icon: Calculator,
-      variant: "primary",
-      size: "md",
-      class: "flex justify-center items-center gap-2"
-    }
-  ],
-  imageSrc = "/images/home/HingedWardrobes.webp",
+  buttonText = "Рассчитать стоимость",
+  buttonHref = "#calculator",
+  imageSrc = "/images/home/shelves.webp",
   thirdTitleText = "",
 } = Astro.props;
 ---
@@ -137,17 +123,15 @@ const {
 
       <!-- CTA Button -->
       <div class="flex flex-col sm:flex-row gap-3 pt-2">
-        {buttons.map((btn: ButtonConfig) => (
-          <Button
-            href={btn.href}
-            variant={btn.variant || "primary"}
-            size={btn.size || "md"}
-            class={btn.class || "flex justify-center items-center gap-2"}
-          >
-            {btn.icon && <btn.icon class="w-4 h-4 aspect-square" />}
-            <span>{btn.text}</span>
-          </Button>
-        ))}
+        <Button
+          href={buttonHref}
+          variant="primary"
+          size="md"
+          class="flex justify-center items-center gap-2"
+        >
+          <Calculator class="w-4 h-4 aspect-square" />
+          <span>{buttonText}</span>
+        </Button>
       </div>
     </div>
 

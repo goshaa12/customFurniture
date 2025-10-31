@@ -1,0 +1,69 @@
+---
+import { ChevronRight } from "@lucide/astro";
+
+const systems = [
+  {
+    title: "Шаг 1. Оставляете заявку — и мы берём всё на себя",
+    description:
+      "Оставьте заявку или позвоните. Менеджер уточнит детали, подберёт материалы и согласует время визита.",
+    iconColor: "from-emerald-400 to-emerald-600",
+  },
+  {
+    title: "Шаг 2. Замер и создание дизайн-проекта",
+    description:
+      "Специалист приедет с образцами, сделает точные замеры и предложит планировку. Вы получите 3D-проект с цветами и расположением мебели.",
+    iconColor: "from-indigo-400 to-indigo-600",
+  },
+  {
+    title: "Шаг 3. Договор и производство",
+    description:
+      "После согласования подписываем договор и запускаем изготовление. Каждый этап контролирует менеджер — от цеха до готовности.",
+    iconColor: "from-red-400 to-red-600",
+  },
+  {
+    title: "Шаг 4. Доставка, сборка и гарантия",
+    description:
+      "Мебель доставляем в упаковке, аккуратно собираем и проверяем. После установки выдаём акт приёмки и гарантию качества.",
+    iconColor: "from-amber-400 to-amber-600",
+  },
+];
+---
+
+<section class="py-20 px-6 md:px-12 lg:px-24 bg-gray-50">
+  <div class="max-w-4xl mx-auto text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+      Как проходит изготовление мебели для детской на заказ
+    </h2>
+  </div>
+
+  <div class="grid gap-12 md:grid-cols-2 max-w-6xl mx-auto mb-8">
+    {
+      systems.map((system) => (
+        <div class="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-500 overflow-hidden group">
+          <div
+            class={`absolute inset-0 bg-gradient-to-br ${system.iconColor} opacity-10 transform -rotate-6 scale-150 pointer-events-none`}
+          />
+          <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gray-900">
+            {system.title}
+          </h3>
+          <p class="text-gray-600 mb-6">{system.description}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="flex flex-col justify-center items-center">
+    <p class="text-stone-600 text-lg mb-8 text-center">
+      Создайте пространство, где всё продумано под вашего ребенка.
+    </p>
+  </div>
+
+  <div class="text-center">
+    <a
+      href="#form"
+      class="inline-block bg-stone-800 text-white py-4 px-8 rounded-full text-lg font-medium hover:bg-stone-700 transition-all"
+    >
+      Оставить заявку на проект
+    </a>
+  </div>
+</section>

@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/commode/Hero.astro";
+import Services from "../components/sections/commode/Services.astro";
+import KitchensPrices from "../components/sections/commode/KitchensPrices.astro";
+import WhyUs from "../components/sections/commode/WhyUs.astro";
+import TypeOfKitchen from "../components/sections/commode/TypeOfKitchen.astro";
+import Form from "../components/sections/commode/Form.astro";
+import KitchenProduction from "../components/sections/commode/KitchenProduction.astro";
+import Calculator from "../components/sections/commode/Calculator.astro";
+import Reviews from "../components/sections/commode/Reviews.astro";
+import FAQ from "../components/sections/commode/FAQ.astro";
+import HowGoing from "../components/sections/commode/HowGoing.astro";
+import Advantages from "../components/sections/commode/Advantages.astro";
+import Companys from "../components/sections/commode/Companys.astro";
+import AboutUs from "../components/sections/commode/AboutUs.astro";
+import Materials from "../components/sections/commode/Materials.astro";
+import Free3D from "../components/sections/commode/Free3D.astro";
+import CompanyText from "../components/sections/commode/CompanyText.astro";
+import News from "../components/sections/commode/News.astro";
+
+const faqs = [
+  {
+    question: "Можно ли сделать комод под нишу со скошенной стеной?",
+    answer:
+      "Да, делаем точные замеры и выстраиваем конструкцию под угол. Неровности маскируем фрезеровкой и регулируемыми опорами. В итоге изделие выглядит ровно, будто сделано вместе с комнатой.",
+  },
+  {
+    question: "У меня маленькая спальня — получится не перегрузить пространство?",
+    answer:
+      "Да, мы рассчитываем габариты и глубину под конкретную площадь. Вы получаете вместительное, но визуально лёгкое решение. Обычно добавляем скрытые ниши или фасады без ручек.",
+  },
+  {
+    question: "Делаете ли комод в одном стиле с кроватью или шкафом?",
+    answer:
+      "Да, подбираем материалы и фурнитуру в точном совпадении. Можно привезти фото старой мебели — найдём нужный оттенок. В итоге всё выглядит как единый комплект.",
+  },
+  {
+    question: "Что если стены кривые, и мебель не встанет вплотную?",
+    answer:
+      "Мы выравниваем конструкцию по лазерному уровню. Отступы скрываются планками или декоративной кромкой. Всё стоит ровно, без зазоров и перекосов.",
+  },
+  {
+    question: "Сколько времени занимает весь процесс?",
+    answer:
+      "Обычно от пяти до десяти дней от замера до установки. Сроки фиксируются в договоре и не меняются. Если нужно срочно — ускоряем производство.",
+  },
+  {
+    question: "Можно ли сделать подсветку или встроенные розетки?",
+    answer:
+      "Да, добавляем LED-подсветку, зарядки и даже розетки под технику. Все элементы прячутся внутри конструкции. Мебель выглядит аккуратно и функционально.",
+  },
+  {
+    question: "Даёте ли вы гарантию, если я живу не в Алматы?",
+    answer:
+      "Да, гарантия действует по всему Казахстану. Отправляем мебель в защитной упаковке с инструкцией. При необходимости подключаем партнёрских сборщиков.",
+  },
+  {
+    question: "Что, если дизайн не совпадёт с ожиданием?",
+    answer:
+      "Вы заранее видите 3D-проект и утверждаете материалы. После запуска изменений уже не нужно — результат совпадает. Никаких «не так, как на фото».",
+  },
+  {
+    question: "Входит ли доставка и сборка в цену?",
+    answer:
+      "Да, все услуги включены в расчёт. Мы не берём доплату за монтаж или вынос упаковки. После установки остаётся только расставить вещи.",
+  },
+  {
+    question: "Можно ли заказать в рассрочку?",
+    answer:
+      "Да, без процентов и сложных бумаг. Оформляем прямо при заключении договора. Вы обновляете интерьер, а оплачиваете постепенно.",
+  },
+];
+---
+
+<Layout
+  title="1️⃣ Комоды на заказ в Алматы — под ваш размер за 5 дней"
+  description="Комоды на заказ в Алматы ⭐ Изготовим под ваш размер за 5 дней! Бесплатный замер и точный проект ⭐ Оформите заказ прямо сейчас!"
+>
+  <main>
+    <Hero />
+    <Advantages />
+    <WhyUs />
+    <KitchensPrices />
+    <HowGoing />
+    <Calculator />
+    <KitchenProduction />
+    <Form />
+    <AboutUs />
+    <Materials />
+    <CompanyText />
+
+    <Companys />
+    <Reviews />
+    <FAQ faqs={faqs} title="Часто задаваемые вопросы при заказе комодов" />
+  </main>
+</Layout>

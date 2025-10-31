@@ -1,0 +1,69 @@
+---
+import { ChevronRight } from "@lucide/astro";
+
+const systems = [
+  {
+    title: "Заявка и замер",
+    description:
+      "Вы оставляете заявку — мастер приезжает в удобное время и делает точный замер. Он помогает подобрать форму, размер и расположение под стиль вашего интерьера.",
+    iconColor: "from-emerald-400 to-emerald-600",
+  },
+  {
+    title: "Проект и расчёт стоимости",
+    description:
+      "После замера создаём 3D-модель будущих полок с учётом освещения и планировки. Подбираем материалы и фурнитуру, рассчитываем стоимость. Вы сразу видите, как будет выглядеть итог.",
+    iconColor: "from-indigo-400 to-indigo-600",
+  },
+  {
+    title: "Подписание договора и изготовление",
+    description:
+      "Фиксируем условия, утверждаем дизайн и запускаем процесс изготовления полок на заказ. Все этапы проходят на собственном производстве под строгим контролем мастеров.",
+    iconColor: "from-red-400 to-red-600",
+  },
+  {
+    title: "Доставка и установка",
+    description:
+      "Доставляем готовые полки в защитной упаковке и аккуратно монтируем их на месте. Работаем без шума, пыли и повреждений. После монтажа выдаём гарантию и рекомендации по уходу.",
+    iconColor: "from-amber-400 to-amber-600",
+  },
+];
+---
+
+<section class="py-20 px-6 md:px-12 lg:px-24 bg-gray-50">
+  <div class="max-w-4xl mx-auto text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+      Как проходит изготовление полок на заказ?
+    </h2>
+  </div>
+
+  <div class="grid gap-12 md:grid-cols-2 max-w-6xl mx-auto mb-8">
+    {
+      systems.map((system) => (
+        <div class="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-500 overflow-hidden group">
+          <div
+            class={`absolute inset-0 bg-gradient-to-br ${system.iconColor} opacity-10 transform -rotate-6 scale-150 pointer-events-none`}
+          />
+          <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gray-900">
+            {system.title}
+          </h3>
+          <p class="text-gray-600 mb-6">{system.description}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="flex flex-col justify-center items-center">
+    <p class="text-stone-600 text-lg mb-8">
+      Начните прямо сейчас — свяжитесь с нами для заказа!
+    </p>
+  </div>
+
+  <div class="text-center">
+    <a
+      href="#form"
+      class="inline-block bg-stone-800 text-white py-4 px-8 rounded-full text-lg font-medium hover:bg-stone-700 transition-all"
+    >
+      Оставить заявку
+    </a>
+  </div>
+</section>

@@ -37,38 +37,38 @@ interface Props {
 }
 
 const {
-  title = "Распашные шкафы на заказ в Алматы",
-  highlight = "от 3 дней",
-  subtitle = "Проектируем шкафы, которые точно подойдут вашему интерьеру. Оставьте заявку и узнайте стоимость мгновенно!",
+  title = "Комоды на заказ в Алматы",
+  highlight = "за 5-7 дней",
+  subtitle = "Создайте комод, который идеально впишется в ваш интерьер. Закажите сейчас и получите индивидуальный расчёт уже сегодня.",
   benefits = [
+    {
+      icon: CheckCircle,
+      iconClass: "w-4 h-4 text-yellow-600",
+      bgClass: "bg-yellow-100",
+      text: "Стоимость от 100 000 тенге",
+    },
+    {
+      icon: Target,
+      iconClass: "w-4 h-4 text-yellow-600",
+      bgClass: "bg-yellow-100",
+      text: "Индивидуальный дизайн-проект",
+    },
+    {
+      icon: CheckCircle,
+      iconClass: "w-4 h-4 text-yellow-600",
+      bgClass: "bg-yellow-100",
+      text: "Гарантия до 12 месяцев",
+    },
     {
       icon: CalendarCheck,
       iconClass: "w-4 h-4 text-yellow-600",
       bgClass: "bg-yellow-100",
       text: "Бесплатный выезд на замер",
     },
-    {
-      icon: CheckCircle,
-      iconClass: "w-4 h-4 text-yellow-600",
-      bgClass: "bg-yellow-100",
-      text: "Гарантия 12 месяцев",
-    },
-    {
-      icon: Clock,
-      iconClass: "w-4 h-4 text-yellow-600",
-      bgClass: "bg-yellow-100",
-      text: "Более 2000 фактур и цветов",
-    },
-    {
-      icon: Clock,
-      iconClass: "w-4 h-4 text-yellow-600",
-      bgClass: "bg-yellow-100",
-      text: "Рассрочка 0%, на 6 месяцев",
-    },
   ],
   buttons = [
     {
-      text: "Оставить заявку",
+      text: "Рассчитать стоимость",
       href: "#form",
       icon: Calculator,
       variant: "primary",
@@ -76,7 +76,7 @@ const {
       class: "flex justify-center items-center gap-2"
     }
   ],
-  imageSrc = "/images/home/HingedWardrobes.webp",
+  imageSrc = "/images/home/commode.webp",
   thirdTitleText = "",
 } = Astro.props;
 ---

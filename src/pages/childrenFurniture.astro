@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/childrenFurniture/Hero.astro";
+import Services from "../components/sections/childrenFurniture/Services.astro";
+import KitchensPrices from "../components/sections/childrenFurniture/KitchensPrices.astro";
+import WhyUs from "../components/sections/childrenFurniture/WhyUs.astro";
+import TypeOfKitchen from "../components/sections/childrenFurniture/TypeOfKitchen.astro";
+import Form from "../components/sections/childrenFurniture/Form.astro";
+import KitchenProduction from "../components/sections/childrenFurniture/KitchenProduction.astro";
+import Calculator from "../components/sections/childrenFurniture/Calculator.astro";
+import Reviews from "../components/sections/childrenFurniture/Reviews.astro";
+import FAQ from "../components/sections/childrenFurniture/FAQ.astro";
+import HowGoing from "../components/sections/childrenFurniture/HowGoing.astro";
+import Advantages from "../components/sections/childrenFurniture/Advantages.astro";
+import Companys from "../components/sections/childrenFurniture/Companys.astro";
+import AboutUs from "../components/sections/childrenFurniture/AboutUs.astro";
+import Free3D from "../components/sections/childrenFurniture/Free3D.astro";
+import CompanyText from "../components/sections/childrenFurniture/CompanyText.astro";
+import News from "../components/sections/childrenFurniture/News.astro";
+import Materials from "../components/sections/childrenFurniture/Materials.astro";
+import PaymentMethods from "../components/sections/childrenFurniture/PaymentMethods.astro";
+
+const faqs = [
+  {
+    question: "Детская мебель на заказ выйдет дороже, чем готовая?",
+    answer:
+      "Не всегда. Готовые гарнитуры часто включают лишние элементы, которые не подходят под вашу комнату. При заказе проект создаётся под конкретное пространство — без переплат за ненужные детали.",
+  },
+  {
+    question: "Когда ребёнок вырастет, мебель придётся менять?",
+    answer:
+      "Нет, если изначально продумать трансформацию. При проектировании мы учитываем возраст ребёнка и делаем мебель, которая «растёт» вместе с ним: регулируемые столы, универсальные шкафы, модули, которые можно переставить.",
+  },
+  {
+    question: "Можно ли заказать детскую, если комната маленькая и неудобной формы?",
+    answer:
+      "Именно в таких случаях индивидуальный заказ особенно нужен. Мы проектируем мебель по вашим размерам, используя каждый сантиметр полезно — угловые шкафы, встроенные кровати, выдвижные системы.",
+  },
+  {
+    question: "А если я не знаю, какой дизайн выбрать?",
+    answer:
+      "После замера мы предложим варианты в разных стилях: от нежной классики до современного минимализма. Вы просто покажете, что нравится, а мы адаптируем под интерьер, бюджет и возраст ребёнка.",
+  },
+  {
+    question: "Долго ли ждать изготовления мебели?",
+    answer:
+      "Сроки зависят от сложности проекта, но обычно всё занимает от 2 до 5 недель. Мы заранее согласуем график, чтобы вы знали, когда ждать готовую установку.",
+  },
+  {
+    question: "Если я живу не в Алматы, можно ли сделать заказ с доставкой?",
+    answer:
+      "Да, конечно. Мы отправляем готовые комплекты по всему Казахстану. Доставка аккуратная, с защитной упаковкой, а при необходимости наши монтажники могут выехать для сборки.",
+  },
+  {
+    question: "Можно ли заказать мебель в детскую комнату, если ремонт уже сделан?",
+    answer:
+      "Да, можно — и это частая ситуация. Мы аккуратно снимаем замеры, учитывая уже поклеенные обои и установленные плинтусы. Все детали проектируются так, чтобы ничего не повредить и идеально вписать мебель в готовое пространство.",
+  },
+  {
+    question: "Можно ли заказать мебель для двух детей, чтобы каждому было удобно?",
+    answer:
+      "Да, такие проекты — наша особенность. Мы продумываем зоны хранения и отдыха, чтобы у каждого ребёнка было личное пространство. Кровать-чердак, двухъярусная конструкция или зонирование — всё решается в дизайне.",
+  },
+  {
+    question: "Что, если я не смогу присутствовать на установке?",
+    answer:
+      "Можно доверить сборку нашим мастерам без личного присутствия — всё фиксируем фото и видеоотчётами. После монтажа вы получите подробные фото готовой комнаты.",
+  },
+  {
+    question: "Если вдруг что-то сломается, вы помогаете с ремонтом?",
+    answer:
+      "Да, мы предоставляем гарантию и постгарантийное обслуживание. Даже через несколько лет можно обратиться — поможем заменить фурнитуру, обновить фасады или доработать модуль.",
+  },
+];
+---
+
+<Layout
+  title="1️⃣ Детская мебель на заказ в Алматы - безопасно и под ключ"
+  description="Детская мебель на заказ в Алматы ⭐ 100% безопасность, без запаха и острых углов ⭐ Замер и 3D-проект бесплатно — оставьте заявку сейчас!"
+>
+  <main>
+    <Hero />
+    <Advantages />
+    <WhyUs />
+    <Services />
+    <KitchensPrices />
+    <HowGoing />
+    <KitchenProduction />
+    <Form />
+    <Materials />
+    <PaymentMethods />
+    <CompanyText />
+    <Companys />
+    <Reviews />
+    <FAQ faqs={faqs} />
+  </main>
+</Layout>

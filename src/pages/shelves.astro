@@ -1,0 +1,91 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/shelves/Hero.astro";
+import Services from "../components/sections/shelves/Services.astro";
+import KitchensPrices from "../components/sections/shelves/KitchensPrices.astro";
+import WhyUs from "../components/sections/shelves/WhyUs.astro";
+import TypeOfKitchen from "../components/sections/shelves/TypeOfKitchen.astro";
+import Form from "../components/sections/shelves/Form.astro";
+import KitchenProduction from "../components/sections/shelves/KitchenProduction.astro";
+import Calculator from "../components/sections/shelves/Calculator.astro";
+import Reviews from "../components/sections/shelves/Reviews.astro";
+import FAQ from "../components/sections/shelves/FAQ.astro";
+import HowGoing from "../components/sections/shelves/HowGoing.astro";
+import Advantages from "../components/sections/shelves/Advantages.astro";
+import Companys from "../components/sections/shelves/Companys.astro";
+import AboutUs from "../components/sections/shelves/AboutUs.astro";
+import CompanyText from "../components/sections/shelves/CompanyText.astro";
+
+const faqs = [
+  {
+    question: "Сколько занимает изготовление и установка?",
+    answer:
+      "В среднем 5–10 дней. У нас собственное производство, поэтому всё без задержек. Полки приезжают точно в срок и сразу готовы к установке.",
+  },
+  {
+    question: "Можно ли установить полки, если стены неровные?",
+    answer:
+      "Да, можно. Мы подбираем крепления под любой тип поверхности — гипсокартон, бетон, плитку. Полки будут держаться надёжно и выглядеть аккуратно.",
+  },
+  {
+    question: "Делаете ли вы полки из нестандартных материалов?",
+    answer:
+      "Да. Помимо ЛДСП и МДФ, работаем со стеклом, металлом и шпоном. Получаются уникальные полки, идеально вписывающиеся в интерьер.",
+  },
+  {
+    question: "Не провиснут ли полки со временем?",
+    answer:
+      "Нет. Мы используем фурнитуру Blum, Hettich, Boyard и панели Egger, Kronospan. Такие полки выдерживают даже большие нагрузки.",
+  },
+  {
+    question: "Можно внести изменения после изготовления?",
+    answer:
+      "Да, если конструкция уже установлена — доработаем без лишних формальностей. Мы всегда заинтересованы, чтобы полки идеально подошли именно вам.",
+  },
+  {
+    question: "Могу ли я заказать, если ремонт ещё не закончен?",
+    answer:
+      "Да, мы делаем замеры по плану помещения. Пока идёт ремонт, ваши полки будут изготовлены и готовы к установке.",
+  },
+  {
+    question: "Чем ваше изготовление отличается от маркетплейсовых?",
+    answer:
+      "Наши изделия точнее по размерам, прочнее и выглядят эстетичнее. Всё делается под вас, а не под усреднённый стандарт.",
+  },
+  {
+    question: "Делаете ли вы подсветку для полок?",
+    answer:
+      "Да, можем встроить LED-подсветку любого оттенка. Свет делает полки визуально легче, подчёркивает фактуру и создаёт уют.",
+  },
+  {
+    question: "Из чего лучше сделать полки для ванной или кухни?",
+    answer:
+      "Рекомендуем влагостойкий ЛДСП или металл с порошковым покрытием — они легко очищаются.",
+  },
+  {
+    question: "Делаете ли вы полки в стиле лофт или минимализм?",
+    answer:
+      "Да, мы адаптируем дизайн под любой стиль — от строгого офиса до уютной спальни. Ваши полки будут не только функциональными, но и эстетичными.",
+  },
+];
+---
+
+<Layout
+  title="1️⃣ Полки на заказ в Алматы — от замера до монтажа за неделю"
+  description="Полки на заказ в Алматы ⭐ Изготавливаем под любые размеры и интерьер за неделю, с точным замером, доставкой и сборкой ⭐ Узнайте точную цену прямо сейчас!"
+>
+  <main>
+    <Hero />
+    <Advantages />
+    <WhyUs />
+    <KitchensPrices />
+    <HowGoing />
+    <KitchenProduction />
+    <TypeOfKitchen />
+    <Form />
+    <CompanyText />
+    <Companys />
+    <Reviews />
+    <FAQ faqs={faqs} />
+  </main>
+</Layout>

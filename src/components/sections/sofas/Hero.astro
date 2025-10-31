@@ -3,7 +3,7 @@ import {
   CalendarCheck,
   CheckCircle,
   Clock,
-  Target,
+  Palette,
   Calculator,
   ClockArrowDown
 } from "@lucide/astro";
@@ -37,9 +37,9 @@ interface Props {
 }
 
 const {
-  title = "Распашные шкафы на заказ в Алматы",
-  highlight = "от 3 дней",
-  subtitle = "Проектируем шкафы, которые точно подойдут вашему интерьеру. Оставьте заявку и узнайте стоимость мгновенно!",
+  title = "Диваны на заказ в Алматы",
+  highlight = "от 7 дней",
+  subtitle = "Закажите диван своей мечты и забудьте о компромиссах.",
   benefits = [
     {
       icon: CalendarCheck,
@@ -54,13 +54,13 @@ const {
       text: "Гарантия 12 месяцев",
     },
     {
-      icon: Clock,
+      icon: Palette,
       iconClass: "w-4 h-4 text-yellow-600",
       bgClass: "bg-yellow-100",
       text: "Более 2000 фактур и цветов",
     },
     {
-      icon: Clock,
+      icon: ClockArrowDown,
       iconClass: "w-4 h-4 text-yellow-600",
       bgClass: "bg-yellow-100",
       text: "Рассрочка 0%, на 6 месяцев",
@@ -76,7 +76,7 @@ const {
       class: "flex justify-center items-center gap-2"
     }
   ],
-  imageSrc = "/images/home/HingedWardrobes.webp",
+  imageSrc = "/images/home/sofas.webp",
   thirdTitleText = "",
 } = Astro.props;
 ---

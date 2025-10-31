@@ -1,0 +1,37 @@
+---
+import Section from '../../ui/Section.astro';
+import { Cog, ArrowUpDown } from '@lucide/astro';
+const sections = [
+  {
+    title: 'TANDEMBOX — универсальная система направляющих',
+    content: 'Полновыдвижные ящики идут плавно и закрываются мягко. Динамическая грузоподъёмность — 30 кг и 65 кг в зависимости от направляющей — кухня выдержит ежедневный ритм.',
+    icon: Cog
+  },
+  {
+    title: 'AVENTOS HF — решение для высоких фасадов',
+    content: 'Бифолд-механизм для навесных шкафов: створка складывается и уходит вверх, ручка остаётся под рукой; фронт фиксируется в любом положении — пластиковая кухня остаётся безопасной и удобной.',
+    icon: ArrowUpDown
+  },
+];
+---
+
+<Section padding="xl" class="py-20 overflow-hidden">
+  <div class="container mx-auto text-center mb-12">
+    <h2 class="text-4xl font-extrabold mb-4">Наши механизмы</h2>
+  </div>
+
+  <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-2">
+    {sections.map((section) => (
+      <div
+        class="relative bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center justify-start hover:scale-105 hover:shadow-2xl transition-transform duration-500 group"
+      >
+        <div class="bg-yellow-200 p-5 rounded-full mb-5 transition-colors duration-500">
+          <section.icon class="h-10 w-10 text-yellow-600"/>
+        </div>
+        <h3 class="text-2xl font-semibold mb-3 group-hover:text-yellow-600 transition-colors duration-500">{section.title}</h3>
+        <p class="text-gray-700 whitespace-pre-line text-center">{section.content}</p>
+        <div class="absolute -top-10 -right-10 w-24 h-24 bg-yellow-100 rounded-full opacity-30 animate-pulse"></div>
+      </div>
+    ))}
+  </div>
+</Section>

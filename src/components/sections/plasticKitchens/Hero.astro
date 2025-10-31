@@ -37,10 +37,22 @@ interface Props {
 }
 
 const {
-  title = "Распашные шкафы на заказ в Алматы",
-  highlight = "от 3 дней",
-  subtitle = "Проектируем шкафы, которые точно подойдут вашему интерьеру. Оставьте заявку и узнайте стоимость мгновенно!",
+  title = "Кухни из пластика на заказ в Алматы",
+  highlight = "за 10 дней",
+  subtitle = "Хватит терпеть неудобную кухню — оставьте заявку, и мы установим новую за неделю.",
   benefits = [
+    {
+      icon: CheckCircle,
+      iconClass: "w-4 h-4 text-yellow-600",
+      bgClass: "bg-yellow-100",
+      text: "От 90 000 тенге за метр",
+    },
+    {
+      icon: Target,
+      iconClass: "w-4 h-4 text-yellow-600",
+      bgClass: "bg-yellow-100",
+      text: "Индивидуальный дизайн-проект",
+    },
     {
       icon: CalendarCheck,
       iconClass: "w-4 h-4 text-yellow-600",
@@ -51,24 +63,12 @@ const {
       icon: CheckCircle,
       iconClass: "w-4 h-4 text-yellow-600",
       bgClass: "bg-yellow-100",
-      text: "Гарантия 12 месяцев",
-    },
-    {
-      icon: Clock,
-      iconClass: "w-4 h-4 text-yellow-600",
-      bgClass: "bg-yellow-100",
-      text: "Более 2000 фактур и цветов",
-    },
-    {
-      icon: Clock,
-      iconClass: "w-4 h-4 text-yellow-600",
-      bgClass: "bg-yellow-100",
-      text: "Рассрочка 0%, на 6 месяцев",
+      text: "Каменная мойка в подарок",
     },
   ],
   buttons = [
     {
-      text: "Оставить заявку",
+      text: "Рассчитать стоимость",
       href: "#form",
       icon: Calculator,
       variant: "primary",
@@ -76,7 +76,7 @@ const {
       class: "flex justify-center items-center gap-2"
     }
   ],
-  imageSrc = "/images/home/HingedWardrobes.webp",
+  imageSrc = "/images/home/plasticKitchens.webp",
   thirdTitleText = "",
 } = Astro.props;
 ---

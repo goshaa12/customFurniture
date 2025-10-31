@@ -1,0 +1,61 @@
+---
+import Section from "../../ui/Section.astro";
+---
+
+<Section id="prices" class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-stone-800 mb-8">
+      Комод на заказ: цена и типы
+    </h2>
+    <p class="text-stone-600 text-lg mb-6 text-center">
+      Мы не гадаем на словах — показываем реальные цифры ещё до начала работы.
+    </p>
+    <p class="text-stone-600 text-lg mb-14 text-center">
+      Стоимость зависит от размера, материала и дизайна, но всегда остаётся справедливой.
+    </p>
+
+    <div class="bg-neutral-50 border border-neutral-200 rounded-3xl p-8 md:p-12 overflow-x-auto mb-10">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="text-stone-700 font-semibold border-b">
+            <th class="py-3 pr-6">Тип комода</th>
+            <th class="py-3 pr-6">Материал</th>
+            <th class="py-3">Цена от, тенге</th>
+          </tr>
+        </thead>
+        <tbody class="text-stone-600 text-sm md:text-base">
+          <tr class="border-b">
+            <td class="py-3 pr-6 font-medium">Комод для спальни</td>
+            <td class="py-3 pr-6">ЛДСП</td>
+            <td class="py-3">от 100 000</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-3 pr-6 font-medium">Комод для гостиной</td>
+            <td class="py-3 pr-6">МДФ, шпон</td>
+            <td class="py-3">от 120 000</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-3 pr-6 font-medium">Комод с ящиками и нишами</td>
+            <td class="py-3 pr-6">ЛДСП, металл</td>
+            <td class="py-3">от 130 000</td>
+          </tr>
+          <tr>
+            <td class="py-3 pr-6 font-medium">Угловой или встроенный комод</td>
+            <td class="py-3 pr-6">ЛДСП, МДФ</td>
+            <td class="py-3">от 140 000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-stone-600 text-lg mb-8 text-center">
+      Узнайте точную стоимость комода на заказ по своим размерам уже сейчас!
+    </p>
+
+    <div class="text-center mt-8">
+      <a href="#form" class="inline-block bg-amber-500 text-white py-4 px-8 rounded-full text-lg font-medium hover:bg-amber-600 transition-all">
+        Рассчитать стоимость
+      </a>
+    </div>
+  </div>
+</Section>

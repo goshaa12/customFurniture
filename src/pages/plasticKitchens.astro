@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/plasticKitchens/Hero.astro";
+import Services from "../components/sections/plasticKitchens/Services.astro";
+import KitchensPrices from "../components/sections/plasticKitchens/KitchensPrices.astro";
+import WhyUs from "../components/sections/plasticKitchens/WhyUs.astro";
+import TypeOfKitchen from "../components/sections/plasticKitchens/TypeOfKitchen.astro";
+import Form from "../components/sections/plasticKitchens/Form.astro";
+import KitchenProduction from "../components/sections/plasticKitchens/KitchenProduction.astro";
+import Calculator from "../components/sections/plasticKitchens/Calculator.astro";
+import Reviews from "../components/sections/plasticKitchens/Reviews.astro";
+import FAQ from "../components/sections/plasticKitchens/FAQ.astro";
+import HowGoing from "../components/sections/plasticKitchens/HowGoing.astro";
+import Advantages from "../components/sections/plasticKitchens/Advantages.astro";
+import Companys from "../components/sections/plasticKitchens/Companys.astro";
+import AboutUs from "../components/sections/plasticKitchens/AboutUs.astro";
+import Materials from "../components/sections/plasticKitchens/Materials.astro";
+import Free3D from "../components/sections/plasticKitchens/Free3D.astro";
+import CompanyText from "../components/sections/plasticKitchens/CompanyText.astro";
+import News from "../components/sections/plasticKitchens/News.astro";
+
+const faqs = [
+  {
+    question: "Боюсь глянца: всё будет в отпечатках. Это правда?",
+    answer:
+      "Следы на глянце решаются микрофиброй и щадящим уходом: тёплая вода + капля мыла, без абразивов. Пластиковая кухня остаётся яркой и ясной.",
+  },
+  {
+    question: "Столешница выдержит горячую сковороду и пар от чайника?",
+    answer:
+      "HPL рассчитан на бытовое тепло и влагу; под раскалённое используйте подставки. Нужна максимальная стойкость к пятнам — рассмотрите кварц.",
+  },
+  {
+    question: "Ящики начинают грохотать — как избежать?",
+    answer:
+      "Качественные направляющие с доводчиком изначально закрываются мягко, рассчитаны на большие циклы и нагрузки. Правильная регулировка сохраняет плавность.",
+  },
+  {
+    question: "Торцы не набухнут от воды?",
+    answer:
+      "Герметичная кромка ABS/PMMA защищает торцы; для зон пара подбираем решения с повышенной стойкостью — кухня служит дольше.",
+  },
+  {
+    question: "Высокие фасады будут мешать во время готовки на кухне?",
+    answer:
+      "Подъёмные механизмы bi-fold уводят створки вверх и фиксируют их в любом положении — пластиковая система безопасна и удобна.",
+  },
+  {
+    question: "Реально ли уложиться со сложной комплектацией?",
+    answer:
+      "Срок зависит от наполнения и загрузки цеха. Мы фиксируем календарь и держим вас в курсе каждого шага — кухня из пластика на заказ идёт по графику.",
+  },
+  {
+    question: "Подойдёт ли такая кухня для семьи с детьми?",
+    answer:
+      "Да: HPL и акрил стойки к ежедневной уборке и механическим нагрузкам при правильном уходе. Для семейной кухни ставим усиленную кромку и надёжную фурнитуру.",
+  },
+  {
+    question: "Будет ли резкий запах?",
+    answer:
+      "Возможен лёгкий производственный запах, который быстро уходит при проветривании кухни; используем сертифицированные материалы.",
+  },
+  {
+    question: "Можно доработать после установки кухни?",
+    answer:
+      "У нас модульная конструкция: можно добавить делители, доводчики, сменить ручки — без «капремонта».",
+  },
+  {
+    question: "Сложная планировка — впишете технику и не потеряете хранение?",
+    answer:
+      "Да. Проектируем под размеры и быт, используем выкатные модули, угловые решения и подъёмники. В итоге кухня остаётся удобной и тихой.",
+  },
+];
+---
+
+<Layout
+  title="1️⃣ Кухни из пластика на заказ в Алматы- гарантия 2 года "
+  description="Кухни из пластика на заказ в Алматы ⭐ Изготовление под ключ с гарантией 2 года ⭐ Закажите расчёт сегодня!"
+>
+  <main>
+    <Hero />
+    <Advantages />
+    <WhyUs />
+    <KitchensPrices />
+    <HowGoing />
+    <Calculator />
+    <KitchenProduction />
+    <Materials />
+    <Form />
+    <AboutUs />
+    <CompanyText />
+    <Companys />
+    <Reviews />
+    <FAQ faqs={faqs} title="Часто задаваемые вопросы" />
+  </main>
+</Layout>
