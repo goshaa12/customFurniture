@@ -1,0 +1,102 @@
+---
+import { Box, Layers, Scissors, Cog, Wrench } from '@lucide/astro';
+import Section from "../../ui/Section.astro";
+---
+
+<Section id="materials" class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-stone-800 mb-8">
+      Материалы, которые мы используем
+    </h2>
+
+    <p class="text-stone-600 text-lg mb-12 text-center max-w-3xl mx-auto">
+      Материалы проверены временем — они не теряют форму и внешний вид годами. Вы видите не просто мебель, а результат внимательной работы мастеров
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      {[
+        {
+          title: "Каркас",
+          description: "Основа из бука, берёзы и влагостойкой фанеры. Конструкция выдерживает до 250 кг и сохраняет форму даже при ежедневной эксплуатации пуфа.",
+          icon: Box,
+          bg: "from-amber-400 to-amber-600",
+          iconBg: "bg-amber-100",
+          iconColor: "text-amber-600"
+        },
+        {
+          title: "Наполнители",
+          description: "Пенополиуретан высокой плотности и латекс обеспечивают упругость. Для мягких моделей пуфов применяются холлофайбер и синтепух, которые не сбиваются и не проседают.",
+          icon: Layers,
+          bg: "from-blue-400 to-blue-600",
+          iconBg: "bg-blue-100",
+          iconColor: "text-blue-600"
+        },
+        {
+          title: "Ткань",
+          description: "Велюр, рогожка, микровелюр, экокожа — материалы с антивандальным покрытием и лёгкой очисткой. Обивка пуфа подбирается под освещение и фактуру комнаты.",
+          icon: Scissors,
+          bg: "from-purple-400 to-purple-600",
+          iconBg: "bg-purple-100",
+          iconColor: "text-purple-600"
+        },
+        {
+          title: "Механизмы трансформации",
+          description: "Дельфин, тик-так, аккордеон — проверенные системы, рассчитанные на тысячи циклов. Используются в комбинированных моделях пуфов с подъёмными сиденьями.",
+          icon: Cog,
+          bg: "from-green-400 to-green-600",
+          iconBg: "bg-green-100",
+          iconColor: "text-green-600"
+        },
+        {
+          title: "Фурнитура",
+          description: "Металлические ножки, скрытые опоры, петли повышенной прочности. В некоторых моделях пуфов предусмотрены отсеки с амортизаторами и встроенными розетками.",
+          icon: Wrench,
+          bg: "from-red-400 to-red-600",
+          iconBg: "bg-red-100",
+          iconColor: "text-red-600"
+        },
+      ].map((item, index) => (
+        <div 
+          class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-neutral-100"
+          style={`transition-delay: ${index * 50}ms;`}
+        >
+          <!-- Gradient background effect -->
+          <div class={`absolute inset-0 bg-gradient-to-br ${item.bg} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-500`}></div>
+          
+          <!-- Icon -->
+          <div class={`${item.iconBg} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 relative overflow-hidden`}>
+            <div class={`absolute inset-0 bg-gradient-to-br ${item.bg} opacity-20`}></div>
+            <item.icon class={`w-8 h-8 relative z-10 ${item.iconColor}`} />
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-xl font-semibold text-stone-800 mb-4">{item.title}</h3>
+          <p class="text-stone-600 text-sm leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Лента с логотипами производителей -->
+    <div class="border-t border-neutral-200 pt-12">
+      <div class="text-center mb-8">
+        <p class="text-stone-600 text-lg font-medium">Наши партнёры и производители</p>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+        <div class="flex items-center justify-center p-4 bg-white rounded-lg shadow hover:shadow-lg transition h-16 w-32">
+          <img src="/images/home/blum.webp" alt="Blum logo" class="h-full object-contain" />
+        </div>
+        <div class="flex items-center justify-center p-4 bg-white rounded-lg shadow hover:shadow-lg transition h-16 w-32">
+          <img src="/images/home/hettich.webp" alt="Hettich logo" class="h-full object-contain" />
+        </div>
+        <div class="flex items-center justify-center p-4 bg-white rounded-lg shadow hover:shadow-lg transition h-16 w-32">
+          <img src="/images/home/eegger.webp" alt="Egger logo" class="h-full object-contain" />
+        </div>
+        <div class="flex items-center justify-center p-4 bg-white rounded-lg shadow hover:shadow-lg transition h-16 w-32">
+          <img src="/images/home/kronospan.webp" alt="Kronospan logo" class="h-full object-contain" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</Section>
+

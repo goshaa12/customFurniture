@@ -1,0 +1,66 @@
+---
+import { Award, LayoutGrid, Ruler, ShieldCheck, FileCheck2, Leaf } from '@lucide/astro';
+import Section from "../../ui/Section.astro";
+---
+
+<Section padding='xl' id="price-factors" class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4 text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-6">
+      Почему родители выбирают наши детские шкафы?
+    </h2>
+  </div>
+
+  <div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
+    {[
+      {
+        title: "Работаем с 2011 года",
+        text: `Более десяти лет проектируем детские шкафы на заказ, понимая, как реально живёт ребёнок в своей комнате. Родители ценят не просто мебель — а спокойствие, порядок и безопасность без ежедневного хаоса.`,
+        icon: Award,
+        bg: "from-green-400 to-teal-500"
+      },
+      {
+        title: "20+ моделей на выбор",
+        text: `Широкий ассортимент: кровати, шкафы, столы для детских комнат в разных стилях — от классики до современного дизайна. Изготавливаем мебель на собственной фабрике с контролем качества на каждом этапе.`,
+        icon: LayoutGrid,
+        bg: "from-rose-400 to-pink-500"
+      },
+      {
+        title: "Бесплатные услуги до договора",
+        text: `Замер, подбор материалов и 3D-проект — бесплатно, прежде чем вы вообще что-либо оплачиваете. Это позволяет заранее увидеть, как шкаф будет выглядеть в комнате, и избежать ошибок.`,
+        icon: Ruler,
+        bg: "from-purple-400 to-indigo-500"
+      },
+      {
+        title: "12 месяцев гарантии",
+        text: `Гарантия действует не на слова, а по договору — на фурнитуру, корпус и сборку. Если что-то пойдёт не так — спокойно решим вопрос, без споров и «докажите, что это не вы сломали».`,
+        icon: ShieldCheck,
+        bg: "from-blue-400 to-cyan-500"
+      },
+      {
+        title: "Работаем по двухстороннему договору",
+        text: `Формально и прозрачно — ответственность за качество фиксируется документально. С нами работают семьи, дизайнеры и детские учреждения — потому что всё официально.`,
+        icon: FileCheck2,
+        bg: "from-green-400 to-teal-500"
+      },
+      {
+        title: "Эко-материалы и аккуратная сборка",
+        text: `Используются только безопасные материалы — без запаха, острых кромок и визуального шума. Сборка аккуратная: после установки комната остаётся чистой и готовой к жизни ребёнка.`,
+        icon: Leaf,
+        bg: "from-rose-400 to-pink-500"
+      },
+    ].map((item, index) => (
+      <div 
+        class="group relative bg-white rounded-3xl p-8 flex flex-col items-start shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-500"
+        style={`transition-delay: ${index * 100}ms; min-height: 300px;`}
+      >
+
+        <div class={`w-16 h-16 rounded-full bg-gradient-to-br ${item.bg} flex items-center justify-center mb-5 transform transition-transform duration-500 group-hover:scale-110`}>
+          <item.icon class="w-8 h-8 text-white" />
+        </div>
+
+        <h3 class="text-lg font-semibold text-stone-800 mb-3">{item.title}</h3>
+        <p class="text-stone-600 text-base leading-relaxed whitespace-pre-line">{item.text}</p>
+      </div>
+    ))}
+  </div>
+</Section>

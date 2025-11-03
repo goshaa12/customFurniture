@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/childrenBeds/Hero.astro";
+import Services from "../components/sections/childrenBeds/Services.astro";
+import KitchensPrices from "../components/sections/childrenBeds/KitchensPrices.astro";
+import WhyUs from "../components/sections/childrenBeds/WhyUs.astro";
+import TypeOfKitchen from "../components/sections/childrenBeds/TypeOfKitchen.astro";
+import Form from "../components/sections/childrenBeds/Form.astro";
+import KitchenProduction from "../components/sections/childrenBeds/KitchenProduction.astro";
+import Calculator from "../components/sections/childrenBeds/Calculator.astro";
+import Reviews from "../components/sections/childrenBeds/Reviews.astro";
+import FAQ from "../components/sections/childrenBeds/FAQ.astro";
+import HowGoing from "../components/sections/childrenBeds/HowGoing.astro";
+import Advantages from "../components/sections/childrenBeds/Advantages.astro";
+import Companys from "../components/sections/childrenBeds/Companys.astro";
+import AboutUs from "../components/sections/childrenBeds/AboutUs.astro";
+import Free3D from "../components/sections/childrenBeds/Free3D.astro";
+import CompanyText from "../components/sections/childrenBeds/CompanyText.astro";
+import News from "../components/sections/childrenBeds/News.astro";
+import Materials from "../components/sections/childrenBeds/Materials.astro";
+import PaymentMethods from "../components/sections/childrenBeds/PaymentMethods.astro";
+
+const faqs = [
+  {
+    question: "Можно ли сделать кровать для маленькой комнаты?",
+    answer:
+      "Детские кровати на заказ изготавливаются строго под ваши размеры. Это позволяет использовать каждый сантиметр пространства, сохраняя удобство комнаты.",
+  },
+  {
+    question: "А если ребёнок быстро вырастет — кровать будет маловата?",
+    answer:
+      "Проект учитывает рост и возраст. Можно заказать модели с регулировкой длины или с выдвижными спальными местами, чтобы мебель «росла» вместе с ребёнком.",
+  },
+  {
+    question: "Сколько времени занимает изготовление и доставка?",
+    answer:
+      "От замера до установки обычно проходит 7–14 дней, в зависимости от сложности. Все этапы прозрачны, вы знаете точные сроки и контролируете процесс.",
+  },
+  {
+    question: "Как быть уверенным в безопасности конструкции?",
+    answer:
+      "Используются только сертифицированные материалы и безопасная фурнитура. Скруглённые углы, прочные крепления и нетоксичные покрытия исключают риск травм.",
+  },
+  {
+    question: "А можно выбрать дизайн, который будет сочетаться с интерьером?",
+    answer:
+      "Да, каждая кровать проектируется индивидуально. Вы можете согласовать стиль, цвет и дополнительные элементы, чтобы мебель идеально вписалась в обстановку.",
+  },
+  {
+    question: "Можно ли сделать необычные элементы?",
+    answer:
+      "Такие решения легко реализуемы. Кровати на заказ позволяют добавлять игровые элементы, лестницы, выдвижные ящики или другие функциональные детали.",
+  },
+  {
+    question: "Есть ли послепродажная поддержка?",
+    answer:
+      "На все изделия предоставляется официальная гарантия. При необходимости мастера бесплатно корректируют мелкие недочёты и дают рекомендации по эксплуатации.",
+  },
+  {
+    question: "А что если я хочу комбинировать материалы?",
+    answer:
+      "Возможна любая комбинация материалов и оттенков. Выбирайте основу из фанеры или массива, обивки и декоративные элементы, создавая уникальный проект.",
+  },
+  {
+    question: "Можно ли согласовать проект дистанционно?",
+    answer:
+      "Да, выезд замерщика необязателен. Замеры, консультации и 3D-проект можно обсудить полностью онлайн, с фото, видео и подробными подтверждениями.",
+  },
+  {
+    question: "Что, если в процессе появятся новые идеи или изменения?",
+    answer:
+      "Вносим корректировки до начала производства. Это помогает создать детскую кровать, которая полностью соответствует вашим личным ожиданиям.",
+  },
+];
+---
+
+<Layout
+  title="11️⃣ Детская кровати на заказ в Алматы - безопасно и удобно"
+  description="Детские кровати на заказ в Алматы ⭐ Безопасные и удобные, под рост ребёнка и интерьер ⭐ Закажите расчёт и проект прямо сейчас!"
+>
+  <main>
+    <Hero />
+    <Advantages />
+    <WhyUs />
+    <TypeOfKitchen />
+    <!-- <Services /> -->
+    <KitchensPrices />
+    <HowGoing />
+    <KitchenProduction />
+    <PaymentMethods />
+    <Form />
+    <Materials />
+    <CompanyText />
+    <Companys />
+    <Reviews />
+    <FAQ faqs={faqs} />
+  </main>
+</Layout>

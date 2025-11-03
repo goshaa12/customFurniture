@@ -1,0 +1,46 @@
+---
+import { TrendingUp, Sparkles, Eye } from "@lucide/astro";
+
+const steps = [
+  {
+    icon: TrendingUp,
+    title: "Шкаф должен меняться вместе с ребёнком, а не устаревать через год",
+    description:
+      "Конструкция проектируется с расчётом на изменение возраста — регулируемые полки, сменные секции, готовность к школе и дальнейшему росту ребёнка.",
+  },
+  {
+    icon: Sparkles,
+    title: "Организация хранения — это не просто полки, а сценарий поведения ребёнка",
+    description:
+      "Когда вещи находятся в зоне доступа, ребёнок быстрее учится самостоятельности и привыкает к порядку. Шкаф не просто хранит — он формирует поведение.",
+  },
+  {
+    icon: Eye,
+    title: "Мебель влияет не только на удобство, но и на восприятие пространства ребёнком",
+    description:
+      "Даже в маленькой детской шкаф может выглядеть лёгко, если правильно распределить визуальный вес, глубину и пропорции, а не просто «втиснуть мебель».",
+  },
+];
+---
+
+<section class="py-16 px-6 bg-white md:px-12 lg:px-24">
+  <div class="max-w-4xl mx-auto text-center mb-10">
+    <h2 class="text-3xl font-bold mb-4 text-gray-900">
+      Почему всё больше родителей выбирают детские шкафы на заказ?
+    </h2>
+    <p class="text-stone-600 text-lg">
+      В типовых шкафах не учитываются реальные потребности ребёнка — доступ к вещам, удобство хранения и безопасность. Детские шкафы на заказ создаются сразу под конкретную семью и образ жизни, а не по каталогу.
+    </p>
+  </div>
+  <div class="max-w-5xl mx-auto flex flex-col gap-10">
+    {steps.map((step) => (
+      <div class="flex flex-col sm:flex-row items-start gap-5 bg-gray-50 p-6 rounded-xl shadow-sm">
+        <step.icon class="w-12 h-12 text-amber-500 flex-shrink-0 mb-3 sm:mb-0" />
+        <div>
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">{step.title}</h3>
+          <p class="text-gray-600">{step.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

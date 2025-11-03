@@ -1,0 +1,145 @@
+---
+import { 
+  CornerDownRight, 
+  Circle, 
+  Square, 
+  Armchair, 
+  Package, 
+  Archive, 
+  Repeat,
+  Sofa,
+  Building2,
+  Layers,
+  LayoutGrid,
+  Minimize
+} from '@lucide/astro';
+import Section from "../../ui/Section.astro";
+---
+
+<Section id="furniture-types" class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-stone-800 mb-12">
+      Какую мебель мы изготавливаем?
+    </h2>
+
+    <!-- Виды пуфов -->
+    <div class="mb-20">
+      <h3 class="text-2xl md:text-3xl font-bold text-stone-800 mb-8 text-center">
+        Виды пуфов
+      </h3>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          {
+            title: "Угловые модели",
+            description: "Практичные пуфы для небольших пространств — компактно становятся в угол или у шкафа. Подходят для пуфика в прихожую на заказ, где важно рационально использовать каждый метр.",
+            gradient: "from-blue-400 to-cyan-500",
+            icon: CornerDownRight
+          },
+          {
+            title: "Цилиндрические пуфы",
+            description: "Отличный акцент в спальне или гостиной. Легко перемещаются, устойчивы и служат мягкой подставкой или сиденьем. Изготовление пуфов позволяет выбрать оптимальную высоту и ткань под интерьер.",
+            gradient: "from-purple-400 to-pink-500",
+            icon: Circle
+          },
+          {
+            title: "Квадратные пуфы",
+            description: "Выдерживают ежедневные нагрузки и подходят для семьи с детьми. Используются у туалетного столика, в гардеробной или гостиной. Подбирается при изготовлении пуфов на заказ — по размерам.",
+            gradient: "from-green-400 to-teal-500",
+            icon: Square
+          },
+          {
+            title: "Пуф со спинкой",
+            description: "Удобны для долгого сидения, особенно в спальнях и детских. Спинка создаёт поддержку и завершённый вид, делая пуф полноценным элементом интерьера.",
+            gradient: "from-amber-400 to-orange-500",
+            icon: Armchair
+          },
+          {
+            title: "Пуфик-тумба",
+            description: "Комбинирует место для хранения и мягкое сиденье. При изготовлении банкетки на заказ или пуфика можно добавить отделения под обувь или аксессуары.",
+            gradient: "from-rose-400 to-red-500",
+            icon: Package
+          },
+          {
+            title: "Пуфик-коробка",
+            description: "Оснащён съёмной крышкой и глубоким отсеком. Такой пуф помогает поддерживать порядок в прихожей, аккуратно скрывая вещи. Идеален для хранения обуви, аксессуаров и мелких предметов.",
+            gradient: "from-indigo-400 to-blue-500",
+            icon: Archive
+          },
+          {
+            title: "Пуфик-трансформер",
+            description: "Меняет форму и высоту — превращается в столик, подставку или полноценное сиденье. Популярное решение при изготовлении пуфиков на заказ для современных квартир.",
+            gradient: "from-teal-400 to-green-500",
+            icon: Repeat
+          },
+        ].map((item, index) => (
+          <div 
+            class="group relative bg-white rounded-2xl p-6 flex flex-col shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-neutral-100"
+            style={`transition-delay: ${index * 50}ms;`}
+          >
+            <div class={`w-12 h-12 rounded-lg bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-4 transform transition-transform duration-300 group-hover:scale-110`}>
+              <item.icon class="w-6 h-6 text-white" />
+            </div>
+            
+            <h4 class="text-lg font-semibold text-stone-800 mb-3">{item.title}</h4>
+            <p class="text-stone-600 text-sm leading-relaxed flex-grow">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Виды банкеток -->
+    <div>
+      <h3 class="text-2xl md:text-3xl font-bold text-stone-800 mb-8 text-center">
+        Виды банкеток
+      </h3>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          {
+            title: "Классические модели",
+            description: "Скамьи без спинки — универсальное дополнение спальни или гостиной. При изготовлении банкетки на заказ можно выбрать длину, обивку и высоту под кровать или окно.",
+            gradient: "from-slate-400 to-gray-500",
+            icon: Sofa
+          },
+          {
+            title: "Банкетки под старину",
+            description: "Декоративная резьба, мягкое сиденье и устойчивый каркас делают такие банкетки на заказ выразительным акцентом в классических интерьерах.",
+            gradient: "from-amber-500 to-yellow-600",
+            icon: Building2
+          },
+          {
+            title: "Многофункциональные банкетки",
+            description: "Содержат встроенные ящики и полки для хранения обуви или сумок. Практичное решение для банкетки в прихожую на заказ, где важна организация пространства.",
+            gradient: "from-violet-400 to-purple-500",
+            icon: Layers
+          },
+          {
+            title: "Банкетки с выдвижной полкой",
+            description: "Комфортны в узких коридорах. Нижняя полка — для обуви, верхняя — для сидения. Мы предлагаем изготовление банкеток с разными вариантами отделки и механизмов.",
+            gradient: "from-cyan-400 to-blue-500",
+            icon: LayoutGrid
+          },
+          {
+            title: "Компактные модели",
+            description: "Без подлокотников, легко вписываются даже в маленькие помещения. Такие пуфы и банкетки сочетают минимализм, удобство и функциональность.",
+            gradient: "from-pink-400 to-rose-500",
+            icon: Minimize
+          },
+        ].map((item, index) => (
+          <div 
+            class="group relative bg-white rounded-2xl p-6 flex flex-col shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-neutral-100"
+            style={`transition-delay: ${index * 50}ms;`}
+          >
+            <div class={`w-12 h-12 rounded-lg bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-4 transform transition-transform duration-300 group-hover:scale-110`}>
+              <item.icon class="w-6 h-6 text-white" />
+            </div>
+            
+            <h4 class="text-lg font-semibold text-stone-800 mb-3">{item.title}</h4>
+            <p class="text-stone-600 text-sm leading-relaxed flex-grow">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Section>

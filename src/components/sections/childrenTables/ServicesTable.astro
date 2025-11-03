@@ -1,0 +1,29 @@
+---
+import Section from "../../ui/Section.astro";
+---
+
+
+<Section id="furniture-categories" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 text-center mb-14">
+    <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-6">
+      Что мы изготавливаем на заказ?
+    </h2>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
+    {[
+      { name: "Детский стол для творчества" },
+      { name: "Детский стол компьютерный" },
+      { name: "Детский стол комбинированный" },
+      { name: "Детский стол с тумбой" },
+    ].map((item) => (
+      <div
+        class="group p-6 bg-neutral-100 hover:bg-amber-200 rounded-2xl border border-neutral-200 hover:border-stone-400 transition-all duration-300 flex justify-center items-center"
+      >
+        <span class="text-stone-800 font-medium text-lg group-hover:translate-x-1 transition-transform text-center">
+          {item.name}
+        </span>
+      </div>
+    ))}
+  </div>
+</Section>

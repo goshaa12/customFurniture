@@ -1,0 +1,136 @@
+---
+// KitchenCalculator.astro
+import { Layers, Table, Settings, Ruler, ArrowUp, User, Phone } from '@lucide/astro';
+---
+
+<section id="calculator" class="w-full py-16 md:py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Header */}
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Калькулятор
+      </h2>
+      <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Узнайте стоимость вашего шкафа за минуты — просто заполните параметры и получите точный расчёт без ожидания.
+      </p>
+    </div>
+
+    {/* Form Card */}
+    <div class="bg-white rounded-2xl p-6 md:p-8 border border-gray-200 shadow-lg">
+      <form class="space-y-6">
+        {/* 1. Тип шкафа */}
+        <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-blue-300 transition-all duration-300">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-3">1</div>
+            <label class="text-lg font-semibold text-gray-900">Укажите тип шкафа</label>
+          </div>
+          <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition">
+            <option>Распашной</option>
+            <option>Купе</option>
+            <option>Гардеробная</option>
+            <option>Угловой</option>
+            <option>Другое</option>
+          </select>
+        </div>
+        {/* 2. Размеры шкафа */}
+        <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-yellow-300 transition-all duration-300">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold mr-3">2</div>
+            <label class="text-lg font-semibold text-gray-900">Задайте точные размеры изделия</label>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Ширина, см</label>
+              <input type="number" min="0" placeholder="100" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 transition" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Глубина, см</label>
+              <input type="number" min="0" placeholder="60" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 transition" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Высота, см</label>
+              <input type="number" min="0" placeholder="220" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 transition" />
+            </div>
+          </div>
+        </div>
+        {/* 3. Материалы */}
+        <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-green-300 transition-all duration-300">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold mr-3">3</div>
+            <label class="text-lg font-semibold text-gray-900">Выберите материалы</label>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Корпус</label>
+              <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-100 transition">
+                <option>ЛДСП</option>
+                <option>МДФ</option>
+                <option>Массив дерева</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Фасады</label>
+              <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-100 transition">
+                <option>ЛДСП</option>
+                <option>МДФ</option>
+                <option>Массив дерева</option>
+                <option>Стекло</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Обивка/отделка</label>
+              <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-100 transition">
+                <option>Без обивки</option>
+                <option>Текстиль</option>
+                <option>Кожа</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        {/* 4. Фурнитура и дополнительные элементы */}
+        <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-purple-300 transition-all duration-300">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-3">4</div>
+            <label class="text-lg font-semibold text-gray-900">Фурнитура и дополнительные элементы</label>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Фурнитура</label>
+              <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-100 transition">
+                <option>Комфорт (Boyard)</option>
+                <option>Премиум (Blum/Hettich)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Дополнительные элементы</label>
+              <input type="text" placeholder="Подсветка, зеркало, выдвижные ящики..." class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-100 transition" />
+            </div>
+          </div>
+        </div>
+        {/* 5. Контакты */}
+        <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-emerald-300 transition-all duration-300">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold mr-3">5</div>
+            <label class="text-lg font-semibold text-gray-900">Имя и телефон</label>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Имя</label>
+              <input type="text" placeholder="Ваше имя" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Телефон</label>
+              <input type="tel" placeholder="+7 (___) ___-__-__" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition" />
+            </div>
+          </div>
+        </div>
+        {/* CTA Text + Button */}
+        <div class="text-center pt-6">
+          <button type="submit" class="w-full md:w-auto px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg">
+            Рассчитать стоимость
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

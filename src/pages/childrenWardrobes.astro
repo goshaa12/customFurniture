@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/childrenWardrobes/Hero.astro";
+import Services from "../components/sections/childrenWardrobes/Services.astro";
+import KitchensPrices from "../components/sections/childrenWardrobes/KitchensPrices.astro";
+import WhyUs from "../components/sections/childrenWardrobes/WhyUs.astro";
+import TypeOfKitchen from "../components/sections/childrenWardrobes/TypeOfKitchen.astro";
+import Form from "../components/sections/childrenWardrobes/Form.astro";
+import KitchenProduction from "../components/sections/childrenWardrobes/KitchenProduction.astro";
+import Calculator from "../components/sections/childrenWardrobes/Calculator.astro";
+import Reviews from "../components/sections/childrenWardrobes/Reviews.astro";
+import FAQ from "../components/sections/childrenWardrobes/FAQ.astro";
+import HowGoing from "../components/sections/childrenWardrobes/HowGoing.astro";
+import Advantages from "../components/sections/childrenWardrobes/Advantages.astro";
+import Companys from "../components/sections/childrenWardrobes/Companys.astro";
+import AboutUs from "../components/sections/childrenWardrobes/AboutUs.astro";
+import Free3D from "../components/sections/childrenWardrobes/Free3D.astro";
+import CompanyText from "../components/sections/childrenWardrobes/CompanyText.astro";
+import News from "../components/sections/childrenWardrobes/News.astro";
+import Materials from "../components/sections/childrenWardrobes/Materials.astro";
+import PaymentMethods from "../components/sections/childrenWardrobes/PaymentMethods.astro";
+
+const faqs = [
+  {
+    question: "Мы смотрели шкафы в магазинах, но они выглядят либо громоздко, либо слишком простыми. Вы делаете адаптацию под стиль квартиры?",
+    answer:
+      "Да — шкаф на заказ создаётся не по шаблону, а под интерьер вашей комнаты. Цвет, визуальный вес и форма подбираются так, чтобы он выглядел естественно, а не «вставленным отдельно».",
+  },
+  {
+    question: "А если ребёнок ещё маленький — можно ли сделать так, чтобы он сам доставал вещи без помощи взрослых?",
+    answer:
+      "Да. При проектировании шкафа учитываем рост ребёнка, зону доступа и будущий возраст. Нижние секции делаем самостоятельными, а верхние — для родителей.",
+  },
+  {
+    question: "Мне важно, чтобы шкаф был безопасным — без запаха, острых углов и хрупкой фурнитуры. Это реально гарантировать?",
+    answer:
+      "Да, используем материалы с сертификатами безопасности, кромки с закруглением и фурнитуру без люфтов. Шкаф безопасен даже для активных детей.",
+  },
+  {
+    question: "Нестандартная планировка: узкая ниша и выступы по стенам. Шкаф всё равно получится сделать «под миллиметр»?",
+    answer:
+      "Да, встроенный шкаф изготавливается точно по геометрии комнаты. Мы учитываем стены, розетки, даже открытие двери — без щелей и перекосов.",
+  },
+  {
+    question: "Могу ли я показать фото шкафа из Pinterest, чтобы вы сделали что-то в таком стиле?",
+    answer:
+      "Да, можно прислать референс. Мы адаптируем стиль, но просчитаем его под вашу реальную комнату — не просто «похожий», а действительно удобный.",
+  },
+  {
+    question: "Не станет ли шкаф слишком массивным и не «забьёт» пространство детской комнаты?",
+    answer:
+      "Нет — визуальный вес шкафа регулируется заранее. Используем вставки, свет и пропорции, чтобы шкаф выглядел лёгким и не забирал воздух комнаты.",
+  },
+  {
+    question: "А если ребёнок вырастет через год — шкаф не придётся полностью менять?",
+    answer:
+      "Продумываем шкаф сразу с учётом возраста. Полки можно регулировать по высоте, оставляем зону роста — шкаф легко адаптируется под школьника.",
+  },
+  {
+    question: "Как понять заранее, что шкаф точно впишется по цвету и не будет выбиваться из интерьера?",
+    answer:
+      "Мы показываем материалы прямо под освещение вашей комнаты и делаем 3D-визуализацию шкафа в реальной обстановке — до начала производства.",
+  },
+  {
+    question: "Что если мне потребуется доработать шкаф через год — например, добавить полку или закрытую секцию?",
+    answer:
+      "Проекты сохраняем. Если захотите расширить шкаф или добавить модуль — доработаем без полного переделывания мебели.",
+  },
+  {
+    question: "Нужно ли заранее вносить оплату? Или сначала можно увидеть проект и стоимость?",
+    answer:
+      "Замер, проект шкафа и расчёт — бесплатно и без обязательств. Оплата только после утверждения того, что действительно устраивает.",
+  },
+];
+---
+
+<Layout
+  title="1️⃣Детские шкафы на заказ в Алматы - по размеру, с гарантией"
+  description="Детские шкафы на заказ в Алматы ⭐ Сделаем по размеру с гарантией, безопасные и удобные для детей ⭐ Оставьте заявку и получите расчёт цены!"
+>
+  <main>
+    <Hero />
+    <Advantages />
+    <!-- <WhyUs /> -->
+    <Services />
+    <KitchensPrices />
+    <HowGoing />
+    <KitchenProduction />
+    <PaymentMethods />
+    <Form />
+    <Materials />
+
+    <CompanyText />
+    <Companys />
+    <Reviews />
+    <FAQ faqs={faqs} title="Ответы на вопросы про детские шкафы на заказ" />
+  </main>
+</Layout>

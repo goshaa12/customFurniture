@@ -1,0 +1,45 @@
+---
+import Section from "../../ui/Section.astro";
+---
+
+<Section id="news" padding="xl" class="bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-bold text-stone-800">Новости</h2>
+      <p class="text-stone-600 text-base md:text-lg mt-4 max-w-3xl mx-auto">
+        Читайте наши материалы о распашных шкафах и узнайте, как сделать правильный выбор, избежать ошибок при заказе и спланировать интерьер с максимальной пользой.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {[
+        {
+          title: "Как выбрать распашной шкаф под нестандартное пространство",
+          href: "#",
+        },
+        {
+          title: "Лучшие материалы и фурнитура для долговечных распашных шкафов",
+          href: "#",
+        },
+        {
+          title: "Ошибки при проектировании шкафа, которые дорого обходятся",
+          href: "#",
+        },
+        {
+          title: "Идеи наполнения распашного шкафа для упорядоченного хранения",
+          href: "#",
+        },
+      ].map((item) => (
+        <a
+          href={item.href}
+          class="block bg-neutral-50 border border-neutral-200 rounded-2xl p-6 hover:shadow-md hover:border-amber-300 transition-all"
+        >
+          <h3 class="text-lg md:text-xl font-semibold text-stone-800 mb-2">
+            {item.title}
+          </h3>
+          <p class="text-sm text-stone-500">Скоро статья</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,48 @@
+---
+import Section from "../../ui/Section.astro";
+---
+
+<Section id="why-us" class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-stone-800 mb-8">
+      Товары
+    </h2>
+    <p class="text-center text-stone-600 text-base md:text-lg mb-12 max-w-3xl mx-auto">
+      Каждая кровать разрабатывается с учётом удобства и надёжности. Получите мебель, которая гармонично впишется в интерьер и будет служить долго.
+    </p>
+
+    <!-- Таблица с материалами -->
+    <div
+      class="bg-neutral-50 border border-neutral-200 rounded-3xl p-8 md:p-12 mb-20 overflow-x-auto"
+    >
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="text-stone-700 font-semibold border-b">
+            <th class="py-3 pr-6">Тип</th>
+            <th class="py-3 pr-6">Описание</th>
+          </tr>
+        </thead>
+        <tbody class="text-stone-600 text-sm md:text-base">
+          <tr class="border-b">
+            <td class="py-3 pr-6 font-medium">Одноярусные</td>
+            <td class="py-3 pr-6">
+              Классические кровати для одного. Подходят для любых пространств и просты в использовании.
+            </td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-3 pr-6 font-medium">Двухъярусные</td>
+            <td class="py-3 pr-6">
+              Экономят пространство и идеально подходят для двух детей. Прочные конструкции и безопасная лестница.
+            </td>
+          </tr>
+          <tr>
+            <td class="py-3 pr-6 font-medium">Кровати-чердаки</td>
+            <td class="py-3 pr-6">
+              Поднимаются над полом, освобождая место для игрового или рабочей зоны под кроватью. Отличное решение для маленьких комнат.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Section>

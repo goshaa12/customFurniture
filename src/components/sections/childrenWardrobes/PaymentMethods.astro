@@ -1,0 +1,92 @@
+---
+import { Sparkles, Boxes, Shield, Award, Palette, Ruler, Gamepad2 } from '@lucide/astro';
+import Section from "../../ui/Section.astro";
+---
+
+<Section padding='xl' id="payment-methods" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+  <div class="max-w-6xl mx-auto px-4 text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-6">
+      Преимущества наших детских шкафов
+    </h2>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {[
+      {
+        title: "Продумано до мелочей",
+        description: "Шкаф учитывает возраст ребёнка, рост и сценарий использования — вещи находятся ровно на нужной высоте.",
+        icon: Sparkles,
+        bg: "from-green-400 to-teal-600",
+        iconBg: "bg-green-100",
+        iconColor: "text-green-600"
+      },
+      {
+        title: "Много места для хранения",
+        description: "Полки и ящики распределены логично — ребёнок легко поддерживает порядок без помощи взрослых.",
+        icon: Boxes,
+        bg: "from-blue-400 to-blue-600",
+        iconBg: "bg-blue-100",
+        iconColor: "text-blue-600"
+      },
+      {
+        title: "Закруглённые углы",
+        description: "Кромки безопасно обработаны — ребёнок может двигаться рядом без риска ушибов.",
+        icon: Shield,
+        bg: "from-emerald-400 to-emerald-600",
+        iconBg: "bg-emerald-100",
+        iconColor: "text-emerald-600"
+      },
+      {
+        title: "Долговечность",
+        description: "Шкаф рассчитан на ежедневное использование детьми и остаётся устойчивым, не разбалтывается и не теряет внешний вид со временем.",
+        icon: Award,
+        bg: "from-amber-400 to-amber-600",
+        iconBg: "bg-amber-100",
+        iconColor: "text-amber-600"
+      },
+      {
+        title: "Яркий и современный дизайн",
+        description: "Дизайн подбирается под интерьер и настроение ребёнка — без перегруза и визуального давления.",
+        icon: Palette,
+        bg: "from-purple-400 to-purple-600",
+        iconBg: "bg-purple-100",
+        iconColor: "text-purple-600"
+      },
+      {
+        title: "Индивидуальные размеры",
+        description: "Шкаф создаётся строго по параметрам комнаты — без пустых зон и лишних выступов.",
+        icon: Ruler,
+        bg: "from-pink-400 to-rose-600",
+        iconBg: "bg-pink-100",
+        iconColor: "text-pink-600"
+      },
+      {
+        title: "Удобство для игр и творчества",
+        description: "Можно предусмотреть открытые секции внизу — игрушки и книги всегда в зоне доступа ребёнка.",
+        icon: Gamepad2,
+        bg: "from-indigo-400 to-indigo-600",
+        iconBg: "bg-indigo-100",
+        iconColor: "text-indigo-600"
+      },
+    ].map((item, index) => (
+      <div 
+        class="group relative bg-white rounded-3xl p-6 flex flex-col items-center text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-neutral-100 hover:border-amber-200"
+        style={`transition-delay: ${index * 100}ms;`}
+      >
+        <!-- Gradient background effect -->
+        <div class={`absolute inset-0 bg-gradient-to-br ${item.bg} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-500`}></div>
+        
+        <!-- Icon -->
+        <div class={`${item.iconBg} w-20 h-20 rounded-2xl flex items-center justify-center mb-4 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 relative overflow-hidden`}>
+          <div class={`absolute inset-0 bg-gradient-to-br ${item.bg} opacity-20`}></div>
+          <item.icon class={`w-10 h-10 relative z-10 ${item.iconColor}`} />
+        </div>
+
+        <!-- Content -->
+        <h3 class="text-lg font-semibold text-stone-800 mb-2">{item.title}</h3>
+        <p class="text-stone-600 text-sm leading-relaxed">{item.description}</p>
+      </div>
+    ))}
+  </div>
+</Section>
+
