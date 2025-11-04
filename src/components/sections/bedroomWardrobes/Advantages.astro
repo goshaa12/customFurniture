@@ -1,0 +1,67 @@
+---
+import { Award, LayoutGrid, ShieldCheck, FileCheck2, Home, Box } from '@lucide/astro';
+import Section from "../../ui/Section.astro";
+---
+
+<Section padding='xl' id="price-factors" class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4 text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-6">
+      Наши преимущества в изготовлении шкафов на заказ
+    </h2>
+  </div>
+
+  <div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-10">
+    {[
+      {
+        title: "10 лет создаём комфорт и порядок в спальнях",
+        text: `С 2011 года мы проектируем и устанавливаем шкафы купе на заказ в спальню — удобные, продуманные и долговечные. Каждый проект создаётся под конкретное пространство, чтобы интерьер выглядел гармонично.`,
+        icon: Award,
+        bg: "from-rose-400 to-pink-500"
+      },
+      {
+        title: "Шкаф, который идеально впишется в вашу спальню",
+        text: `Забудьте о стандартных решениях — вы выбираете форму, глубину, количество полок и дверей. Мы разрабатываем встроенный или угловой шкаф под ваш стиль, делая хранение красивым и функциональным.`,
+        icon: Home,
+        bg: "from-blue-400 to-cyan-500"
+      },
+      {
+        title: "3D-проект бесплатно — всё видно заранее",
+        text: `Перед производством вы увидите шкаф в объёме и сможете внести правки. Замер, проект и консультация ничего не стоят — вы избегаете ошибок и получаете точный результат.`,
+        icon: LayoutGrid,
+        bg: "from-purple-400 to-indigo-500"
+      },
+      {
+        title: "Гарантия уверенности и спокойствия",
+        text: `Если что-то случится, мы быстро исправим. 12 месяцев гарантии покрывают все нюансы сборки и механики, чтобы вы наслаждались порядком, а не переживали о поломках.`,
+        icon: ShieldCheck,
+        bg: "from-green-400 to-teal-500"
+      },
+      {
+        title: "Честность на каждом шаге",
+        text: `Цена фиксируется в договоре до начала работ — без «мелкого шрифта» и внезапных доплат. Мы ценим доверие и строим работу прозрачно, чтобы вы чувствовали уверенность в каждом этапе.`,
+        icon: FileCheck2,
+        bg: "from-yellow-400 to-amber-500"
+      },
+      {
+        title: "Материалы, которые вдохновляют",
+        text: `Древесные плиты, шпон, стекло и зеркала подбираются по вашему вкусу и бюджету. Все материалы экологичны, а сборка — аккуратная и чистая: шкаф устанавливается за день и сразу готов к использованию.`,
+        icon: Box,
+        bg: "from-orange-400 to-red-500"
+      },
+    ].map((item, index) => (
+      <div 
+        class="group relative bg-white rounded-3xl p-8 flex flex-col items-start shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-500"
+        style={`transition-delay: ${index * 100}ms; min-height: 300px;`}
+      >
+
+        <div class={`w-16 h-16 rounded-full bg-gradient-to-br ${item.bg} flex items-center justify-center mb-5 transform transition-transform duration-500 group-hover:scale-110`}>
+          <item.icon class="w-8 h-8 text-white" />
+        </div>
+
+        <h3 class="text-lg font-semibold text-stone-800 mb-3">{item.title}</h3>
+        <p class="text-stone-600 text-base leading-relaxed whitespace-pre-line">{item.text}</p>
+      </div>
+    ))}
+  </div>
+</Section>
+</Section>

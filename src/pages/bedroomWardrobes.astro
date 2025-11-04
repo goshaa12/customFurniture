@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/bedroomWardrobes/Hero.astro";
+import Services from "../components/sections/bedroomWardrobes/Services.astro";
+import KitchensPrices from "../components/sections/bedroomWardrobes/KitchensPrices.astro";
+import WhyUs from "../components/sections/bedroomWardrobes/WhyUs.astro";
+import TypeOfKitchen from "../components/sections/bedroomWardrobes/TypeOfKitchen.astro";
+import Form from "../components/sections/bedroomWardrobes/Form.astro";
+import KitchenProduction from "../components/sections/bedroomWardrobes/KitchenProduction.astro";
+import Calculator from "../components/sections/bedroomWardrobes/Calculator.astro";
+import Reviews from "../components/sections/bedroomWardrobes/Reviews.astro";
+import FAQ from "../components/sections/bedroomWardrobes/FAQ.astro";
+import HowGoing from "../components/sections/bedroomWardrobes/HowGoing.astro";
+import Advantages from "../components/sections/bedroomWardrobes/Advantages.astro";
+import Companys from "../components/sections/bedroomWardrobes/Companys.astro";
+import AboutUs from "../components/sections/bedroomWardrobes/AboutUs.astro";
+import Free3D from "../components/sections/bedroomWardrobes/Free3D.astro";
+import CompanyText from "../components/sections/bedroomWardrobes/CompanyText.astro";
+import News from "../components/sections/bedroomWardrobes/News.astro";
+import Materials from "../components/sections/bedroomWardrobes/Materials.astro";
+import PaymentMethods from "../components/sections/bedroomWardrobes/PaymentMethods.astro";
+
+const faqs = [
+  {
+    question: "Можно ли подобрать материалы самостоятельно?",
+    answer:
+      "Конечно. Мы привозим образцы или отправляем фото, чтобы вы могли выбрать подходящий вариант.",
+  },
+  {
+    question: "Делаете ли вы шкафы нестандартных форм?",
+    answer:
+      "Да, под любой угол, мансарду или нишу. Даже если кажется, что «не поместится» — подберём решение.",
+  },
+  {
+    question: "Как ухаживать за изделием, чтобы оно дольше служило?",
+    answer:
+      "Достаточно мягкой ткани и нейтральных средств. Мы даём подробную инструкцию по уходу после установки.",
+  },
+  {
+    question: "Что делать, если результат не совпадает с ожиданиями?",
+    answer:
+      "Мы пересматриваем проект и вносим изменения. Для нас важно, чтобы клиент остался доволен.",
+  },
+  {
+    question: "Есть ли возможность рассрочки или оплаты частями?",
+    answer:
+      "Да, можно разделить оплату на несколько этапов — без переплат и сложных условий.",
+  },
+  {
+    question: "Что входит в установку шкафа?",
+    answer:
+      "Доставка, сборка и регулировка — всё под ключ. После монтажа помещение остаётся чистым.",
+  },
+  {
+    question: "Можно ли внести изменения в проект?",
+    answer:
+      "Да, если изделие ещё не запущено в производство, корректировки возможны.",
+  },
+  {
+    question: "Что делать, если шкаф не подошёл по размеру?",
+    answer:
+      "Мы всегда приезжаем на замер заранее, чтобы исключить такие ситуации. В редких случаях всё переделываем за свой счёт.",
+  },
+  {
+    question: "Можно ли заказать, если ремонт ещё не завершён?",
+    answer:
+      "Да, мы делаем предварительный замер и проект, чтобы шкаф идеально подошёл после отделки.",
+  },
+  {
+    question: "Сколько времени изготавливается шкаф?",
+    answer:
+      "В среднем 7–10 дней. Если проект срочный — ускорим производство без потери качества.",
+  },
+];
+---
+
+<Layout
+  title="1️⃣ Шкафы в спальню на заказ в Алматы — со сборкой за 7 дней"
+  description="Шкафы в спальню на заказ в Алматы ⭐ Изготовим любой по размеру шкаф со сборкой за 7 дней ⭐ Высокое качество и быстрая доставка — оформите заказ сегодня!"
+>
+  <main>
+    <Hero />
+    <Advantages />
+    <WhyUs />
+    <KitchensPrices />
+    <HowGoing />
+    <Calculator />
+    <KitchenProduction />
+    <PaymentMethods />
+    <Form />
+    <AboutUs />
+    <TypeOfKitchen />
+    <CompanyText />
+    <Companys />
+    <Reviews />
+    <FAQ faqs={faqs} title="Часто задаваемые вопросы при заказе шкафов" />
+  </main>
+</Layout>

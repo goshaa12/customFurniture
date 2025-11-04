@@ -1,0 +1,99 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/bedroomBeds/Hero.astro";
+import Services from "../components/sections/bedroomBeds/Services.astro";
+import KitchensPrices from "../components/sections/bedroomBeds/KitchensPrices.astro";
+import WhyUs from "../components/sections/bedroomBeds/WhyUs.astro";
+import TypeOfKitchen from "../components/sections/bedroomBeds/TypeOfKitchen.astro";
+import Form from "../components/sections/bedroomBeds/Form.astro";
+import KitchenProduction from "../components/sections/bedroomBeds/KitchenProduction.astro";
+import Calculator from "../components/sections/bedroomBeds/Calculator.astro";
+import Reviews from "../components/sections/bedroomBeds/Reviews.astro";
+import FAQ from "../components/sections/bedroomBeds/FAQ.astro";
+import HowGoing from "../components/sections/bedroomBeds/HowGoing.astro";
+import Advantages from "../components/sections/bedroomBeds/Advantages.astro";
+import Companys from "../components/sections/bedroomBeds/Companys.astro";
+import AboutUs from "../components/sections/bedroomBeds/AboutUs.astro";
+import Free3D from "../components/sections/bedroomBeds/Free3D.astro";
+import CompanyText from "../components/sections/bedroomBeds/CompanyText.astro";
+import News from "../components/sections/bedroomBeds/News.astro";
+import Materials from "../components/sections/bedroomBeds/Materials.astro";
+import PaymentMethods from "../components/sections/bedroomBeds/PaymentMethods.astro";
+import WillMade from "../components/sections/bedroomBeds/WillMade.astro";
+
+const faqs = [
+  {
+    question: "А вдруг кровать на заказ получится дороже, чем в магазине?",
+    answer:
+      "Цена зависит от материалов, а не от бренда. Вы платите только за нужные функции, качество и точное соответствие вашему интерьеру.",
+  },
+  {
+    question: "Можно ли заказать кровать, если не знаю, какой дизайн выбрать?",
+    answer:
+      "Дизайнер подберёт цвет и материалы, покажет визуализацию. Даже без точного понимания вы получите идеально подходящее решение.",
+  },
+  {
+    question: "Что если кровать не подойдёт по размеру или стилю?",
+    answer:
+      "Перед запуском выполняется точный замер и 3D-проект. После вашего утверждения изменений не будет — кровать идеально впишется в комнату.",
+  },
+  {
+    question: "Как долго изготавливается кровать по индивидуальному заказу?",
+    answer:
+      "Обычно от 10 до 20 рабочих дней. Все сроки фиксируются в договоре, поэтому вы заранее знаете дату готовности и установки.",
+  },
+  {
+    question: "Делаете ли вы кровати с нестандартными функциями?",
+    answer:
+      "Реализуем любые идеи — от встроенных ящиков до мягких изголовий. Всё обсуждается на этапе проектирования, чтобы результат был точным.",
+  },
+  {
+    question: "Что если спальня маленькая и стандартная кровать не помещается?",
+    answer:
+      "Для этого и создаются кровати на заказ. Рассчитаем размеры с точностью до сантиметра, чтобы сохранить максимум пространства и удобства.",
+  },
+  {
+    question: "Можно ли использовать собственные материалы или ткани?",
+    answer:
+      "Да, если они подходят по характеристикам. Специалисты проверят качество и помогут реализовать вашу идею безопасно и надёжно.",
+  },
+  {
+    question: "Предоставляете ли гарантию на кровати на заказ?",
+    answer:
+      "Да, гарантия от 12 месяцев и выше. В случае мелких доработок или регулировки — приедем и решим всё быстро и без лишней бюрократии.",
+  },
+  {
+    question: "Как проходит доставка и сборка?",
+    answer:
+      "Кровать доставляется в надёжной упаковке, поднимается и собирается на месте. После установки — чисто и без мусора, обычно за один день.",
+  },
+  {
+    question: "Можно ли заказать кровать, если нахожусь не в Алматы?",
+    answer:
+      "Да, возможна доставка по всему Казахстану. Обсуждаем маршруты, сроки и детали заранее, чтобы всё прошло удобно и без задержек.",
+  },
+];
+---
+
+<Layout
+  title="1️⃣ Кровати на заказ в Алматы — за 7 дней и с гарантией"
+  description="Кровати на заказ в Алматы ⭐ Изготовим по размерам за 7 дней! Гарантия качества и стильный дизайн ⭐ Закажите кровать прямо сейчас"
+>
+  <main>
+    <Hero />
+    <Advantages />
+    <WhyUs />
+    <WillMade />
+    <KitchensPrices />
+    <HowGoing />
+    <Calculator />
+    <KitchenProduction />
+    <Form />
+    <PaymentMethods />
+    <TypeOfKitchen />
+    <CompanyText />
+    <Companys />
+    <Reviews />
+    <FAQ faqs={faqs} title="Часто задаваемые вопросы" />
+  </main>
+</Layout>

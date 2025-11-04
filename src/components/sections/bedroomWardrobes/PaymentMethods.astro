@@ -1,0 +1,60 @@
+---
+import { DoorOpen, Sparkles, LayoutGrid } from '@lucide/astro';
+import Section from "../../ui/Section.astro";
+---
+
+<Section padding='xl' id="payment-methods" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+  <div class="max-w-6xl mx-auto px-4 text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-6">
+      Как выбрать идеальный шкаф в спальню?
+    </h2>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+    {[
+      {
+        title: "Купе или классика — выбираем с умом и стилем",
+        description: "Если хотите лёгкости и порядка — шкаф купе на заказ в спальню станет лучшим решением. Его двери скользят плавно, не требуют места для открывания и делают интерьер визуально аккуратным. Для любителей традиций подойдёт вариант с распашными фасадами — тёплый, уютный и домашний.",
+        icon: DoorOpen,
+        bg: "from-blue-400 to-blue-600",
+        iconBg: "bg-blue-100",
+        iconColor: "text-blue-600"
+      },
+      {
+        title: "Зеркальные фасады — игра света и пространства",
+        description: "Зеркальный шкаф купе в спальне добавляет света, отражает интерьер и делает комнату глубже. Он придаёт дизайну лёгкость и современный характер, особенно если выбрать встроенную модель с глянцевыми панелями. Зеркала наполняют помещение воздухом и расширяют границы восприятия. Такое решение выглядит дорого, но остаётся доступным по цене.",
+        icon: Sparkles,
+        bg: "from-purple-400 to-purple-600",
+        iconBg: "bg-purple-100",
+        iconColor: "text-purple-600"
+      },
+      {
+        title: "Встроенный, угловой или корпусный — под ваш ритм жизни",
+        description: "Для компактных комнат идеально подойдёт встроенный шкаф купе в спальню — без зазоров и лишних деталей. Если нужно больше места, закажите угловой шкаф в спальню — он рационально использует каждый сантиметр. Корпусная модель подойдёт тем, кто любит менять интерьер и обстановку комнаты.",
+        icon: LayoutGrid,
+        bg: "from-amber-400 to-amber-600",
+        iconBg: "bg-amber-100",
+        iconColor: "text-amber-600"
+      },
+    ].map((item, index) => (
+      <div 
+        class="group relative bg-white rounded-3xl p-8 flex flex-col shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-neutral-100 hover:border-amber-200"
+        style={`transition-delay: ${index * 100}ms;`}
+      >
+        <!-- Gradient background effect -->
+        <div class={`absolute inset-0 bg-gradient-to-br ${item.bg} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-500`}></div>
+        
+        <!-- Icon -->
+        <div class={`${item.iconBg} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 relative overflow-hidden`}>
+          <div class={`absolute inset-0 bg-gradient-to-br ${item.bg} opacity-20`}></div>
+          <item.icon class={`w-8 h-8 relative z-10 ${item.iconColor}`} />
+        </div>
+
+        <!-- Content -->
+        <h3 class="text-xl font-semibold text-stone-800 mb-4">{item.title}</h3>
+        <p class="text-stone-600 text-base leading-relaxed">{item.description}</p>
+      </div>
+    ))}
+  </div>
+</Section>
+
