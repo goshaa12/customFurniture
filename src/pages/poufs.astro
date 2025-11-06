@@ -1,76 +1,66 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/sections/poufs/Hero.astro";
-import Services from "../components/sections/poufs/Services.astro";
-import KitchensPrices from "../components/sections/poufs/KitchensPrices.astro";
-import WhyUs from "../components/sections/poufs/WhyUs.astro";
-import TypeOfKitchen from "../components/sections/poufs/TypeOfKitchen.astro";
-import Form from "../components/sections/poufs/Form.astro";
-import KitchenProduction from "../components/sections/poufs/KitchenProduction.astro";
-import Calculator from "../components/sections/poufs/Calculator.astro";
-import Reviews from "../components/sections/poufs/Reviews.astro";
-import FAQ from "../components/sections/poufs/FAQ.astro";
-import HowGoing from "../components/sections/poufs/HowGoing.astro";
-import Advantages from "../components/sections/poufs/Advantages.astro";
-import Companys from "../components/sections/poufs/Companys.astro";
-import AboutUs from "../components/sections/poufs/AboutUs.astro";
-import Free3D from "../components/sections/poufs/Free3D.astro";
-import CompanyText from "../components/sections/poufs/CompanyText.astro";
-import News from "../components/sections/poufs/News.astro";
-import Materials from "../components/sections/poufs/Materials.astro";
-import PaymentMethods from "../components/sections/poufs/PaymentMethods.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import CalculatorPlasticKitchens from "../components/sections/CalculatorPlasticKitchens.astro";
+import Promotions from "../components/sections/Promotions.astro";
+import Reviews from "../components/sections/Reviews.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import WhatImportant from "../components/sections/WhatImportant.astro";
+import Companys from "../components/sections/Companys.astro";
+import AboutUs from "../components/sections/AboutUs.astro";
+import ReUsableTable from "../components/sections/ReUsableTable.astro";
+import CustomFurniture from "../components/sections/CustomFurniture.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
+import FeaturesCards from "../components/sections/FeaturesCards.astro";
+import TypeOfKitchen from "../components/sections/TypeOfKitchen.astro";
+
+import { heroData, servicesData, whyUsData, howItWorksData, promotionsData, reUsableTableData, reUsableTableData2, reUsableTableData3, reUsableTableData4, customFurnitureData, whatImportantData, companysData, aboutUsData, reviewsData, calculatorData, contactFormData, featuresCardsData, typeOfKitchenData, servicesData2 } from "../data/poufs";
 
 const faqs = [
   {
     question: "Готовый пуф может отличаться от картинки?",
-    answer:
-      "Нет. Мы утверждаем макет и образцы заранее. Всё, что видите на визуализации, вы получите вживую.",
+    answer: "Нет. Мы утверждаем макет и образцы заранее. Всё, что видите на визуализации, вы получите вживую."
   },
   {
     question: "Можно ли сделать нестандартную форму пуфа или размер?",
-    answer:
-      "Конечно. Мы создаём уникальные решения — от угловых моделей до пуфов с подсветкой или ящиком.",
+    answer: "Конечно. Мы создаём уникальные решения — от угловых моделей до пуфов с подсветкой или ящиком."
   },
   {
     question: "Можно ли изменить заказ после оформления?",
-    answer:
-      "Да, если работа не перешла в сборку. Мы гибко подстраиваемся, чтобы итог был именно таким, как вы хотите.",
+    answer: "Да, если работа не перешла в сборку. Мы гибко подстраиваемся, чтобы итог был именно таким, как вы хотите."
   },
   {
     question: "Можно ли заказать комплект — пуф и банкетку в одном стиле?",
-    answer:
-      "Конечно. Мы подберём ткани и детали так, чтобы всё выглядело едино и стильно в вашем интерьере.",
+    answer: "Конечно. Мы подберём ткани и детали так, чтобы всё выглядело едино и стильно в вашем интерьере."
   },
   {
     question: "Делаете ли вы пуфы и банкетки для коммерческих помещений?",
-    answer:
-      "Да. Для салонов, бутиков, офисов — подбираем ткани с повышенной износостойкостью и учитываем стиль бренда.",
+    answer: "Да. Для салонов, бутиков, офисов — подбираем ткани с повышенной износостойкостью и учитываем стиль бренда."
   },
   {
     question: "Используете ли вы экологичные материалы?",
-    answer:
-      "Да. Безопасные ткани, без токсичных пропиток и запаха — подходят даже для детских комнат.",
+    answer: "Да. Безопасные ткани, без токсичных пропиток и запаха — подходят даже для детских комнат."
   },
   {
     question: "Что, если мне не понравится результат?",
-    answer:
-      "Такого не бывает — вы видите макет пуфов до начала работ и утверждаете все детали. Мы делаем только после вашего согласия.",
+    answer: "Такого не бывает — вы видите макет пуфов до начала работ и утверждаете все детали. Мы делаем только после вашего согласия."
   },
   {
     question: "Могу ли я увидеть образцы тканей перед заказом?",
-    answer:
-      "Конечно. Привозим каталоги на встречу или отправляем варианты онлайн — вы выбираете глазами и руками.",
+    answer: "Конечно. Привозим каталоги на встречу или отправляем варианты онлайн — вы выбираете глазами и руками."
   },
   {
     question: "Делаете ли вы мебель по фото из Pinterest?",
-    answer:
-      "Да, адаптируем идею под ваши размеры и материалы. Получаете тот самый пуф, но созданный специально под вас.",
+    answer: "Да, адаптируем идею под ваши размеры и материалы. Получаете тот самый пуф, но созданный специально под вас."
   },
   {
     question: "Как ухаживать за мебелью, чтобы дольше прослужила?",
-    answer:
-      "Мы даём инструкцию по уходу под выбранную ткань. Всё просто — обычная влажная салфетка или мягкая щётка.",
-  },
+    answer: "Мы даём инструкцию по уходу под выбранную ткань. Всё просто — обычная влажная салфетка или мягкая щётка."
+  }
 ];
 ---
 
@@ -79,20 +69,20 @@ const faqs = [
   description="Пуфы и банкетки на заказ в Алматы ⭐ Уникальный дизайн, любые размеры и ткани, гарантия качества ⭐ Оставьте заявку прямо сейчас!"
 >
   <main>
-    <Hero />
-    <Advantages />
-    <WhyUs />x
-    <TypeOfKitchen />
-    <KitchensPrices />
-    <HowGoing />
-    <KitchenProduction />
+    <Hero {...heroData} />
+    <WhyUs {...whyUsData}/>
+    <ReUsableTable {...reUsableTableData}/>
+    <TypeOfKitchen {...typeOfKitchenData}/>
+    <ReUsableTable {...reUsableTableData2}/>
+    <FeaturesCards {...featuresCardsData}/>
+    <HowItWorks {...howItWorksData}/>
+    <ReUsableTable {...reUsableTableData3}/>
+    <ContactForm {...contactFormData}/>
 
-    <Materials />
-    <Form />
-    <CompanyText />
-    <Companys />
-    <Reviews />
-    <News>
+    <Services {...servicesData} items={[]}/>
+    <Companys {...companysData}/>
+    <Reviews {...reviewsData}/>
+    <Services {...servicesData2}/>
     <FAQ faqs={faqs} title="Часто задаваемые вопросы при заказе банкеток" />
   </main>
 </Layout>

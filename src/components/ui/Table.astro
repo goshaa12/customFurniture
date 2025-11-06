@@ -1,0 +1,83 @@
+---
+export interface TableColumn {
+  header: string;
+  key: string;
+  className?: string;
+  headerClassName?: string;
+}
+
+export interface TableRow {
+  [key: string]: string | number | undefined;
+  className?: string;
+}
+
+export interface Props {
+  columns: TableColumn[];
+  rows: TableRow[];
+  wrapperClassName?: string;
+  tableClassName?: string;
+  showLastBorder?: boolean;
+}
+
+const {
+  columns,
+  rows,
+  wrapperClassName = "bg-neutral-50 border border-neutral-200 rounded-3xl p-8 md:p-12 overflow-hidden",
+  tableClassName = "w-full text-left border-collapse",
+  showLastBorder = false,
+} = Astro.props;
+---
+
+<div class={wrapperClassName}>
+  <div class="overflow-x-auto">
+    <table class={tableClassName}>
+      <thead>
+        <tr class="text-stone-700 font-semibold border-b">
+          {columns.map((column, colIndex) => {
+            const isLastColumn = colIndex === columns.length - 1;
+            const headerClass = isLastColumn ? "py-3" : "py-3 pr-6";
+            return (
+              <th class={`${headerClass} ${column.headerClassName || ""}`.trim()}>
+                {column.header}
+              </th>
+            );
+          })}
+        </tr>
+      </thead>
+      <tbody class="text-stone-600 text-sm md:text-base">
+        {rows.map((row, rowIndex) => {
+          const isLastRow = rowIndex === rows.length - 1;
+          const shouldShowBorder = showLastBorder || !isLastRow;
+          
+          return (
+            <tr class={shouldShowBorder ? "border-b" : ""}>
+              {columns.map((column, colIndex) => {
+                const cellValue = row[column.key] ?? "";
+                const isFirstColumn = colIndex === 0;
+                const isLastColumn = colIndex === columns.length - 1;
+                
+                let cellClassName = column.className;
+                if (!cellClassName) {
+                  if (isFirstColumn) {
+                    cellClassName = isLastColumn ? "py-3 font-medium" : "py-3 pr-6 font-medium";
+                  } else if (colIndex === 1) {
+                    cellClassName = isLastColumn ? "py-3 text-stone-800" : "py-3 pr-6 text-stone-800";
+                  } else {
+                    cellClassName = isLastColumn ? "py-3" : "py-3 pr-6";
+                  }
+                }
+                
+                return (
+                  <td class={cellClassName}>
+                    {cellValue}
+                  </td>
+                );
+              })}
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</div>
+

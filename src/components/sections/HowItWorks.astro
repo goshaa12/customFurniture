@@ -1,28 +1,77 @@
 ---
-import { FileText, Users, Lightbulb, Workflow, Truck, ShieldCheck } from '@lucide/astro';
 import Section from "../ui/Section.astro";
+import { howItWorksData, iconMap, type WorkStep } from "../../data/index";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  steps?: Array<{
+    step: string;
+    title: string;
+    text: string;
+    icon: any;
+    bg: string;
+  }>;
+  gridCols?: number;
+  ctaButton?: {
+    text: string;
+    href: string;
+  };
+}
+
+// Получаем данные из централизованного хранилища или из props
+const defaultData = howItWorksData;
+
+const {
+  title = defaultData.title,
+  subtitle = defaultData.subtitle,
+  steps: propSteps,
+  gridCols = defaultData.gridCols ?? 3,
+  ctaButton = defaultData.ctaButton,
+} = Astro.props;
+
+// Функция для получения классов grid в зависимости от количества колонок
+const getGridClasses = (cols: number) => {
+  const gridMap: Record<number, string> = {
+    1: "grid-cols-1",
+    2: "md:grid-cols-2",
+    3: "md:grid-cols-2 lg:grid-cols-3",
+    4: "md:grid-cols-2 lg:grid-cols-4",
+  };
+  return gridMap[cols] || gridMap[3];
+};
+
+// Преобразуем steps из данных (с названиями иконок) в компоненты
+// Если steps переданы через props, проверяем нужно ли преобразовать иконки
+// Иначе используем defaultData.steps и преобразуем их
+const steps = (propSteps || defaultData.steps).map((step: any) => {
+  // Если icon уже компонент (не строка), оставляем как есть
+  // Если это строка, преобразуем в компонент
+  if (typeof step.icon === 'string') {
+    return {
+      ...step,
+      icon: iconMap[step.icon] || iconMap.FileText,
+    };
+  }
+  return step;
+});
 ---
 
 <Section padding='xl' id="how-we-work" class="py-24 px-4 bg-white">
   <div class="max-w-6xl mx-auto px-4 text-center mb-16">
     <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4">
-      Как мы работаем
+      {title}
     </h2>
-    <p class="text-stone-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-      Прозрачный процесс от заявки до готовой мебели
-    </p>
+    {subtitle && (
+      <p class="text-stone-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+        {subtitle}
+      </p>
+    )}
   </div>
 
   <!-- Steps Grid -->
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-    {[
-      { step: "1", title: "Заявка или звонок", text: "Вы оставляете заявку на сайте или звоните. Менеджер уточняет ваши пожелания и удобное время для выезда замерщика.", icon: FileText, bg: "from-rose-400 to-pink-500" },
-      { step: "2", title: "Бесплатный выезд замерщика", text: "Специалист приезжает с образцами материалов, делает точные замеры и рассчитывает ориентировочную стоимость.", icon: Users, bg: "from-purple-400 to-indigo-500" },
-      { step: "3", title: "Разработка дизайн-проекта и сметы", text: "Дизайнер создаёт 3D-визуализацию будущей мебели. После согласования фиксируется цена и сроки.", icon: Lightbulb, bg: "from-blue-400 to-cyan-500" },
-      { step: "4", title: "Производство мебели", text: "Изготовление на нашем производстве с контролем качества каждого этапа — от распила до сборки.", icon: Workflow, bg: "from-green-400 to-teal-500" },
-      { step: "5", title: "Доставка и установка", text: "Доставляем по Алматы и области, аккуратно поднимаем и устанавливаем без шума и пыли.", icon: Truck, bg: "from-orange-400 to-red-500" },
-      { step: "6", title: "Гарантия и постсервис", text: "После установки предоставляем гарантию до 3 лет. Мастера при необходимости приедут для регулировки или мелкого ремонта.", icon: ShieldCheck, bg: "from-pink-400 to-rose-500" },
-    ].map((item) => (
+  <div class={`grid ${getGridClasses(gridCols)} gap-8 mb-16`}>
+    {steps.map((item) => (
       <div class="group relative bg-neutral-100 rounded-3xl p-8 flex flex-col items-center justify-center space-y-4 hover:bg-neutral-200 transition-all duration-300">
         
         <!-- Gradient Number / Icon -->
@@ -46,8 +95,8 @@ import Section from "../ui/Section.astro";
 
   <!-- CTA Button -->
   <div class="text-center">
-    <a href="#calculator" class="inline-block bg-stone-800 text-white py-4 px-8 rounded-full text-lg font-medium hover:bg-stone-700 transition-all">
-      Оставить заявку
+    <a href={ctaButton.href} class="inline-block bg-stone-800 text-white py-4 px-8 rounded-full text-lg font-medium hover:bg-stone-700 transition-all">
+      {ctaButton.text}
     </a>
   </div>
 </Section>

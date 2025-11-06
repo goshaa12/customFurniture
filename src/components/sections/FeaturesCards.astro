@@ -1,0 +1,88 @@
+---
+import Section from "../ui/Section.astro";
+import { featuresCardsData, iconMap, type FeatureCard } from "../../data/plasticKitchens";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  items?: Array<{
+    title: string;
+    text: string;
+    icon: string;
+    bg: string;
+    iconBg?: string;
+    iconColor?: string;
+  }>;
+}
+
+// Получаем данные из централизованного хранилища или из props
+const defaultData = featuresCardsData;
+
+const {
+  title = defaultData.title,
+  subtitle = defaultData.subtitle,
+  items: propItems,
+} = Astro.props;
+
+const items = (propItems || defaultData.items).map((item: any) => {
+  if (typeof item.icon === 'string') {
+    return {
+      ...item,
+      icon: iconMap[item.icon] || iconMap.Box,
+      iconBg: item.iconBg || "bg-rose-100",
+      iconColor: item.iconColor || "text-rose-600",
+    };
+  }
+  return item;
+});
+---
+
+<Section padding='xl' id="features" class="py-24 bg-gradient-to-b from-white to-stone-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-stone-800 mb-6">
+        {title}
+      </h2>
+      {subtitle && (
+        <p class="text-stone-600 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
+          {subtitle}
+        </p>
+      )}
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {items.map((item: FeatureCard, index: number) => (
+        <div 
+          class="group relative bg-white rounded-3xl p-8 flex flex-col shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-stone-100 overflow-hidden"
+          style={`transition-delay: ${index * 50}ms;`}
+        >
+          <!-- Gradient background effect on hover -->
+          <div class={`absolute inset-0 bg-gradient-to-br ${item.bg} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-500`}></div>
+          
+          <!-- Decorative corner accent -->
+          <div class={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${item.bg} opacity-0 group-hover:opacity-10 rounded-bl-full transition-opacity duration-500`}></div>
+          
+          <!-- Icon Container -->
+          <div class={`${item.iconBg || 'bg-rose-100'} w-20 h-20 rounded-2xl flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 relative overflow-hidden z-10`}>
+            <!-- Gradient overlay on icon background -->
+            <div class={`absolute inset-0 bg-gradient-to-br ${item.bg} opacity-20`}></div>
+            <!-- Icon -->
+            <item.icon class={`w-10 h-10 relative z-10 ${item.iconColor || 'text-rose-600'} transition-transform duration-500 group-hover:scale-110`} />
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-xl font-bold text-stone-800 mb-4 relative z-10 group-hover:text-stone-900 transition-colors">
+            {item.title}
+          </h3>
+          <p class="text-stone-600 text-base leading-relaxed relative z-10">
+            {item.text}
+          </p>
+
+          <!-- Bottom accent line -->
+          <div class={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${item.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Section>
+

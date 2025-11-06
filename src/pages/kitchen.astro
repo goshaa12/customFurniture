@@ -1,20 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/sections/kitchen/Hero.astro";
-import Compare from "../components/sections/kitchen/Compare.astro";
-import TypeOfKitchen from "../components/sections/kitchen/TypeOfKitchen.astro";
-import Prices from "../components/sections/kitchen/Prices.astro";
-import WillMade from "../components/sections/kitchen/WillMade.astro";
-import Form from "../components/sections/kitchen/Form.astro";
-import Systems from "../components/sections/kitchen/Systems.astro";
-import HowItWorks from "../components/sections/kitchen/HowItWorks.astro";
-import Calculator from "../components/sections/kitchen/Calculator.astro";
-import Reviews from "../components/sections/kitchen/Reviews.astro";
-import FAQ from "../components/sections/kitchen/FAQ.astro";
-import HowGoing from "../components/sections/kitchen/HowGoing.astro";
-import WhyUs from "../components/sections/kitchen/WhyUs.astro";
-import Companys from "../components/sections/kitchen/Companys.astro";
-import AboutUs from "../components/sections/kitchen/AboutUs.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import Calculator from "../components/sections/Calculator.astro";
+import Promotions from "../components/sections/Promotions.astro";
+import Reviews from "../components/sections/Reviews.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import WhatImportant from "../components/sections/WhatImportant.astro";
+import Companys from "../components/sections/Companys.astro";
+import AboutUs from "../components/sections/AboutUs.astro";
+import ReUsableTable from "../components/sections/ReUsableTable.astro";
+import CustomFurniture from "../components/sections/CustomFurniture.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
+
+import { heroData, servicesData, whyUsData, howItWorksData, promotionsData, reUsableTableData, reUsableTableData2, reUsableTableData3, reUsableTableData4, customFurnitureData, whatImportantData, companysData, aboutUsData, reviewsData, calculatorData, contactFormData } from "../data/kitchen";
 
 const faqs = [
   {
@@ -65,20 +67,20 @@ const faqs = [
   description="Кухни на заказ в Алматы ⭐ Изготавливаем под ключ — от замера до сборки⭐ Узнайте стоимость вашей кухни сейчас!"
 >
   <main>
-    <Hero />
-    <TypeOfKitchen />
-    <WhyUs />
-    <Compare />
-    <Prices />
-    <HowItWorks />
-    <Calculator />
-    <HowGoing />
-    <WillMade />
-    <Form />
-    <Systems />
-    <AboutUs />
-    <Companys />
-    <Reviews />
+    <Hero {...heroData} />
+    <ReUsableTable {...reUsableTableData}/>
+    <WhyUs {...whyUsData}/>
+    <ReUsableTable {...reUsableTableData2}/>
+    <ReUsableTable {...reUsableTableData3}/>
+    <CustomFurniture {...customFurnitureData}/>
+    <Calculator {...calculatorData}/>
+    <HowItWorks {...howItWorksData}/>
+    <ReUsableTable {...reUsableTableData4}/>
+    <ContactForm {...contactFormData}/>
+    <WhatImportant {...whatImportantData}/>
+    <Services {...servicesData}/>
+    <Companys {...companysData}/>
+    <Reviews {...reviewsData}/>
     <FAQ faqs={faqs} />
   </main>
 </Layout>

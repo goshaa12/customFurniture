@@ -1,53 +1,52 @@
 ---
-import { Box, Settings, Zap, Layers } from '@lucide/astro';
 import Section from "../ui/Section.astro";
+import { whatImportantData, iconMap, type ImportantItem } from "../../data/index";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  items?: Array<{
+    title: string;
+    text: string;
+    icon: any;
+    bg: string;
+  }>;
+}
+
+// Получаем данные из централизованного хранилища или из props
+const defaultData = whatImportantData;
+
+const {
+  title = defaultData.title,
+  subtitle = defaultData.subtitle,
+  items: propItems,
+} = Astro.props;
+
+const items = (propItems || defaultData.items).map((item: any) => {
+  if (typeof item.icon === 'string') {
+    return {
+      ...item,
+      icon: iconMap[item.icon] || iconMap.Box,
+    };
+  }
+  return item;
+});
 ---
 
 <Section padding='xl' id="price-factors" class="py-24 bg-white">
   <div class="max-w-6xl mx-auto px-4 text-center mb-16">
     <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-6">
-      Что влияет на стоимость мебели
+      {title}
     </h2>
-    <p class="text-stone-600 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
-      Цена мебели на заказ формируется индивидуально — она зависит от материалов, комплектации и сложности проекта. Ниже указаны основные факторы, которые влияют на итоговую стоимость.
-    </p>
+    {subtitle && (
+      <p class="text-stone-600 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
+        {subtitle}
+      </p>
+    )}
   </div>
 
   <div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-10">
-    {[
-      {
-        title: "1. Материалы и фурнитура",
-        text: `Выбор между ЛДСП, МДФ, шпоном или массивом дерева сильно влияет на цену.
-
-Фурнитура от Blum, Hettich или Boyard повышает комфорт и срок службы мебели, но и немного увеличивает стоимость.`,
-        icon: Box,
-        bg: "from-rose-400 to-pink-500"
-      },
-      {
-        title: "2. Сложность конструкции и планировка",
-        text: `Прямая кухня или шкаф будет стоить дешевле, чем угловая или П-образная модель.
-
-Чем больше нестандартных решений (радиусные фасады, встроенные элементы, скрытые ящики) — тем выше трудоёмкость и цена.`,
-        icon: Settings,
-        bg: "from-purple-400 to-indigo-500"
-      },
-      {
-        title: "3. Наличие встроенной техники и подсветки",
-        text: `Интеграция техники (духовки, варочной панели, холодильника) требует точных расчетов и дополнительных комплектующих.
-
-Подсветка и электрика также увеличивают стоимость, но добавляют комфорта и эстетики.`,
-        icon: Zap,
-        bg: "from-blue-400 to-cyan-500"
-      },
-      {
-        title: "4. Дизайн и габариты помещения",
-        text: `Индивидуальный дизайн-проект с 3D-визуализацией, нестандартной геометрией или сложным декором требует больше времени и материалов.
-
-Большие помещения подразумевают больше мебели и, соответственно, выше общий бюджет.`,
-        icon: Layers,
-        bg: "from-green-400 to-teal-500"
-      },
-    ].map((item, index) => (
+    {items.map((item, index) => (
       <div 
         class="group relative bg-white rounded-3xl p-8 flex flex-col items-start shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-500"
         style={`transition-delay: ${index * 100}ms; min-height: 300px;`}

@@ -1,61 +1,95 @@
 ---
-import { Percent, Calendar, Compass } from "@lucide/astro";
 import Button from "../ui/Button.astro";
 import Section from "../ui/Section.astro";
+import { promotionsData, iconMap, type PromotionItem } from "../../data/index";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  items?: Array<{
+    icon: any;
+    gradient: string;
+    text: string;
+    highlightText?: string;
+    highlightColor?: string;
+    additionalText?: string;
+  }>;
+  additionalText?: string;
+  ctaButton?: {
+    text: string;
+    href: string;
+  };
+}
+
+// Получаем данные из централизованного хранилища или из props
+const defaultData = promotionsData;
+
+const {
+  title = defaultData.title,
+  subtitle = defaultData.subtitle,
+  items: propItems,
+  additionalText = defaultData.additionalText,
+  ctaButton = defaultData.ctaButton,
+} = Astro.props;
+
+// Преобразуем items из данных (с названиями иконок) в компоненты
+// Если items переданы через props, проверяем нужно ли преобразовать иконки
+// Иначе используем defaultData.items и преобразуем их
+const items = (propItems || defaultData.items).map((item: any) => {
+  // Если icon уже компонент (не строка), оставляем как есть
+  // Если это строка, преобразуем в компонент
+  if (typeof item.icon === 'string') {
+    return {
+      ...item,
+      icon: iconMap[item.icon] || iconMap.Percent,
+    };
+  }
+  return item;
+});
 ---
 
 <Section id="kitchen-promo" padding="xl">
   <div class="max-w-4xl mx-auto text-center space-y-8">
     <!-- Заголовок -->
     <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-stone-800">
-      Акция — скидка до 15% на кухни на заказ!
+      {title}
     </h2>
 
     <!-- Подзаголовок -->
-    <p class="text-lg md:text-xl text-stone-600 leading-relaxed">
-      Прямо сейчас действует специальное предложение:
-    </p>
+    {subtitle && (
+      <p class="text-lg md:text-xl text-stone-600 leading-relaxed">
+        {subtitle}
+      </p>
+    )}
 
     <!-- Преимущества с иконками -->
     <div class="grid md:grid-cols-3 gap-6 mt-6">
-      <div class="flex flex-col items-center p-6 bg-white rounded-3xl shadow hover:shadow-lg transition-all duration-300">
-        <div class="w-14 h-14 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center mb-4">
-          <Percent class="w-7 h-7 text-white" />
+      {items.map((item) => (
+        <div class="flex flex-col items-center p-6 bg-white rounded-3xl shadow hover:shadow-lg transition-all duration-300">
+          <div class={`w-14 h-14 bg-gradient-to-br ${item.gradient} rounded-full flex items-center justify-center mb-4`}>
+            <item.icon class="w-7 h-7 text-white" />
+          </div>
+          <p class="font-semibold text-stone-800 text-center">
+            {item.highlightText && (
+              <span class={item.highlightColor || "text-stone-800"}>
+                {item.highlightText}
+              </span>
+            )}
+            {item.text}
+          </p>
         </div>
-        <p class="font-semibold text-stone-800 text-center">
-          Заказ кухни от 3 метров — <span class="text-rose-600">скидка 10%</span>
-        </p>
-      </div>
-
-      <div class="flex flex-col items-center p-6 bg-white rounded-3xl shadow hover:shadow-lg transition-all duration-300">
-        <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full flex items-center justify-center mb-4">
-          <Percent class="w-7 h-7 text-white" />
-        </div>
-        <p class="font-semibold text-stone-800 text-center">
-          Заказ кухни от 5 метров — <span class="text-indigo-600">скидка 15%</span>
-        </p>
-      </div>
-
-      <div class="flex flex-col items-center p-6 bg-white rounded-3xl shadow hover:shadow-lg transition-all duration-300">
-        <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mb-4">
-          <Calendar class="w-7 h-7 text-white" />
-        </div>
-        <p class="font-semibold text-stone-800 text-center">
-          <span class="text-green-600">Бонус:</span> бесплатный 3D-дизайн-проект и выезд замерщика в день обращения
-        </p>
-      </div>
+      ))}
     </div>
 
     <!-- Дополнительный текст -->
-    <p class="text-stone-600 mt-6 text-center leading-relaxed">
-      Акция распространяется на все материалы — ЛДСП, МДФ, шпон и массив. <br />
-      Количество заказов по акции ограничено!
-    </p>
+    {additionalText && (
+      <p class="text-stone-600 mt-6 text-center leading-relaxed" set:html={additionalText.replace(/\n/g, '<br />')} />
+    )}
 
     <!-- CTA -->
     <div class="mt-8">
-      <Button href="#calculator" variant="primary" size="lg">
-        Заказать кухню
+      <Button href={ctaButton.href} variant="primary" size="lg">
+        {ctaButton.text}
       </Button>
     </div>
   </div>

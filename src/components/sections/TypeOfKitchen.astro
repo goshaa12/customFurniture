@@ -1,0 +1,100 @@
+---
+import Section from "../ui/Section.astro";
+import { typeOfKitchenData, iconMap, type TypeOfKitchenData } from "../../data/poufs";
+
+interface Props {
+  title?: string;
+  poufsSection?: {
+    title: string;
+    items: Array<{
+      title: string;
+      description: string;
+      icon: string;
+      gradient: string;
+    }>;
+  };
+  banquettesSection?: {
+    title: string;
+    items: Array<{
+      title: string;
+      description: string;
+      icon: string;
+      gradient: string;
+    }>;
+  };
+}
+
+// Получаем данные из централизованного хранилища или из props
+const defaultData = typeOfKitchenData;
+
+const {
+  title = defaultData.title,
+  poufsSection = defaultData.poufsSection,
+  banquettesSection = defaultData.banquettesSection,
+} = Astro.props;
+
+// Преобразуем иконки из строк в компоненты
+const processItems = (items: any[]) => {
+  return items.map((item) => ({
+    ...item,
+    icon: iconMap[item.icon] || iconMap.Box,
+  }));
+};
+
+const poufsItems = processItems(poufsSection.items);
+const banquettesItems = processItems(banquettesSection.items);
+---
+
+<Section id="furniture-types" class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-stone-800 mb-12">
+      {title}
+    </h2>
+
+    <!-- Виды пуфов -->
+    <div class="mb-20">
+      <h3 class="text-2xl md:text-3xl font-bold text-stone-800 mb-8 text-center">
+        {poufsSection.title}
+      </h3>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {poufsItems.map((item, index) => (
+          <div 
+            class="group relative bg-white rounded-2xl p-6 flex flex-col shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-neutral-100"
+            style={`transition-delay: ${index * 50}ms;`}
+          >
+            <div class={`w-12 h-12 rounded-lg bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-4 transform transition-transform duration-300 group-hover:scale-110`}>
+              <item.icon class="w-6 h-6 text-white" />
+            </div>
+            
+            <h4 class="text-lg font-semibold text-stone-800 mb-3">{item.title}</h4>
+            <p class="text-stone-600 text-sm leading-relaxed flex-grow">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Виды банкеток -->
+    <div>
+      <h3 class="text-2xl md:text-3xl font-bold text-stone-800 mb-8 text-center">
+        {banquettesSection.title}
+      </h3>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {banquettesItems.map((item, index) => (
+          <div 
+            class="group relative bg-white rounded-2xl p-6 flex flex-col shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-neutral-100"
+            style={`transition-delay: ${index * 50}ms;`}
+          >
+            <div class={`w-12 h-12 rounded-lg bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-4 transform transition-transform duration-300 group-hover:scale-110`}>
+              <item.icon class="w-6 h-6 text-white" />
+            </div>
+            
+            <h4 class="text-lg font-semibold text-stone-800 mb-3">{item.title}</h4>
+            <p class="text-stone-600 text-sm leading-relaxed flex-grow">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Section>

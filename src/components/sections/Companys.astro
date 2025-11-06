@@ -1,24 +1,49 @@
 ---
-// Companys.astro
-const brands = [
-  { name: 'Blum', logo: '/images/home/blum.webp', alt: 'Blum logo' },
-  { name: 'Hettich', logo: '/images/home/hettich.webp', alt: 'Hettich logo' },
-  { name: 'Egger', logo: '/images/home/eegger.webp', alt: 'Egger logo' },
-  { name: 'Kronospan', logo: '/images/home/kronospan.webp', alt: 'Kronospan logo' },
-];
+import Section from "../ui/Section.astro";
+import { companysData, type CompanysData } from "../../data/index";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  brands?: Array<{
+    name: string;
+    logo: string;
+    alt: string;
+  }>;
+}
+
+const defaultData = companysData;
+
+const {
+  title = defaultData.title,
+  subtitle = defaultData.subtitle,
+  brands = defaultData.brands,
+} = Astro.props;
 ---
 
-<section class="py-12 bg-gray-50">
-  <div class="container mx-auto text-center">
-    <h2 class="text-2xl font-semibold mb-4">Материалы и фурнитура</h2>
-    <p class="text-gray-600 mb-8">Мы используем лучшие фурнитуры для мебели от ведущих брендов</p>
+<Section class="py-16 md:py-20 bg-stone-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl md:text-3xl font-bold text-stone-800 mb-4">
+        {title}
+      </h2>
+      {subtitle && (
+        <p class="text-base md:text-lg text-stone-600 max-w-3xl mx-auto">
+          {subtitle}
+        </p>
+      )}
+    </div>
     
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-center">
-      {brands.map((brand) => (
-        <div class="flex justify-center items-center p-4 bg-white rounded-lg shadow hover:shadow-lg transition">
-          <img src={brand.logo} alt={brand.alt} class="h-16 object-contain"/>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-8 items-center justify-center">
+      {brands.map((brand: { name: string; logo: string; alt: string }) => (
+        <div class="flex justify-center items-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-stone-200 hover:border-amber-300">
+          <img 
+            src={brand.logo} 
+            alt={brand.alt} 
+            class="h-16 md:h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+          />
         </div>
       ))}
     </div>
   </div>
-</section>
+</Section>

@@ -1,0 +1,237 @@
+---
+import Section from "../ui/Section.astro";
+import { calculatorData, type CalculatorData } from "../../data/plasticKitchens";
+import { Layout, Package, Wrench, Ruler, User } from '@lucide/astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  configurations?: Array<{ value: string; label: string }>;
+  additionalOptions?: Array<{ value: string; label: string }>;
+  hardwareOptions?: Array<{ value: string; label: string }>;
+  buttonText?: string;
+  additionalText?: string;
+  contactFields?: {
+    name: string;
+    phone: string;
+  };
+  dimensionsLabels?: {
+    length?: string;
+    height?: string;
+  };
+}
+
+const defaultData = calculatorData;
+
+const {
+  title = defaultData.title,
+  subtitle = defaultData.subtitle,
+  configurations = defaultData.configurations,
+  additionalOptions = defaultData.additionalOptions,
+  hardwareOptions = defaultData.hardwareOptions,
+  buttonText = defaultData.buttonText,
+  additionalText = defaultData.additionalText,
+  contactFields = defaultData.contactFields,
+  dimensionsLabels = defaultData.dimensionsLabels,
+} = Astro.props;
+---
+
+<Section id="calculator" class="py-16 md:py-20 bg-gradient-to-br from-stone-50 to-neutral-100">
+  <div class="max-w-4xl mx-auto px-4">
+    {/* Header */}
+    <div class="text-center mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-stone-800 mb-2">
+        {title}
+      </h2>
+      {subtitle && (
+        <p class="text-base md:text-lg text-stone-600">
+          {subtitle}
+        </p>
+      )}
+    </div>
+
+    {/* Form */}
+    <div class="bg-white rounded-2xl shadow-lg border border-stone-200 overflow-hidden">
+      <form class="p-6 md:p-8 space-y-6">
+        
+        {/* 1. Тип кухни */}
+        <div class="space-y-2">
+          <label class="flex items-center text-base font-semibold text-stone-800">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600 mr-2 flex-shrink-0">
+              <Layout size={16} />
+            </div>
+            <span>1. Тип кухни</span>
+          </label>
+          <div class="grid grid-cols-2 gap-3 ml-10">
+            {configurations.map((option) => (
+              <label class="relative">
+                <input 
+                  type="radio" 
+                  name="configuration" 
+                  value={option.value}
+                  class="sr-only peer" 
+                />
+                <div class="p-3 border-2 border-stone-200 rounded-lg text-center cursor-pointer transition-all hover:border-amber-400 peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 text-sm font-medium text-stone-700">
+                  {option.label}
+                </div>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* 2. Столешница */}
+        <div class="space-y-2">
+          <label class="flex items-center text-base font-semibold text-stone-800">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600 mr-2 flex-shrink-0">
+              <Package size={16} />
+            </div>
+            <span>2. Столешница</span>
+          </label>
+          <div class="grid grid-cols-2 gap-3 ml-10">
+            {additionalOptions.map((option) => (
+              <label class="relative">
+                <input 
+                  type="radio" 
+                  name="countertop" 
+                  value={option.value}
+                  class="sr-only peer" 
+                />
+                <div class="p-3 border-2 border-stone-200 rounded-lg text-center cursor-pointer transition-all hover:border-amber-400 peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 text-sm font-medium text-stone-700">
+                  {option.label}
+                </div>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* 3. Комплектующие */}
+        <div class="space-y-2">
+          <label class="flex items-center text-base font-semibold text-stone-800">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600 mr-2 flex-shrink-0">
+              <Wrench size={16} />
+            </div>
+            <span>3. Комплектующие</span>
+          </label>
+          <div class="grid grid-cols-2 gap-3 ml-10">
+            {hardwareOptions.map((option) => (
+              <label class="relative">
+                <input 
+                  type="radio" 
+                  name="hardware" 
+                  value={option.value}
+                  class="sr-only peer" 
+                />
+                <div class="p-3 border-2 border-stone-200 rounded-lg text-center cursor-pointer transition-all hover:border-amber-400 peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 text-sm font-medium text-stone-700">
+                  {option.label}
+                </div>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* 4. Габариты кухни */}
+        <div class="space-y-2">
+          <label class="flex items-center text-base font-semibold text-stone-800">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600 mr-2 flex-shrink-0">
+              <Ruler size={16} />
+            </div>
+            <span>4. Габариты кухни</span>
+          </label>
+          <div class="grid grid-cols-2 gap-3 ml-10">
+            <div class="relative">
+              <input 
+                type="number" 
+                name="length"
+                step="0.1"
+                placeholder={dimensionsLabels?.length || "Длина кухни (м)"} 
+                class="w-full border-2 border-stone-200 rounded-lg px-4 py-2.5 text-stone-700 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-100 transition-all text-sm bg-white" 
+              />
+            </div>
+            <div class="relative">
+              <input 
+                type="number" 
+                name="height"
+                placeholder={dimensionsLabels?.height || "Высота кухни"} 
+                class="w-full border-2 border-stone-200 rounded-lg px-4 py-2.5 text-stone-700 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-100 transition-all text-sm bg-white" 
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* 5. Контактные данные */}
+        <div class="space-y-2">
+          <label class="flex items-center text-base font-semibold text-stone-800">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600 mr-2 flex-shrink-0">
+              <User size={16} />
+            </div>
+            <span>5. Контактные данные</span>
+          </label>
+          <div class="space-y-3 ml-10">
+            <div class="relative">
+              <input 
+                type="text" 
+                name="name"
+                placeholder={contactFields.name}
+                required
+                class="w-full border-2 border-stone-200 rounded-lg px-4 py-2.5 text-stone-700 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-100 transition-all text-sm bg-white" 
+              />
+            </div>
+            <div class="relative">
+              <input 
+                type="tel" 
+                name="phone"
+                placeholder={contactFields.phone}
+                required
+                class="w-full border-2 border-stone-200 rounded-lg px-4 py-2.5 text-stone-700 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-100 transition-all text-sm bg-white" 
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Submit Button */}
+        <div class="pt-2">
+          {additionalText && (
+            <p class="text-center text-stone-600 mb-4 text-sm">
+              {additionalText}
+            </p>
+          )}
+          <button 
+            type="submit" 
+            class="w-full px-6 py-3.5 bg-stone-800 hover:bg-stone-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg text-base"
+          >
+            {buttonText}
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</Section>
+
+<style>
+  /* Стили для кастомных input */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+</style>
+
+<script>
+  // Обработка формы
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('#calculator form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Здесь можно добавить логику отправки формы
+        console.log('Form submitted');
+      });
+    }
+  });
+</script>
+

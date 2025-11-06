@@ -1,52 +1,45 @@
 ---
 import Section from '../ui/Section.astro';
-import { Building2, Star, User, Hammer, CheckCircle } from '@lucide/astro';
-const sections = [
-  {
-    title: 'Кто мы',
-    content: 'Мы — производственная компания по изготовлению мебели на заказ в Алматы с 2012 года.\n\nЗа это время наши мастера создали более 1000 проектов для квартир, домов и офисов.',
-    icon: Building2
-  },
-  {
-    title: 'Наши ценности',
-    content: 'Прямые поставки материалов — без посредников, что снижает цену на 15–20%\n- Контроль качества на каждом этапе** — от замера до установки\n- Соблюдение сроков — мебель изготавливается от 10 дней',
-    icon: Star
-  },
-  {
-    title: 'Наши мастера',
-    content: 'Команда состоит из опытных дизайнеров и сборщиков с опытом более 5 лет.\n\nКаждый проект выполняется под ваш интерьер с точной подгонкой размеров и подбором материалов.',
-    icon: User
-  },
-  {
-    title: 'Наше производство',
-    content: 'Мы имеем собственный цех с современным оборудованием и высокоточными станками.\n\nЭто позволяет создавать мебель с идеальной геометрией и долговечностью.',
-    icon: Hammer
-  },
-  {
-    title: 'Почему выбирают нас',
-    content: 'Более 1000 реализованных проектов в Алматы и области\n- Гарантия на мебель и фурнитуру до 3 лет\n- Бесплатный замер и 3D-дизайн-проект\n- Беспроцентная рассрочка до 12 месяцев',
-    icon: CheckCircle
-  },
-];
+import { aboutUsData, iconMap, type AboutUsSection } from '../../data/index';
+
+interface Props {
+  title?: string;
+  sections?: AboutUsSection[];
+}
+
+const defaultData = aboutUsData;
+
+const {
+  title = defaultData.title,
+  sections: propSections,
+} = Astro.props;
+
+const sections = (propSections || defaultData.sections).map((section: any) => {
+  if (typeof section.icon === 'string') {
+    return {
+      ...section,
+      icon: iconMap[section.icon] || iconMap.Building2,
+    };
+  }
+  return section;
+});
 ---
 
-<Section padding="xl" class="py-20 overflow-hidden">
+<Section padding="xl" class="py-20 overflow-hidden bg-white">
   <div class="container mx-auto text-center mb-12">
-    <h2 class="text-4xl font-extrabold mb-4">О нас</h2>
-    <p class="text-gray-600 max-w-3xl mx-auto">Узнайте больше о нашей компании, мастерах и производстве</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4">{title}</h2>
   </div>
 
-  <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-    {sections.map((section) => (
+  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto px-4">
+    {sections.map((section: any) => (
       <div
-        class="relative bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center justify-start hover:scale-105 hover:shadow-2xl transition-transform duration-500 group"
+        class="relative bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center justify-start hover:scale-105 hover:shadow-xl transition-all duration-300 group border border-stone-200"
       >
-        <div class="bg-yellow-200 p-5 rounded-full mb-5 transition-colors duration-500">
-          <section.icon class="h-10 w-10 text-yellow-600"/>
+        <div class="bg-amber-100 p-4 rounded-full mb-4 transition-colors duration-300 group-hover:bg-amber-200">
+          <section.icon class="h-8 w-8 text-amber-600"/>
         </div>
-        <h3 class="text-2xl font-semibold mb-3 group-hover:text-yellow-600 transition-colors duration-500">{section.title}</h3>
-        <p class="text-gray-700 whitespace-pre-line">{section.content}</p>
-        <div class="absolute -top-10 -right-10 w-24 h-24 bg-yellow-100 rounded-full opacity-30 animate-pulse"></div>
+        <h3 class="text-xl font-semibold mb-3 group-hover:text-amber-600 transition-colors duration-300 text-stone-800">{section.title}</h3>
+        <p class="text-stone-600 whitespace-pre-line text-sm leading-relaxed text-center">{section.content}</p>
       </div>
     ))}
   </div>

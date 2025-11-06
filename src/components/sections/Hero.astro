@@ -1,18 +1,9 @@
 ---
-import {
-  CalendarCheck,
-  CheckCircle,
-  Clock,
-  Target,
-  Calculator,
-  Phone,
-  PartyPopper,
-  Star,
-  Heart,
-  MessageCircleMore,
-} from "@lucide/astro";
+import { Calculator } from "@lucide/astro";
 import Button from "../ui/Button.astro";
 import Section from "../ui/Section.astro";
+import { heroData, iconMap, type BenefitData } from "../../data/index";
+
 interface Benefit {
   icon: any;
   iconClass?: string;
@@ -34,44 +25,37 @@ interface Props {
   thirdTitleText?: string;
 }
 
+// Получаем данные из централизованного хранилища или из props
+const defaultData = heroData;
+
 const {
-  title = "Изготовление мебели на заказ в Алматы —",
-  highlight = "от эскиза до установки за 7 дней",
-  subtitle = "Замер в день заявки. Гарантия 3 года. Доставка и установка за наш счёт. Работаем с ЛДСП, МДФ и массивом.",
-  benefits = [
-    {
-      icon: CalendarCheck,
-      iconClass: "w-4 h-4 text-yellow-600",
-      bgClass: "bg-yellow-100",
-      text: "Замер и расчет в день заявки",
-    },
-    {
-      icon: CheckCircle,
-      iconClass: "w-4 h-4 text-yellow-600",
-      bgClass: "bg-yellow-100",
-      text: "Гарантия на мебель 3 года",
-    },
-    {
-      icon: Clock,
-      iconClass: "w-4 h-4 text-yellow-600",
-      bgClass: "bg-yellow-100",
-      text: "Доставка и установка за наш счёт",
-    },
-    {
-      icon: Target,
-      iconClass: "w-4 h-4 text-yellow-600",
-      bgClass: "bg-yellow-100",
-      text: "Любые материалы: ЛДСП, МДФ, массив",
-    },
-  ],
-  buttonText = "Рассчитать стоимость мероприятия",
-  buttonHref = "#calculator",
-  imageSrc = "/images/home/hero-img.webp",
-  secondaryButtonText = undefined,
-  secondaryButtonHref = undefined,
-  secondaryButtonVariant = undefined,
-  thirdTitleText = "",
+  title = defaultData.title,
+  highlight = defaultData.highlight,
+  subtitle = defaultData.subtitle,
+  benefits: propBenefits,
+  buttonText = defaultData.buttonText,
+  buttonHref = defaultData.buttonHref,
+  imageSrc = defaultData.imageSrc,
+  secondaryButtonText = defaultData.secondaryButtonText,
+  secondaryButtonHref = defaultData.secondaryButtonHref,
+  secondaryButtonVariant = defaultData.secondaryButtonVariant,
+  thirdTitleText = defaultData.thirdTitleText,
 } = Astro.props;
+
+// Преобразуем benefits из данных (с названиями иконок) в компоненты
+// Если benefits переданы через props, проверяем нужно ли преобразовать иконки
+// Иначе используем defaultData.benefits и преобразуем их
+const benefits = (propBenefits || defaultData.benefits).map((benefit: any) => {
+  // Если icon уже компонент (не строка), оставляем как есть
+  // Если это строка, преобразуем в компонент
+  if (typeof benefit.icon === 'string') {
+    return {
+      ...benefit,
+      icon: iconMap[benefit.icon] || iconMap.Target, // fallback на Target если иконка не найдена
+    };
+  }
+  return benefit;
+});
 ---
 
 <Section padding="xl" class="relative overflow-hidden">
@@ -137,7 +121,7 @@ const {
           class="flex justify-center items-center gap-2"
         >
           <Calculator class="w-4 h-4 aspect-square" />
-          <span>Рассчитать стоимость мебели</span>
+          <span>{buttonText}</span>
         </Button>
       </div>
     </div>
