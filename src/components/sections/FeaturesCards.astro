@@ -13,6 +13,7 @@ interface Props {
     iconBg?: string;
     iconColor?: string;
   }>;
+  gridCols?: number;
 }
 
 // Получаем данные из централизованного хранилища или из props
@@ -22,7 +23,19 @@ const {
   title = defaultData.title,
   subtitle = defaultData.subtitle,
   items: propItems,
+  gridCols = 3,
 } = Astro.props;
+
+// Функция для получения классов grid в зависимости от количества колонок
+const getGridClasses = (cols: number) => {
+  const gridMap: Record<number, string> = {
+    1: "grid-cols-1",
+    2: "md:grid-cols-2",
+    3: "md:grid-cols-2 lg:grid-cols-3",
+    4: "md:grid-cols-2 lg:grid-cols-4",
+  };
+  return gridMap[cols] || gridMap[3];
+};
 
 const items = (propItems || defaultData.items).map((item: any) => {
   if (typeof item.icon === 'string') {
@@ -50,8 +63,8 @@ const items = (propItems || defaultData.items).map((item: any) => {
       )}
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {items.map((item: FeatureCard, index: number) => (
+    <div class={`grid ${getGridClasses(gridCols)} gap-8`}>
+      {items.map((item: any, index: number) => (
         <div 
           class="group relative bg-white rounded-3xl p-8 flex flex-col shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-stone-100 overflow-hidden"
           style={`transition-delay: ${index * 50}ms;`}

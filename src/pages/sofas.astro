@@ -1,23 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/sections/sofas/Hero.astro";
-import Services from "../components/sections/sofas/Services.astro";
-import KitchensPrices from "../components/sections/sofas/KitchensPrices.astro";
-import WhyUs from "../components/sections/sofas/WhyUs.astro";
-import TypeOfKitchen from "../components/sections/sofas/TypeOfKitchen.astro";
-import Form from "../components/sections/sofas/Form.astro";
-import KitchenProduction from "../components/sections/sofas/KitchenProduction.astro";
-import Calculator from "../components/sections/sofas/Calculator.astro";
-import Reviews from "../components/sections/sofas/Reviews.astro";
-import FAQ from "../components/sections/sofas/FAQ.astro";
-import HowGoing from "../components/sections/sofas/HowGoing.astro";
-import Advantages from "../components/sections/sofas/Advantages.astro";
-import Companys from "../components/sections/sofas/Companys.astro";
-import AboutUs from "../components/sections/sofas/AboutUs.astro";
-import Materials from "../components/sections/sofas/Materials.astro";
-import Free3D from "../components/sections/sofas/Free3D.astro";
-import CompanyText from "../components/sections/sofas/CompanyText.astro";
-import News from "../components/sections/sofas/News.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import CalculatorSofas from "../components/sections/CalculatorSofas.astro";
+import Promotions from "../components/sections/Promotions.astro";
+import Reviews from "../components/sections/Reviews.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import WhatImportant from "../components/sections/WhatImportant.astro";
+import Companys from "../components/sections/Companys.astro";
+import AboutUs from "../components/sections/AboutUs.astro";
+import ReUsableTable from "../components/sections/ReUsableTable.astro";
+import CustomFurniture from "../components/sections/CustomFurniture.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
+import FeaturesCards from "../components/sections/FeaturesCards.astro";
+import TypeOfKitchen from "../components/sections/TypeOfKitchen.astro";
+
+import { heroData, servicesData, whyUsData, howItWorksData, promotionsData, reUsableTableData, reUsableTableData2, reUsableTableData3, reUsableTableData4, customFurnitureData, whatImportantData, companysData, aboutUsData, reviewsData, calculatorData, contactFormData, featuresCardsData, typeOfKitchenData, servicesData2 } from "../data/sofas";
 
 const faqs = [
   {
@@ -78,19 +79,20 @@ const faqs = [
   description="Диваны на заказ в Алматы ⭐ Прочные каркасы, качественные ткани, доступные цены и гарантия 3 года ⭐ Закажите диван прямо сейчас!"
 >
   <main>
-    <Hero />
-    <Advantages />
-    <WhyUs />
-    <Materials />
-    <KitchensPrices />
-    <HowGoing />
-    <Calculator />
-    <KitchenProduction />
-    <Form />
-    <CompanyText />
-    <Companys />
-    <Reviews />
-    <News />
+    <Hero {...heroData} />
+    <WhyUs {...whyUsData}/>
+    <ReUsableTable {...reUsableTableData}/>
+    <ReUsableTable {...reUsableTableData2}/>
+    <ReUsableTable {...reUsableTableData3}/>
+    <FeaturesCards {...featuresCardsData} gridCols={2}/>
+    <CalculatorSofas {...calculatorData}/>
+    <HowItWorks {...howItWorksData}/>
+    <WhatImportant {...whatImportantData}/>
+    <ContactForm {...contactFormData}/>
+    <Services {...servicesData} items={[]}/>
+    <Companys {...companysData}/>
+    <Reviews {...reviewsData}/>
+    <Services {...servicesData2}/>
     <FAQ faqs={faqs} title="Часто задаваемые вопросы" />
   </main>
 </Layout>

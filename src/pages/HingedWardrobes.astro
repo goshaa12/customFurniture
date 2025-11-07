@@ -1,22 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/sections/HingedWardrobes/Hero.astro";
-import Services from "../components/sections/HingedWardrobes/Services.astro";
-import KitchensPrices from "../components/sections/HingedWardrobes/KitchensPrices.astro";
-import WhyUs from "../components/sections/HingedWardrobes/WhyUs.astro";
-import TypeOfKitchen from "../components/sections/HingedWardrobes/TypeOfKitchen.astro";
-import Form from "../components/sections/HingedWardrobes/Form.astro";
-import KitchenProduction from "../components/sections/HingedWardrobes/KitchenProduction.astro";
-import Calculator from "../components/sections/HingedWardrobes/Calculator.astro";
-import Reviews from "../components/sections/HingedWardrobes/Reviews.astro";
-import FAQ from "../components/sections/HingedWardrobes/FAQ.astro";
-import HowGoing from "../components/sections/HingedWardrobes/HowGoing.astro";
-import Advantages from "../components/sections/HingedWardrobes/Advantages.astro";
-import Companys from "../components/sections/HingedWardrobes/Companys.astro";
-import AboutUs from "../components/sections/HingedWardrobes/AboutUs.astro";
-import Free3D from "../components/sections/HingedWardrobes/Free3D.astro";
-import CompanyText from "../components/sections/HingedWardrobes/CompanyText.astro";
-import News from "../components/sections/HingedWardrobes/News.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import CalculatorHingedWardrobes from "../components/sections/CalculatorHingedWardrobes.astro";
+import Promotions from "../components/sections/Promotions.astro";
+import Reviews from "../components/sections/Reviews.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import WhatImportant from "../components/sections/WhatImportant.astro";
+import Companys from "../components/sections/Companys.astro";
+import AboutUs from "../components/sections/AboutUs.astro";
+import ReUsableTable from "../components/sections/ReUsableTable.astro";
+import CustomFurniture from "../components/sections/CustomFurniture.astro";
+import FeaturesCards from "../components/sections/FeaturesCards.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
+import { heroData, servicesData, whyUsData, howItWorksData, promotionsData, reUsableTableData, reUsableTableData2, reUsableTableData3, customFurnitureData, whatImportantData, companysData, aboutUsData, reviewsData, featuresCardsData, calculatorData, contactFormData, servicesData2 } from "../data/HingedWardrobes";
 
 const faqs = [
   {
@@ -76,21 +76,20 @@ const faqs = [
   title="1️⃣ Распашные шкафы на заказ в Алматы - быстро и надёжно"
   description="Распашные шкафы на заказ в Алматы ⭐ Индивидуальный проект, подгонка под ваш интерьер. Стильно и под ключ ⭐ Оставьте заявку сейчас!"
 >
-  <main>
-    <Hero />
-    <Advantages />
-    <WhyUs />
-    <KitchensPrices />
-    <HowGoing />
-    <Calculator />
-    <Free3D />
-    <KitchenProduction />
-    <AboutUs />
-    <Form />
-    <CompanyText />
-    <Companys />
-    <News />
-    <Reviews />
-    <FAQ faqs={faqs} />
-  </main>
+<main>
+  <Hero {...heroData} />
+  <WhyUs {...whyUsData}/>
+  <ReUsableTable {...reUsableTableData}/>
+  <ReUsableTable {...reUsableTableData2}/>
+  <FeaturesCards {...featuresCardsData} gridCols={2}/>
+  <CalculatorHingedWardrobes {...calculatorData} />
+  <HowItWorks {...howItWorksData}/>
+  <WhatImportant {...whatImportantData}/>
+  <ContactForm {...contactFormData}/>
+  <Services {...servicesData} items={[]}/>
+  <Companys {...companysData}/>
+  <Reviews {...reviewsData}/>
+  <Services {...servicesData2}/>
+  <FAQ faqs={faqs} />
+</main>
 </Layout>

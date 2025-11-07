@@ -1,22 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/sections/furniture-assembly/Hero.astro";
-import Compare from "../components/sections/furniture-assembly/Compare.astro";
-import TypeOfKitchen from "../components/sections/furniture-assembly/TypeOfKitchen.astro";
-import Prices from "../components/sections/furniture-assembly/Prices.astro";
-import WillMade from "../components/sections/furniture-assembly/WillMade.astro";
-import Form from "../components/sections/furniture-assembly/Form.astro";
-import Systems from "../components/sections/furniture-assembly/Systems.astro";
-import HowItWorks from "../components/sections/furniture-assembly/HowItWorks.astro";
-import Calculator from "../components/sections/furniture-assembly/Calculator.astro";
-import Reviews from "../components/sections/furniture-assembly/Reviews.astro";
-import FAQ from "../components/sections/furniture-assembly/FAQ.astro";
-import HowGoing from "../components/sections/furniture-assembly/HowGoing.astro";
-import Advantages from "../components/sections/furniture-assembly/Advantages.astro";
-import Companys from "../components/sections/furniture-assembly/Companys.astro";
-import AboutUs from "../components/sections/furniture-assembly/AboutUs.astro";
-import WhatTools from "../components/sections/furniture-assembly/WhatTools.astro";
-import AboutOurTeam from "../components/sections/furniture-assembly/AboutOurTeam.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import CalculatorFurnitureAssembly from "../components/sections/CalculatorFurnitureAssembly.astro";
+import Promotions from "../components/sections/Promotions.astro";
+import Reviews from "../components/sections/Reviews.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import WhatImportant from "../components/sections/WhatImportant.astro";
+import Companys from "../components/sections/Companys.astro";
+import AboutUs from "../components/sections/AboutUs.astro";
+import ReUsableTable from "../components/sections/ReUsableTable.astro";
+import CustomFurniture from "../components/sections/CustomFurniture.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
+import FeaturesCards from "../components/sections/FeaturesCards.astro";
+import TypeOfKitchen from "../components/sections/TypeOfKitchen.astro";
+
+import { heroData, servicesData, whyUsData, howItWorksData, promotionsData, reUsableTableData, reUsableTableData2, reUsableTableData3, reUsableTableData4, reUsableTableData5, customFurnitureData, whatImportantData, companysData, aboutUsData, reviewsData, calculatorData, contactFormData, featuresCardsData, typeOfKitchenData, servicesData2 } from "../data/furniture-assembly";
 
 const faqs = [
   {
@@ -66,22 +68,22 @@ const faqs = [
   title="1️⃣ Сборка мебели в Алматы — выезд мастера за 30 минут"
   description="Работаем по Алматы и области ⭐ Собираем любую мебель ⭐ Опыт мастеров более 10 лет ⭐ Закажите услугу и получите аккуратный монтаж без ошибок"
 >
-  <main>
-    <Hero />
-    <TypeOfKitchen />
-    <Advantages />
-    <Compare />
-    <Prices />
-    <HowItWorks />
-    <Calculator />
-    <WillMade />
-    <HowGoing />
-    <Form />
-    <WhatTools />
-    <AboutUs />
-    <AboutOurTeam />
-    <Companys />
-    <Reviews />
-    <FAQ faqs={faqs} />
-  </main>
+<main>
+  <Hero {...heroData} />
+  <ReUsableTable {...reUsableTableData}/>
+  <WhyUs {...whyUsData}/>
+  <ReUsableTable {...reUsableTableData2}/>
+  <ReUsableTable {...reUsableTableData3}/>
+  <FeaturesCards {...featuresCardsData}/>
+  <CalculatorFurnitureAssembly {...calculatorData} />
+  <ReUsableTable {...reUsableTableData4}/>
+  <HowItWorks {...howItWorksData}/>
+  <ContactForm {...contactFormData}/>
+  <ReUsableTable {...reUsableTableData5}/>
+  <AboutUs {...aboutUsData} gridCols={3}/>
+  <Services {...servicesData2}/>
+  <Companys {...companysData}/>
+  <Reviews {...reviewsData}/>
+  <FAQ faqs={faqs} title="Часто задаваемые вопросы" />
+</main>
 </Layout>
