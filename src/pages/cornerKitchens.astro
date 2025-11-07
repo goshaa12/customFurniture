@@ -1,19 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/sections/corner-kitchens/Hero.astro";
-import Services from "../components/sections/corner-kitchens/Services.astro";
-import KitchensPrices from "../components/sections/corner-kitchens/KitchensPrices.astro";
-import WhyUs from "../components/sections/corner-kitchens/WhyUs.astro";
-import TypeOfKitchen from "../components/sections/corner-kitchens/TypeOfKitchen.astro";
-import Form from "../components/sections/corner-kitchens/Form.astro";
-import KitchenProduction from "../components/sections/corner-kitchens/KitchenProduction.astro";
-import Calculator from "../components/sections/corner-kitchens/Calculator.astro";
-import Reviews from "../components/sections/corner-kitchens/Reviews.astro";
-import FAQ from "../components/sections/corner-kitchens/FAQ.astro";
-import HowGoing from "../components/sections/corner-kitchens/HowGoing.astro";
-import Advantages from "../components/sections/corner-kitchens/Advantages.astro";
-import Companys from "../components/sections/corner-kitchens/Companys.astro";
-import AboutUs from "../components/sections/corner-kitchens/AboutUs.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import CalculatorSofas from "../components/sections/CalculatorSofas.astro";
+import CalculatorCornerKitchens from "../components/sections/CalculatorCornerKitchens.astro";
+import Promotions from "../components/sections/Promotions.astro";
+import Reviews from "../components/sections/Reviews.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import WhatImportant from "../components/sections/WhatImportant.astro";
+import Companys from "../components/sections/Companys.astro";
+import AboutUs from "../components/sections/AboutUs.astro";
+import ReUsableTable from "../components/sections/ReUsableTable.astro";
+import CustomFurniture from "../components/sections/CustomFurniture.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
+import FeaturesCards from "../components/sections/FeaturesCards.astro";
+import TypeOfKitchen from "../components/sections/TypeOfKitchen.astro";
+
+import { heroData, servicesData, whyUsData, howItWorksData, promotionsData, reUsableTableData, reUsableTableData2, reUsableTableData3, reUsableTableData4, customFurnitureData, whatImportantData, companysData, aboutUsData, reviewsData, calculatorData, contactFormData, featuresCardsData, typeOfKitchenData, servicesData2 } from "../data/cornerKitchens";
 
 const faqs = [
   {
@@ -77,20 +83,20 @@ const faqs = [
   title="1️⃣ Угловые кухни на заказ в Алматы - изготовление за 10 дней"
   description="Угловые кухни на заказ в Алматы ⭐ Индивидуальный дизайн под ваш интерьер ⭐ Закажите кухню под ключ и получите проект бесплатно!"
 >
-  <main>
-    <Hero />
-    <Advantages />
-    <WhyUs />
-    <KitchensPrices />
-    <HowGoing />
-    <Calculator />
-    <KitchenProduction />
-    <TypeOfKitchen />
-    <Form />
-    <Services />
-    <AboutUs />
-    <Companys />
-    <Reviews />
-    <FAQ faqs={faqs} />
-  </main>
+<main>
+  <Hero {...heroData} />
+  <WhyUs {...whyUsData}/>
+  <ReUsableTable {...reUsableTableData}/>
+  <ReUsableTable {...reUsableTableData2}/>
+  <FeaturesCards {...featuresCardsData}/>
+  <CalculatorCornerKitchens {...calculatorData} />
+  <HowItWorks {...howItWorksData}/>
+  <ReUsableTable {...reUsableTableData3}/>
+  <ContactForm {...contactFormData}/>
+  <WhatImportant {...whatImportantData}/>
+  <Services {...servicesData}/>
+  <Companys {...companysData}/>
+  <Reviews {...reviewsData}/>
+  <FAQ faqs={faqs} title="Часто задаваемые вопросы" />
+</main>
 </Layout>

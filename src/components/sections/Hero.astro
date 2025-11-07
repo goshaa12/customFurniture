@@ -114,15 +114,27 @@ const benefits = (propBenefits || defaultData.benefits).map((benefit: any) => {
 
       <!-- CTA Button -->
       <div class="flex flex-col sm:flex-row gap-3 pt-2">
-        <Button
-          href={buttonHref}
-          variant="primary"
-          size="md"
-          class="flex justify-center items-center gap-2"
-        >
-          <Calculator class="w-4 h-4 aspect-square" />
-          <span>{buttonText}</span>
-        </Button>
+        {buttonText && (
+          <Button
+            href={buttonHref}
+            variant="primary"
+            size="md"
+            class="flex justify-center items-center gap-2"
+          >
+            <Calculator class="w-4 h-4 aspect-square" />
+            <span>{buttonText}</span>
+          </Button>
+        )}
+        {secondaryButtonText && (
+          <Button
+            href={secondaryButtonHref}
+            variant={(secondaryButtonVariant as "primary" | "secondary" | "outline") || "secondary"}
+            size="md"
+            class="flex justify-center items-center gap-2"
+          >
+            <span>{secondaryButtonText}</span>
+          </Button>
+        )}
       </div>
     </div>
 
