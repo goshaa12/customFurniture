@@ -1,0 +1,1104 @@
+// Импорт всех иконок из @lucide/astro
+import {
+  CalendarCheck,
+  CheckCircle,
+  Clock,
+  Target,
+  Calculator,
+  Phone,
+  PartyPopper,
+  Star,
+  Heart,
+  MessageCircleMore,
+  FileText,
+  Users,
+  Lightbulb,
+  Workflow,
+  Truck,
+  ShieldCheck,
+  Percent,
+  Calendar,
+  Compass,
+  Box,
+  Settings,
+  Zap,
+  Layers,
+  Building2,
+  User,
+  Hammer,
+  Sparkles,
+  Shield,
+  Cog,
+  Droplet,
+  Film,
+  Sparkle,
+  CornerDownRight,
+  Circle,
+  Square,
+  Armchair,
+  Package,
+  Archive,
+  Repeat,
+  Sofa,
+  LayoutGrid,
+  Minimize,
+  Tag,
+  Palette,
+  Gift,
+  CreditCard,
+  Banknote,
+  CreditCardIcon,
+  Wallet,
+} from "@lucide/astro";
+
+// Централизованный маппинг всех иконок
+export const iconMap: Record<string, any> = {
+  CalendarCheck,
+  CheckCircle,
+  Clock,
+  Target,
+  Calculator,
+  Phone,
+  PartyPopper,
+  Star,
+  Heart,
+  MessageCircleMore,
+  FileText,
+  Users,
+  Lightbulb,
+  Workflow,
+  Truck,
+  ShieldCheck,
+  Percent,
+  Calendar,
+  Compass,
+  Box,
+  Settings,
+  Zap,
+  Layers,
+  Building2,
+  User,
+  Hammer,
+  Sparkles,
+  Shield,
+  Cog,
+  Droplet,
+  Film,
+  Sparkle,
+  CornerDownRight,
+  Circle,
+  Square,
+  Armchair,
+  Package,
+  Archive,
+  Repeat,
+  Sofa,
+  LayoutGrid,
+  Minimize,
+  Tag,
+  Palette,
+  Gift,
+  CreditCard,
+  Banknote,
+  CreditCardIcon,
+  Wallet,
+};
+
+// Типы данных для Hero компонента
+
+export interface BenefitData {
+  icon: string; // название иконки из @lucide/astro
+  iconClass?: string;
+  bgClass?: string;
+  text: string;
+}
+
+export interface HeroData {
+  title: string;
+  highlight?: string;
+  subtitle: string;
+  benefits: BenefitData[];
+  buttonText?: string;
+  buttonHref?: string;
+  imageSrc?: string;
+  secondaryButtonText?: string;
+  secondaryButtonHref?: string;
+  secondaryButtonVariant?: string;
+  thirdTitleText?: string;
+}
+
+// Типы данных для Services компонента
+
+export interface ServiceItem {
+  name: string;
+}
+
+export interface ServicesData {
+  title: string;
+  subtitle?: string;
+  items?: ServiceItem[];
+}
+
+// Типы данных для WhyUs компонента
+
+export interface AdvantageItem {
+  title: string;
+  text: string;
+}
+
+export interface ComparisonTableRow {
+  criterion: string;
+  ourCompany: string;
+  otherCompanies: string;
+}
+
+export interface WhyUsData {
+  title: string;
+  subtitle?: string;
+  advantages: AdvantageItem[];
+  comparisonTable?: {
+    header: {
+      criterion: string;
+      ourCompany: string;
+      otherCompanies: string;
+    };
+    rows: ComparisonTableRow[];
+  };
+  ctaButton: {
+    text: string;
+    href: string;
+  };
+}
+
+// Типы данных для HowItWorks компонента
+
+export interface WorkStep {
+  step: string;
+  title: string;
+  text: string;
+  icon: string; // название иконки из @lucide/astro
+  bg: string; // градиент для фона (например, "from-rose-400 to-pink-500")
+}
+
+export interface HowItWorksData {
+  title: string;
+  subtitle?: string;
+  steps: WorkStep[];
+  gridCols?: number; // количество колонок в grid (по умолчанию 3)
+  ctaButton: {
+    text: string;
+    href: string;
+  };
+}
+
+// Типы данных для Promotions компонента
+
+export interface PromotionItem {
+  icon: string; // название иконки из @lucide/astro
+  gradient: string; // градиент для фона (например, "from-rose-400 to-pink-500")
+  text: string;
+  highlightText?: string; // выделенный текст (например, "скидка 10%")
+  highlightColor?: string; // цвет выделения (например, "text-rose-600")
+}
+
+export interface PromotionsData {
+  title: string;
+  subtitle?: string;
+  items: PromotionItem[];
+  additionalText?: string;
+  ctaButton: {
+    text: string;
+    href: string;
+  };
+}
+
+// Типы данных для WhatImportant компонента
+
+export interface ImportantItem {
+  title: string;
+  text: string;
+  icon: string; // название иконки из @lucide/astro
+  bg: string; // градиент для фона (например, "from-rose-400 to-pink-500")
+}
+
+export interface WhatImportantData {
+  title: string;
+  subtitle?: string;
+  items: ImportantItem[];
+}
+
+// Типы данных для FeaturesCards компонента
+
+export interface FeatureCard {
+  title: string;
+  text: string;
+  icon: string; // название иконки из @lucide/astro
+  bg: string; // градиент для фона (например, "from-rose-400 to-pink-500")
+  iconBg?: string; // цвет фона иконки (например, "bg-rose-100")
+  iconColor?: string; // цвет иконки (например, "text-rose-600")
+}
+
+export interface FeaturesCardsData {
+  title: string;
+  subtitle?: string;
+  items: FeatureCard[];
+}
+
+// Типы данных для TypeOfKitchen компонента
+
+export interface FurnitureTypeItem {
+  title: string;
+  description: string;
+  icon: string; // название иконки из @lucide/astro
+  gradient: string; // градиент для фона (например, "from-blue-400 to-cyan-500")
+}
+
+export interface TypeOfKitchenData {
+  title: string;
+  poufsSection: {
+    title: string;
+    items: FurnitureTypeItem[];
+  };
+  banquettesSection: {
+    title: string;
+    items: FurnitureTypeItem[];
+  };
+}
+
+// Типы данных для CustomFurniture компонента
+
+export interface CustomFurnitureSection {
+  title: string;
+  items: string[];
+}
+
+export interface CustomFurnitureData {
+  title: string;
+  subtitle: string;
+  sections: CustomFurnitureSection[];
+}
+
+// Типы данных для Companys компонента
+
+export interface CompanyBrand {
+  name: string;
+  logo: string;
+  alt: string;
+}
+
+export interface CompanysData {
+  title: string;
+  subtitle: string;
+  brands: CompanyBrand[];
+}
+
+// Типы данных для AboutUs компонента
+
+export interface AboutUsSection {
+  title: string;
+  content: string;
+  icon: string; // название иконки из @lucide/astro
+}
+
+export interface AboutUsData {
+  title: string;
+  sections: AboutUsSection[];
+}
+
+// Типы данных для Reviews компонента
+
+export interface Review {
+  author: string;
+  text: string;
+  rating?: number; // по умолчанию 5
+  borderColor?: string; // цвет границы слева
+  avatarColor?: string; // цвет аватара
+  avatarInitial?: string; // первая буква имени для аватара
+}
+
+export interface ReviewsData {
+  title: string;
+  subtitle?: string;
+  reviews: Review[];
+  ctaButton?: {
+    text: string;
+    href: string;
+  };
+}
+
+// Типы данных для Calculator компонента
+
+export interface CalculatorOption {
+  value: string;
+  label: string;
+}
+
+export interface CalculatorRadioOption {
+  value: string;
+  label: string;
+}
+
+export interface CalculatorCheckboxOption {
+  value: string;
+  label: string;
+}
+
+export interface CalculatorData {
+  title: string;
+  subtitle: string;
+  furnitureTypes?: CalculatorOption[];
+  materials?: CalculatorOption[];
+  hardwareOptions?: CalculatorRadioOption[];
+  configurations?: CalculatorOption[];
+  additionalOptions?: CalculatorCheckboxOption[];
+  deadlineOptions?: CalculatorOption[];
+  sofaTypes?: CalculatorOption[];
+  fabricTypes?: CalculatorOption[];
+  mechanisms?: CalculatorOption[];
+  buttonText: string;
+  additionalText?: string;
+  contactFields: {
+    name: string;
+    phone: string;
+    email?: string;
+    emailLabel?: string;
+  };
+  dimensionsLabels?: {
+    length?: string;
+    height?: string;
+    depth?: string;
+  };
+}
+
+// Типы данных для ContactForm компонента
+
+export interface ContactFormData {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  nameLabel?: string;
+  phoneLabel?: string;
+  buttonText: string;
+  whatsappButton?: {
+    text: string;
+    href: string;
+  };
+}
+
+// Типы данных для PaymentMethods компонента
+
+export interface PaymentMethodItem {
+  title: string;
+  description: string;
+  icon: string; // название иконки из @lucide/astro
+  bg: string;
+  iconBg: string;
+  iconColor: string;
+}
+
+export interface PaymentMethodsData {
+  title: string;
+  subtitle?: string;
+  items: PaymentMethodItem[];
+}
+
+// Типы данных для ReUsableTable компонента
+
+export interface ReUsableTableColumn {
+  key: string;
+  header: string;
+  isButton?: boolean; // если true, то значение будет отображаться как кнопка
+  linkKey?: string; // ключ для ссылки в строке данных
+}
+
+export interface ReUsableTableRow {
+  [key: string]: string | number | undefined; // динамические ключи для колонок
+}
+
+export interface ReUsableTableData {
+  title: string;
+  subtitle?: string;
+  table: {
+    columns: ReUsableTableColumn[];
+    rows: ReUsableTableRow[];
+  };
+  additionalText?: string;
+  ctaButton?: {
+    text: string;
+    href: string;
+  };
+}
+
+// Константы для Hero компонента (главная страница)
+export const heroData: HeroData = {
+  title: "Мебель для детской",
+  highlight: "на заказ в Алматы",
+  subtitle: "",
+  benefits: [
+    {
+      icon: "Tag",
+      iconClass: "w-4 h-4 text-yellow-600",
+      bgClass: "bg-yellow-100",
+      text: "от 120 000 ₸ за метр",
+    },
+    {
+      icon: "Palette",
+      iconClass: "w-4 h-4 text-yellow-600",
+      bgClass: "bg-yellow-100",
+      text: "Индивидуальный дизайн-проект",
+    },
+    {
+      icon: "ShieldCheck",
+      iconClass: "w-4 h-4 text-yellow-600",
+      bgClass: "bg-yellow-100",
+      text: "Гарантия до 12 месяцев",
+    },
+    {
+      icon: "Phone",
+      iconClass: "w-4 h-4 text-yellow-600",
+      bgClass: "bg-yellow-100",
+      text: "Бесплатный выезд на замер",
+    },
+  ],
+  buttonText: "Рассчитать стоимость",
+  buttonHref: "#calculator",
+  imageSrc: "/images/home/children-furniture.webp",
+};
+
+// Константы для Services компонента
+export const servicesData: ServicesData = {
+  title: "О нас",
+  subtitle: "С 2011 года мы создаем детские комнаты, где ребёнку безопасно расти и мечтать. Каждый проект разрабатывается под ваши размеры, стиль и привычки — будь то мебель на заказ для девочки или функциональная комната для мальчика. Всё продумано до мелочей: материалы, фурнитура, планировка — чтобы вы просто наслаждались результатом без хлопот.",
+};
+ 
+export const servicesData2: ServicesData = {
+  title: "Что мы изготавливаем на заказ",
+  items: [
+    { name: "Детские столы" },
+    { name: "Детские кровати" },
+    { name: "Детские шкафы" },
+  ],
+};
+
+// Константы для WhyUs компонента
+export const whyUsData: WhyUsData = {
+  title: "Почему выбирают нас",
+  advantages: [
+    {
+      title: "11 лет создаём уют и доверие",
+      text: "С 2014 года помогаем родителям делать детские безопасными и красивыми. За это время реализовали сотни проектов и заработали репутацию надёжных мастеров.",
+    },
+    {
+      title: "20+ стильных решений под ваш вкус",
+      text: "От кроватей и шкафов до письменных столов — выберите дизайн, который вдохновляет. Мы производим мебель на собственной фабрике и контролируем качество на каждом этапе.",
+    },
+    {
+      title: "Все услуги — бесплатно до договора",
+      text: "Выезд замерщика, 3D-дизайн и консультация дизайнера уже входят в обслуживание. Вы видите точный проект и цену до подписания документов — без сюрпризов и скрытых платежей.",
+    },
+    {
+      title: "Гарантия спокойствия — 12 месяцев",
+      text: "Мы уверены в своём качестве и подтверждаем это официальной гарантией. Если что-то пойдёт не так — просто звоните, и мы решим вопрос без лишней волокиты.",
+    },
+    {
+      title: "Честные условия и прозрачный договор",
+      text: "Работаем официально — с физическими и юридическими лицами. Изготавливаем мебель для квартир, домов, детсадов и школ по всем стандартам.",
+    },
+    {
+      title: "Безопасные материалы и аккуратная сборка",
+      text: "Используем эко-материалы, сертифицированные для детской мебели. Сборка проходит бережно, без пыли и мусора, всё в чистоте и порядке.",
+    },
+  ],
+  ctaButton: {
+    text: "Заказать мебель для детской",
+    href: "#form",
+  },
+};
+
+// Константы для HowItWorks компонента
+export const howItWorksData: HowItWorksData = {
+  title: "Как проходит изготовление мебели для детской на заказ",
+  subtitle: "Создайте пространство, где всё продумано под вашего ребенка.",
+  gridCols: 2,
+  steps: [
+    {
+      step: "1",
+      title: "Шаг 1. Оставляете заявку — и мы берём всё на себя",
+      text: "Оставьте заявку или позвоните. Менеджер уточнит детали, подберёт материалы и согласует время визита.",
+      icon: "Phone",
+      bg: "from-rose-400 to-pink-500",
+    },
+    {
+      step: "2",
+      title: "Шаг 2. Замер и создание дизайн-проекта",
+      text: "Специалист приедет с образцами, сделает точные замеры и предложит планировку. Вы получите 3D-проект с цветами и расположением мебели.",
+      icon: "Users",
+      bg: "from-purple-400 to-indigo-500",
+    },
+    {
+      step: "3",
+      title: "Шаг 3. Договор и производство",
+      text: "После согласования подписываем договор и запускаем изготовление. Каждый этап контролирует менеджер — от цеха до готовности.",
+      icon: "FileText",
+      bg: "from-blue-400 to-cyan-500",
+    },
+    {
+      step: "4",
+      title: "Шаг 4. Доставка, сборка и гарантия",
+      text: "Мебель доставляем в упаковке, аккуратно собираем и проверяем. После установки выдаём акт приёмки и гарантию качества.",
+      icon: "Truck",
+      bg: "from-teal-400 to-cyan-500",
+    },
+  ],
+  ctaButton: {
+    text: "Оставить заявку на проект",
+    href: "#form",
+  },
+};
+
+// Константы для Promotions компонента
+export const promotionsData: PromotionsData = {
+  title: "Акция — скидка до 15% на кухни на заказ!",
+  subtitle: "Прямо сейчас действует специальное предложение на кухни на заказ:",
+  items: [
+    {
+      icon: "Percent",
+      gradient: "from-rose-400 to-pink-500",
+      text: "При заказе кухни от 3 погонных метров вы получаете",
+      highlightText: "скидка 10%",
+      highlightColor: "text-rose-600",
+    },
+    {
+      icon: "Percent",
+      gradient: "from-purple-400 to-indigo-500",
+      text: "При заказе от 5 метров",
+      highlightText: "скидка 15%",
+      highlightColor: "text-indigo-600",
+    },
+    {
+      icon: "Calendar",
+      gradient: "from-green-400 to-emerald-500",
+      text: "выезд замерщика в день обращения.",
+      highlightText: "Бонус:",
+      highlightColor: "text-green-600",
+    },
+  ],
+  additionalText: "Акция распространяется на все материалы: ЛДСП, МДФ, шпон и массив. Количество заказов по акции ограничено!\n\nМечтаете о кухне, где всё продумано до мелочей?\n\nМы создадим проект, идеально подходящий под ваш интерьер и образ жизни.",
+  ctaButton: {
+    text: "Заказать кухню",
+    href: "#calculator",
+  },
+};
+
+// Константы для WhatImportant компонента
+export const whatImportantData: WhatImportantData = {
+  title: "Преимущества наших детских столов",
+  subtitle: "",
+  items: [
+    {
+      title: "Безопасность для детей",
+      text: "Без острых углов и выступов. Все поверхности гладкие, фурнитура безопасная. Можно не переживать, когда ребёнок играет рядом.",
+      icon: "ShieldCheck",
+      bg: "from-rose-400 to-pink-500",
+    },
+    {
+      title: "Прочная столешница",
+      text: "Выдерживает ежедневные занятия и нагрузку. Не боится фломастеров, красок и воды.",
+      icon: "Shield",
+      bg: "from-blue-400 to-cyan-500",
+    },
+    {
+      title: "Устойчивость без шаткости",
+      text: "Широкие ножки и усиленные крепления держат стол надёжно. Даже при активном использовании он не шатается.",
+      icon: "CheckCircle",
+      bg: "from-purple-400 to-indigo-500",
+    },
+    {
+      title: "Удобное хранение",
+      text: "Вместительные ящики и полки помогают поддерживать порядок. Всё нужное всегда под рукой.",
+      icon: "Package",
+      bg: "from-teal-400 to-cyan-500",
+    },
+    {
+      title: "Тихие механизмы",
+      text: "Ящики открываются плавно и бесшумно. Никаких скрипов — комфорт даже вечером.",
+      icon: "Settings",
+      bg: "from-amber-400 to-yellow-500",
+    },
+    {
+      title: "Лёгкий уход",
+      text: "Поверхность гладкая и устойчивая к загрязнениям. Любые следы легко стереть салфеткой.",
+      icon: "Droplet",
+      bg: "from-green-400 to-emerald-500",
+    },
+    {
+      title: "Продуманные детали",
+      text: "Отверстие под розетку — удобно для лампы и зарядки. Шнуры не мешают и не портят вид комнаты.",
+      icon: "Lightbulb",
+      bg: "from-indigo-400 to-blue-500",
+    },
+    {
+      title: "Универсальный дизайн",
+      text: "Лаконичный стиль подходит под любой интерьер. Стол впишется в детскую и будет актуален годами.",
+      icon: "Palette",
+      bg: "from-pink-400 to-rose-500",
+    },
+  ],
+};
+
+// Константы для ReUsableTable компонента
+export const reUsableTableData: ReUsableTableData = {
+  title: "Чем мы отличаемся от других мебельных компаний",
+  table: {
+    columns: [
+      { key: "criterion", header: "Критерий" },
+      { key: "ourCompany", header: "Мы" },
+      { key: "otherCompanies", header: "Другие компании" },
+    ],
+    rows: [
+      {
+        criterion: "Подбор материалов",
+        ourCompany: "Предлагаем образцы фасадов, столов и тканей на замере",
+        otherCompanies: "Ограничиваются каталогом на сайте",
+      },
+      {
+        criterion: "Контроль на всех этапах",
+        ourCompany: "Менеджер сопровождает заказ от проекта до установки мебели в детской",
+        otherCompanies: "После оплаты — нет обратной связи",
+      },
+      {
+        criterion: "Фурнитура и комплектующие",
+        ourCompany: "Используем качественные безопасные крепления и направляющие",
+        otherCompanies: "Дешёвая фурнитура, быстро ломается",
+      },
+      {
+        criterion: "Сборка и монтаж",
+        ourCompany: "Опытные мастера, аккуратная установка без мусора",
+        otherCompanies: "Привлекают временных сборщиков, оставляют грязь и упаковку",
+      },
+      {
+        criterion: "Послепродажное обслуживание",
+        ourCompany: "Всегда на связи, помогаем при мелких доработках или регулировке",
+        otherCompanies: "После установки — контакты теряются",
+      },
+    ],
+  },
+};
+ 
+export const reUsableTableData2: ReUsableTableData = {
+  title: "Цены для детской на заказ в Алматы",
+  subtitle: "",
+  table: {
+    columns: [
+      { key: "product", header: "Изделие" },
+      { key: "description", header: "Описание" },
+      { key: "price", header: "Цена" },
+    ],
+    rows: [
+      {
+        product: "Детские кровати",
+        description: "Изготавливаем по размерам и стилю комнаты, с ортопедическим основанием и безопасными материалами",
+        price: "от 120 000 тг",
+      },
+      {
+        product: "Детские шкафы",
+        description: "Вместительные, с продуманными секциями и надёжной фурнитурой",
+        price: "от 130 000 тг",
+      },
+      {
+        product: "Детские столы",
+        description: "Удобные и эргономичные, для занятий и творчества, под рост ребёнка",
+        price: "от 110 000 тг",
+      },
+    ],
+  },
+  additionalText: "Пора заказать мебель для детской комнаты, которая прослужит долго и будет радовать каждый день — оформите расчёт прямо сейчас!",
+  ctaButton: {
+    text: "Рассчитать стоимость",
+    href: "#calculator",
+  },
+};
+ 
+export const reUsableTableData3: ReUsableTableData = {
+  title: "Материалы, которые мы используем",
+  subtitle: "Когда речь о детской, важно быть уверенным в каждой детали. Мы подбираем материалы так, чтобы ребёнку было безопасно, удобно и уютно каждый день.",
+  table: {
+    columns: [
+      { key: "criterion", header: "Критерий" },
+      { key: "description", header: "Описание" },
+    ],
+    rows: [
+      {
+        criterion: "ЛДСП и МДФ",
+        description: "Материалы европейского и казахстанского производства, экологичный класс E1 — без вредных испарений. Покрытие защищает от влаги и царапин, сохраняет внешний вид на годы.",
+      },
+      {
+        criterion: "Кромка",
+        description: "Прочная ПВХ или ABS-лён толщиной 2 мм. Надёжно закрывает края, исключая острые углы и сколы.",
+      },
+      {
+        criterion: "Фурнитура",
+        description: "Blum, Hettich, Boyard — механизмы с доводчиками, плавным закрыванием и защитой от случайных прищемлений.",
+      },
+      {
+        criterion: "Ткани и обивка",
+        description: "Гипоаллергенные, приятные на ощупь, не боятся активных игр и легко очищаются от пятен.",
+      },
+      {
+        criterion: "Покрытия",
+        description: "Сертифицированные краски и лаки без запаха. Стойкие к истиранию и влаге, безопасны даже для малышей.",
+      },
+      {
+        criterion: "Выбор на месте",
+        description: "Привозим образцы прямо на замер — выбираете глазами и на ощупь. Помогаем найти баланс между красотой, безопасностью и бюджетом.",
+      },
+    ],
+  },
+};
+ 
+export const reUsableTableData4: ReUsableTableData = {
+  title: "Материалы, из которых мы изготавливаем детские столы",
+  subtitle: "Для детских столов на заказ мы используем только сертифицированные материалы, безопасные для ребёнка и рассчитанные на ежедневное использование.",
+  table: {
+    columns: [
+      { key: "criterion", header: "Критерий" },
+      { key: "description", header: "Описание" },
+    ],
+    rows: [
+      {
+        criterion: "Столешница из ЛДСП и МДФ",
+        description: "Прочные и экологичные плиты класса эмиссии E1 — без токсинов и запаха. Поверхность устойчива к влаге, царапинам и краскам.",
+      },
+      {
+        criterion: "Кромка",
+        description: "ПВХ или ABS 2 мм защищает края от сколов и делает изделие полностью безопасным для детей.",
+      },
+      {
+        criterion: "Фурнитура",
+        description: "Blum, Hettich, Boyard — надёжные механизмы с доводчиками и ограничителями. Ящики открываются плавно и бесшумно.",
+      },
+      {
+        criterion: "Покрытия",
+        description: "Безопасные лакокрасочные составы без запаха. Стойкие к истиранию и лёгкие в уходе.",
+      },
+      {
+        criterion: "Дополнительные элементы",
+        description: "При желании добавляем надстройки, тумбы, отверстие под розетку и полки для хранения.",
+      },
+      {
+        criterion: "Подбор материалов",
+        description: "При замере мастер показывает образцы и помогает выбрать цвет, фактуру и тип покрытия под интерьер детской.",
+      },
+    ],
+  },
+};
+
+// Константы для CustomFurniture компонента
+export const customFurnitureData: CustomFurnitureData = {
+  title: "Как выгодно заказать кухонный гарнитур в Алматы?",
+  subtitle: "Когда речь идёт о изготовлении кухни на заказ, важно не только выбрать красивый дизайн. Хотите купить кухню, которая прослужит долго и будет подходить по стилю? Вы обратились по адресу! Мы создаём кухни, где всё продумано — от высоты столешницы до расположения розеток.",
+  sections: [
+    {
+      title: "Индивидуальный проект под ваши задачи",
+      items: [
+        "При изготовлении кухни на заказ дизайнер подстраивает проект под особенности помещения: площадь, освещённость, расположение труб и окон. Вы можете выбрать всё — от оттенка фасадов до наполнения ящиков. В итоге получается не просто мебель, а рабочее пространство под вас.",
+      ],
+    },
+    {
+      title: "Недорогие кухни на заказ без компромиссов в качестве",
+      items: [
+        "Доступная цена не означает упрощённый подход. Мы предлагаем недорогие кухни на заказ благодаря собственному производству и закупке материалов напрямую у поставщиков. Это позволяет снизить себестоимость без потери надёжности — гарнитуры остаются прочными, стильными и удобными.",
+      ],
+    },
+    {
+      title: "Кухонная мебель на заказ в Алматы с гарантией и сервисом",
+      items: [
+        "Каждая кухня проходит многоступенчатую проверку качества: от подгонки фасадов до точности установки. Мы даём официальную гарантию и остаёмся на связи даже после монтажа. Кухонная мебель на заказ в Алматы от нашей фабрики — это уверенность, что всё выполнено по договору и в срок.",
+      ],
+    },
+  ],
+};
+
+// Константы для Calculator компонента
+export const calculatorData: CalculatorData = {
+  title: "Калькулятор",
+  subtitle: "Рассчитайте стоимость своего комода всего за 5 шагов — быстро, удобно и без ожидания.",
+  materials: [
+    { value: "ldsp", label: "ЛДСП" },
+    { value: "acrylic_mdf", label: "Акриловый МДФ" },
+    { value: "film_mdf", label: "МДФ с плёнкой" },
+    { value: "painted_mdf", label: "Окрашенный МДФ" },
+    { value: "veneer_mdf", label: "Шпонированный МДФ" },
+  ],
+  hardwareOptions: [
+    { value: "boyard", label: "Стандарт (Boyard)" },
+    { value: "blum", label: "Премиум-класс (Blum)" },
+  ],
+  configurations: [
+    { value: "with_drawers", label: "С выдвижными ящиками" },
+    { value: "without_drawers", label: "Без ящиков" },
+  ],
+  buttonText: "Хочу узнать",
+  additionalText: "Укажите параметры ниже, чтобы получить предварительный расчёт прямо сейчас.",
+  contactFields: {
+    name: "Имя",
+    phone: "Телефон",
+  },
+  dimensionsLabels: {
+    length: "Ширина (в см)",
+    depth: "Глубина (в см)",
+    height: "Высота комода (в см)",
+  },
+};
+
+// Константы для Companys компонента
+export const companysData: CompanysData = {
+  title: "Нам доверяют",
+  subtitle: "",
+  brands: [
+    { name: 'Blum', logo: '/images/home/blum.webp', alt: 'Blum logo' },
+    { name: 'Hettich', logo: '/images/home/hettich.webp', alt: 'Hettich logo' },
+    { name: 'Egger', logo: '/images/home/eegger.webp', alt: 'Egger logo' },
+    { name: 'Kronospan', logo: '/images/home/kronospan.webp', alt: 'Kronospan logo' },
+  ],
+};
+
+// Константы для AboutUs компонента
+export const aboutUsData: AboutUsData = {
+  title: "О нас",
+  sections: [
+    {
+      title: "Кто мы",
+      content: "Мы — производственная компания по изготовлению мебели на заказ в Алматы с 2012 года. За это время наши мастера создали более 500 интерьеров для квартир, домов и офисов.",
+      icon: "Building2",
+    },
+    {
+      title: "Наши ценности",
+      content: "Прямые поставки — без посредников, цена ниже на 15–20%.\n\nКонтроль качества на каждом этапе — от замера до установки.\n\nСоблюдение сроков — мебель изготавливается от 10 дней.",
+      icon: "Star",
+    },
+    {
+      title: "Наши мастера",
+      content: "Наш штат состоит из квалифицированных дизайнеров и профессиональных сборщиков. Каждый из них обладает опытом в мебельной сфере более пяти лет. Мы изготавливаем мебель, идеально вписывающуюся в ваше пространство. Мы обеспечиваем безупречную подгонку габаритов и оптимальный выбор всех комплектующих.",
+      icon: "User",
+    },
+    {
+      title: "Наш производственный цех",
+      content: "Мы владеем собственным производством в городе Алматы. Цех оборудован современными станками и высокоточным оборудованием. Это позволяет нам создавать изделия с идеальной геометрией, что гарантирует их долговечность.",
+      icon: "Hammer",
+    },
+  ],
+};
+
+// Константы для Reviews компонента
+export const reviewsData: ReviewsData = {
+  title: "Отзывы",
+  reviews: [
+    {
+      author: "Малика К., Алматы",
+      text: "«Долго искали, где заказать детскую мебель на заказ. Боялись, что не уложимся в бюджет. Здесь всё просчитали честно, помогли подобрать материалы и цвет под комнату дочери. Теперь у нас уютный уголок для девочки, где всё продумано до мелочей».",
+      rating: 5,
+      borderColor: "border-pink-400",
+      avatarColor: "from-pink-100 to-rose-200",
+      avatarInitial: "М",
+    },
+    {
+      author: "Андрей Л., Талдыкорган",
+      text: "«После ремонта нужно было срочно обустроить детскую комнату для мальчика — хотелось функционально и безопасно. Команда всё спроектировала под размеры, учла наши пожелания и даже добавила идеи, о которых не думали. Получилось стильно и удобно, ребёнок в восторге».",
+      rating: 5,
+      borderColor: "border-blue-400",
+      avatarColor: "from-blue-100 to-cyan-200",
+      avatarInitial: "А",
+    },
+    {
+      author: "Ольга Н., Алматы",
+      text: "«Заказывали мебель в детскую комнату на заказ по индивидуальным размерам. Боялась, что будет долго, но всё сделали точно в срок. Спасибо!»",
+      rating: 5,
+      borderColor: "border-purple-400",
+      avatarColor: "from-purple-100 to-indigo-200",
+      avatarInitial: "О",
+    },
+  ],
+  ctaButton: {
+    text: "Смотреть ещё отзывы",
+    href: "#reviews",
+  },
+};
+
+// Константы для ContactForm компонента
+export const contactFormData: ContactFormData = {
+  title: "Оставьте заявку",
+  subtitle: "Один шаг — и вы получите готовое решение для детской.",
+  description: "Менеджер всё уточнит и подберёт лучшее.",
+  nameLabel: "Имя",
+  phoneLabel: "Телефон",
+  buttonText: "Получить консультацию",
+};
+
+// Константы для FeaturesCards компонента
+export const featuresCardsData: FeaturesCardsData = {
+  title: "Детские комнаты на заказ — мебель, которая растёт вместе с ребенком",
+  subtitle: "Мы создаём пространства, где каждая деталь имеет смысл: от цвета стен до фурнитуры. Всё изготавливается по размерам, стилю и привычкам семьи — без шаблонов и компромиссов.",
+  items: [
+    {
+      title: "Как заказать детскую комнату — просто и удобно",
+      text: "Чтобы заказать детскую комнату, достаточно отправить размеры и фото помещения. Мы подберём планировку, материалы и сделаем визуализацию в 3D-формате. Вы сразу видите результат и цену — без скрытых доплат и ожиданий неделями.",
+      icon: "Target",
+      bg: "from-rose-400 to-pink-500",
+      iconBg: "bg-rose-100",
+      iconColor: "text-rose-600",
+    },
+    {
+      title: "Детская мебель на заказ по индивидуальным размерам",
+      text: "Когда комната нестандартная, нужна детская мебель по индивидуальному заказу — и мы делаем именно такую. Учтём высоту потолков, выступы, ниши, особенности роста и возраста ребёнка. Пространство используется рационально, а интерьер выглядит гармонично.",
+      icon: "CheckCircle",
+      bg: "from-blue-400 to-cyan-500",
+      iconBg: "bg-blue-100",
+      iconColor: "text-blue-600",
+    },
+    {
+      title: "Детская комната для мальчика на заказ — функциональность без скуки",
+      text: "Для активных мальчиков важны надёжность и удобство. Мы проектируем мебель для детской комнаты для мальчика на заказ, добавляя спортивные зоны, вместительные системы хранения и элементы сдержанного дизайна. Такая мебель не надоедает и выдерживает всё, что придумает ребёнок.",
+      icon: "Star",
+      bg: "from-purple-400 to-indigo-500",
+      iconBg: "bg-purple-100",
+      iconColor: "text-purple-600",
+    },
+    {
+      title: "Детская мебель для девочек на заказ — пространство мечты",
+      text: "Мы создаём уютные и стильные детские комнаты под заказ с мягкими цветами и продуманными деталями. Комоды, кровати и шкафы для девочек изготавливаются из безопасных материалов и украшаются элементами декора.",
+      icon: "Users",
+      bg: "from-teal-400 to-cyan-500",
+      iconBg: "bg-teal-100",
+      iconColor: "text-teal-600",
+    },
+  ],
+};
+
+// Константы для TypeOfKitchen компонента
+export const typeOfKitchenData: TypeOfKitchenData = {
+  title: "Какую мебель мы изготавливаем?",
+  poufsSection: {
+    title: "Виды пуфов",
+    items: [
+      {
+        title: "Угловые модели",
+        description: "Практичные пуфы для небольших пространств — компактно становятся в угол или у шкафа. Подходят для пуфика в прихожую на заказ, где важно рационально использовать каждый метр.",
+        icon: "CornerDownRight",
+        gradient: "from-blue-400 to-cyan-500",
+      },
+      {
+        title: "Цилиндрические пуфы",
+        description: "Отличный акцент в спальне или гостиной. Легко перемещаются, устойчивы и служат мягкой подставкой или сиденьем. Изготовление пуфов позволяет выбрать оптимальную высоту и ткань под интерьер.",
+        icon: "Circle",
+        gradient: "from-purple-400 to-pink-500",
+      },
+      {
+        title: "Квадратные пуфы",
+        description: "Выдерживают ежедневные нагрузки и подходят для семьи с детьми. Используются у туалетного столика, в гардеробной или гостиной. Подбирается при изготовлении пуфов на заказ — по размерам.",
+        icon: "Square",
+        gradient: "from-green-400 to-teal-500",
+      },
+      {
+        title: "Пуф со спинкой",
+        description: "Удобны для долгого сидения, особенно в спальнях и детских. Спинка создаёт поддержку и завершённый вид, делая пуф полноценным элементом интерьера.",
+        icon: "Armchair",
+        gradient: "from-amber-400 to-orange-500",
+      },
+      {
+        title: "Пуфик-тумба",
+        description: "Комбинирует место для хранения и мягкое сиденье. При изготовлении банкетки на заказ или пуфика можно добавить отделения под обувь или аксессуары.",
+        icon: "Package",
+        gradient: "from-rose-400 to-red-500",
+      },
+      {
+        title: "Пуфик-коробка",
+        description: "Оснащён съёмной крышкой и глубоким отсеком. Такой пуф помогает поддерживать порядок в прихожей, аккуратно скрывая вещи. Идеален для хранения обуви, аксессуаров и мелких предметов.",
+        icon: "Archive",
+        gradient: "from-indigo-400 to-blue-500",
+      },
+      {
+        title: "Пуфик-трансформер",
+        description: "Меняет форму и высоту — превращается в столик, подставку или полноценное сиденье. Популярное решение при изготовлении пуфиков на заказ для современных квартир.",
+        icon: "Repeat",
+        gradient: "from-teal-400 to-green-500",
+      },
+    ],
+  },
+  banquettesSection: {
+    title: "Виды банкеток",
+    items: [
+      {
+        title: "Классические модели",
+        description: "Скамьи без спинки — универсальное дополнение спальни или гостиной. При изготовлении банкетки на заказ можно выбрать длину, обивку и высоту под кровать или окно.",
+        icon: "Sofa",
+        gradient: "from-slate-400 to-gray-500",
+      },
+      {
+        title: "Банкетки под старину",
+        description: "Декоративная резьба, мягкое сиденье и устойчивый каркас делают такие банкетки на заказ выразительным акцентом в классических интерьерах.",
+        icon: "Building2",
+        gradient: "from-amber-500 to-yellow-600",
+      },
+      {
+        title: "Многофункциональные банкетки",
+        description: "Содержат встроенные ящики и полки для хранения обуви или сумок. Практичное решение для банкетки в прихожую на заказ, где важна организация пространства.",
+        icon: "Layers",
+        gradient: "from-violet-400 to-purple-500",
+      },
+      {
+        title: "Банкетки с выдвижной полкой",
+        description: "Комфортны в узких коридорах. Нижняя полка — для обуви, верхняя — для сидения. Мы предлагаем изготовление банкеток с разными вариантами отделки и механизмов.",
+        icon: "LayoutGrid",
+        gradient: "from-cyan-400 to-blue-500",
+      },
+      {
+        title: "Компактные модели",
+        description: "Без подлокотников, легко вписываются даже в маленькие помещения. Такие пуфы и банкетки сочетают минимализм, удобство и функциональность.",
+        icon: "Minimize",
+        gradient: "from-pink-400 to-rose-500",
+      },
+    ],
+  },
+};
+
+// Константы для PaymentMethods компонента
+export const paymentMethodsData: PaymentMethodsData = {
+  title: "Способы оплаты",
+  subtitle: "Мы сделали оплату простой и комфортной — выберите то, что удобно именно вам:",
+  items: [
+    {
+      title: "Банковский перевод",
+      description: "Быстро и официально, по счёту через любой банк.",
+      icon: "CreditCard",
+      bg: "from-blue-400 to-blue-600",
+      iconBg: "bg-blue-100",
+      iconColor: "text-blue-600",
+    },
+    {
+      title: "Наличные",
+      description: "Можно оплатить в офисе, через терминал или в отделении банка.",
+      icon: "Banknote",
+      bg: "from-emerald-400 to-emerald-600",
+      iconBg: "bg-emerald-100",
+      iconColor: "text-emerald-600",
+    },
+    {
+      title: "Перевод на карту",
+      description: "Принимаем Kaspi и Halyk, мгновенно и без лишних шагов.",
+      icon: "CreditCardIcon",
+      bg: "from-amber-400 to-amber-600",
+      iconBg: "bg-amber-100",
+      iconColor: "text-amber-600",
+    },
+    {
+      title: "Электронные кошельки",
+      description: "Qiwi и другие проверенные сервисы для лёгких онлайн-платежей.",
+      icon: "Wallet",
+      bg: "from-purple-400 to-purple-600",
+      iconBg: "bg-purple-100",
+      iconColor: "text-purple-600",
+    },
+  ],
+};
+ 

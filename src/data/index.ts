@@ -236,6 +236,10 @@ export interface ReviewsData {
   title: string;
   subtitle?: string;
   reviews: Review[];
+  ctaButton?: {
+    text: string;
+    href: string;
+  };
 }
 
 // Типы данных для Calculator компонента

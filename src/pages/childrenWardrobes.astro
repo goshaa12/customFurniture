@@ -1,24 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/sections/childrenWardrobes/Hero.astro";
-import Services from "../components/sections/childrenWardrobes/Services.astro";
-import KitchensPrices from "../components/sections/childrenWardrobes/KitchensPrices.astro";
-import WhyUs from "../components/sections/childrenWardrobes/WhyUs.astro";
-import TypeOfKitchen from "../components/sections/childrenWardrobes/TypeOfKitchen.astro";
-import Form from "../components/sections/childrenWardrobes/Form.astro";
-import KitchenProduction from "../components/sections/childrenWardrobes/KitchenProduction.astro";
-import Calculator from "../components/sections/childrenWardrobes/Calculator.astro";
-import Reviews from "../components/sections/childrenWardrobes/Reviews.astro";
-import FAQ from "../components/sections/childrenWardrobes/FAQ.astro";
-import HowGoing from "../components/sections/childrenWardrobes/HowGoing.astro";
-import Advantages from "../components/sections/childrenWardrobes/Advantages.astro";
-import Companys from "../components/sections/childrenWardrobes/Companys.astro";
-import AboutUs from "../components/sections/childrenWardrobes/AboutUs.astro";
-import Free3D from "../components/sections/childrenWardrobes/Free3D.astro";
-import CompanyText from "../components/sections/childrenWardrobes/CompanyText.astro";
-import News from "../components/sections/childrenWardrobes/News.astro";
-import Materials from "../components/sections/childrenWardrobes/Materials.astro";
-import PaymentMethods from "../components/sections/childrenWardrobes/PaymentMethods.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import CalculatorSofas from "../components/sections/CalculatorSofas.astro";
+import CalculatorCornerKitchens from "../components/sections/CalculatorCornerKitchens.astro";
+import CalculatorCommode from "../components/sections/CalculatorCommode.astro";
+import Promotions from "../components/sections/Promotions.astro";
+import Reviews from "../components/sections/Reviews.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import WhatImportant from "../components/sections/WhatImportant.astro";
+import Companys from "../components/sections/Companys.astro";
+import AboutUs from "../components/sections/AboutUs.astro";
+import ReUsableTable from "../components/sections/ReUsableTable.astro";
+import CustomFurniture from "../components/sections/CustomFurniture.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
+import FeaturesCards from "../components/sections/FeaturesCards.astro";
+import TypeOfKitchen from "../components/sections/TypeOfKitchen.astro";
+
+import { heroData, servicesData, whyUsData, howItWorksData, promotionsData, reUsableTableData, reUsableTableData2, reUsableTableData3, reUsableTableData4, customFurnitureData, whatImportantData, companysData, aboutUsData, reviewsData, calculatorData, contactFormData, featuresCardsData, typeOfKitchenData, servicesData2 } from "../data/childrenWardrobes";
 
 const faqs = [
   {
@@ -78,21 +80,20 @@ const faqs = [
   title="1️⃣Детские шкафы на заказ в Алматы - по размеру, с гарантией"
   description="Детские шкафы на заказ в Алматы ⭐ Сделаем по размеру с гарантией, безопасные и удобные для детей ⭐ Оставьте заявку и получите расчёт цены!"
 >
-  <main>
-    <Hero />
-    <Advantages />
-    <!-- <WhyUs /> -->
-    <Services />
-    <KitchensPrices />
-    <HowGoing />
-    <KitchenProduction />
-    <PaymentMethods />
-    <Form />
-    <Materials />
-
-    <CompanyText />
-    <Companys />
-    <Reviews />
-    <FAQ faqs={faqs} title="Ответы на вопросы про детские шкафы на заказ" />
-  </main>
+<main>
+  <Hero {...heroData} />
+  <WhyUs {...whyUsData}/>
+  <ReUsableTable {...reUsableTableData}/>
+  <ReUsableTable {...reUsableTableData2}/>
+  <FeaturesCards {...featuresCardsData}/>
+  <!-- <CalculatorCommode {...calculatorData} /> -->
+  <HowItWorks {...howItWorksData}/>
+  <WhatImportant {...whatImportantData}/>
+  <ContactForm {...contactFormData}/>
+  <ReUsableTable {...reUsableTableData3}/>
+  <Services {...servicesData} items={[]}/>
+  <Companys {...companysData}/>
+  <Reviews {...reviewsData}/>
+  <FAQ faqs={faqs} title="Часто задаваемые вопросы" />
+</main>
 </Layout>

@@ -1,23 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/sections/commode/Hero.astro";
-import Services from "../components/sections/commode/Services.astro";
-import KitchensPrices from "../components/sections/commode/KitchensPrices.astro";
-import WhyUs from "../components/sections/commode/WhyUs.astro";
-import TypeOfKitchen from "../components/sections/commode/TypeOfKitchen.astro";
-import Form from "../components/sections/commode/Form.astro";
-import KitchenProduction from "../components/sections/commode/KitchenProduction.astro";
-import Calculator from "../components/sections/commode/Calculator.astro";
-import Reviews from "../components/sections/commode/Reviews.astro";
-import FAQ from "../components/sections/commode/FAQ.astro";
-import HowGoing from "../components/sections/commode/HowGoing.astro";
-import Advantages from "../components/sections/commode/Advantages.astro";
-import Companys from "../components/sections/commode/Companys.astro";
-import AboutUs from "../components/sections/commode/AboutUs.astro";
-import Materials from "../components/sections/commode/Materials.astro";
-import Free3D from "../components/sections/commode/Free3D.astro";
-import CompanyText from "../components/sections/commode/CompanyText.astro";
-import News from "../components/sections/commode/News.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import CalculatorSofas from "../components/sections/CalculatorSofas.astro";
+import CalculatorCornerKitchens from "../components/sections/CalculatorCornerKitchens.astro";
+import CalculatorCommode from "../components/sections/CalculatorCommode.astro";
+import Promotions from "../components/sections/Promotions.astro";
+import Reviews from "../components/sections/Reviews.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import WhatImportant from "../components/sections/WhatImportant.astro";
+import Companys from "../components/sections/Companys.astro";
+import AboutUs from "../components/sections/AboutUs.astro";
+import ReUsableTable from "../components/sections/ReUsableTable.astro";
+import CustomFurniture from "../components/sections/CustomFurniture.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
+import FeaturesCards from "../components/sections/FeaturesCards.astro";
+import TypeOfKitchen from "../components/sections/TypeOfKitchen.astro";
+
+import { heroData, servicesData, whyUsData, howItWorksData, promotionsData, reUsableTableData, reUsableTableData2, reUsableTableData3, reUsableTableData4, customFurnitureData, whatImportantData, companysData, aboutUsData, reviewsData, calculatorData, contactFormData, featuresCardsData, typeOfKitchenData, servicesData2 } from "../data/commode";
 
 const faqs = [
   {
@@ -77,21 +80,20 @@ const faqs = [
   title="1️⃣ Комоды на заказ в Алматы — под ваш размер за 5 дней"
   description="Комоды на заказ в Алматы ⭐ Изготовим под ваш размер за 5 дней! Бесплатный замер и точный проект ⭐ Оформите заказ прямо сейчас!"
 >
-  <main>
-    <Hero />
-    <Advantages />
-    <WhyUs />
-    <KitchensPrices />
-    <HowGoing />
-    <Calculator />
-    <KitchenProduction />
-    <Form />
-    <AboutUs />
-    <Materials />
-    <CompanyText />
-
-    <Companys />
-    <Reviews />
-    <FAQ faqs={faqs} title="Часто задаваемые вопросы при заказе комодов" />
-  </main>
+<main>
+  <Hero {...heroData} />
+  <WhyUs {...whyUsData}/>
+  <ReUsableTable {...reUsableTableData}/>
+  <ReUsableTable {...reUsableTableData2}/>
+  <FeaturesCards {...featuresCardsData}/>
+  <CalculatorCommode {...calculatorData} />
+  <HowItWorks {...howItWorksData}/>
+  <ContactForm {...contactFormData}/>
+  <WhatImportant {...whatImportantData}/>
+  <ReUsableTable {...reUsableTableData3}/>
+  <Services {...servicesData} items={[]}/>
+  <Companys {...companysData}/>
+  <Reviews {...reviewsData}/>
+  <FAQ faqs={faqs} title="Часто задаваемые вопросы" />
+</main>
 </Layout>

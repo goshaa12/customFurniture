@@ -83,17 +83,21 @@ const benefits = (propBenefits || defaultData.benefits).map((benefit: any) => {
           class="text-3xl md:text-4xl lg:text-5xl font-bold text-stone-800 leading-tight"
         >
           {title}
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500"
-          >
-            {highlight}
-          </span>
+          {highlight && (
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500"
+            >
+              {" "}{highlight}
+            </span>
+          )}
           {thirdTitleText}
         </h1>
 
-        <p class="text-base md:text-lg text-stone-600 leading-relaxed max-w-xl">
-          {subtitle}
-        </p>
+        {subtitle && (
+          <p class="text-base md:text-lg text-stone-600 leading-relaxed max-w-xl">
+            {subtitle}
+          </p>
+        )}
       </div>
 
       <!-- Benefits -->
