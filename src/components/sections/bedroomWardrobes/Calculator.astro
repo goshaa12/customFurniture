@@ -1,6 +1,43 @@
 ---
-// KitchenCalculator.astro
-import { Layers, Table, Settings, Ruler, ArrowUp, User, Phone } from '@lucide/astro';
+import { calculatorData, type CalculatorData } from "../../../data/bedroomWardrobes";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  wardrobeFormat?: Array<{ value: string; label: string }>;
+  facadeFinish?: Array<{ value: string; label: string }>;
+  hardwareOptions?: Array<{ value: string; label: string }>;
+  buttonText?: string;
+  additionalText?: string;
+  whatsappButton?: {
+    text: string;
+    href: string;
+  };
+  contactFields?: {
+    name: string;
+    phone: string;
+  };
+  dimensionsLabels?: {
+    width?: string;
+    depth?: string;
+    height?: string;
+  };
+}
+
+const defaultData = calculatorData;
+
+const {
+  title = defaultData.title,
+  subtitle = defaultData.subtitle,
+  wardrobeFormat = defaultData.wardrobeFormat || [],
+  facadeFinish = defaultData.facadeFinish || [],
+  hardwareOptions = defaultData.hardwareOptions || [],
+  buttonText = defaultData.buttonText,
+  additionalText = defaultData.additionalText,
+  whatsappButton = defaultData.whatsappButton,
+  contactFields = defaultData.contactFields,
+  dimensionsLabels = defaultData.dimensionsLabels,
+} = Astro.props;
 ---
 
 <section id="calculator" class="w-full py-16 md:py-24 bg-white">
@@ -8,53 +45,63 @@ import { Layers, Table, Settings, Ruler, ArrowUp, User, Phone } from '@lucide/as
     {/* Header */}
     <div class="text-center mb-12 md:mb-16">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-        Калькулятор стоимости шкафа
+        {title}
       </h2>
-      <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-        Ответьте на 5 простых вопросов, и мы сразу подготовим персональный расчёт под ваш интерьер и бюджет для заказа шкафа.
-      </p>
+      {subtitle && (
+        <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          {subtitle}
+        </p>
+      )}
     </div>
 
     {/* Form Card */}
     <div class="bg-white rounded-2xl p-6 md:p-8 border border-gray-200 shadow-lg">
       <form class="space-y-6">
         {/* 1. Формат шкафа */}
-        <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-blue-300 transition-all duration-300">
-          <div class="flex items-center mb-4">
-            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-3">1</div>
-            <label class="text-lg font-semibold text-gray-900">Формат шкафа</label>
+        {wardrobeFormat.length > 0 && (
+          <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-blue-300 transition-all duration-300">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-3">1</div>
+              <label class="text-lg font-semibold text-gray-900">Формат шкафа</label>
+            </div>
+            <select name="wardrobeFormat" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition">
+              {wardrobeFormat.map((option) => (
+                <option value={option.value}>{option.label}</option>
+              ))}
+            </select>
           </div>
-          <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition">
-            <option>С распашными дверцами</option>
-            <option>Без фасадов</option>
-            <option>Комбинированный вариант</option>
-          </select>
-        </div>
+        )}
+        
         {/* 2. Отделка фасада */}
-        <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-yellow-300 transition-all duration-300">
-          <div class="flex items-center mb-4">
-            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold mr-3">2</div>
-            <label class="text-lg font-semibold text-gray-900">Отделка фасада</label>
+        {facadeFinish.length > 0 && (
+          <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-yellow-300 transition-all duration-300">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold mr-3">2</div>
+              <label class="text-lg font-semibold text-gray-900">Отделка фасада</label>
+            </div>
+            <select name="facadeFinish" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 transition">
+              {facadeFinish.map((option) => (
+                <option value={option.value}>{option.label}</option>
+              ))}
+            </select>
           </div>
-          <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 transition">
-            <option>Ламинированное ДСП</option>
-            <option>Глянцевый МДФ</option>
-            <option>Плёночное покрытие</option>
-            <option>Окрашенный МДФ</option>
-            <option>Шпон натурального дерева</option>
-          </select>
-        </div>
+        )}
+        
         {/* 3. Комплектующие */}
-        <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-green-300 transition-all duration-300">
-          <div class="flex items-center mb-4">
-            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold mr-3">3</div>
-            <label class="text-lg font-semibold text-gray-900">Комплектующие</label>
+        {hardwareOptions.length > 0 && (
+          <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-green-300 transition-all duration-300">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold mr-3">3</div>
+              <label class="text-lg font-semibold text-gray-900">Комплектующие</label>
+            </div>
+            <select name="hardwareOptions" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-100 transition">
+              {hardwareOptions.map((option) => (
+                <option value={option.value}>{option.label}</option>
+              ))}
+            </select>
           </div>
-          <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-100 transition">
-            <option>Стандарт (Boyard)</option>
-            <option>Премиум-класс (Blum)</option>
-          </select>
-        </div>
+        )}
+        
         {/* 4. Габариты */}
         <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-purple-300 transition-all duration-300">
           <div class="flex items-center mb-4">
@@ -62,49 +109,62 @@ import { Layers, Table, Settings, Ruler, ArrowUp, User, Phone } from '@lucide/as
             <label class="text-lg font-semibold text-gray-900">Габариты</label>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Ширина, см</label>
-              <input type="number" min="0" placeholder="Укажите ширину" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-100 transition" />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Глубина, см</label>
-              <input type="number" min="0" placeholder="Укажите глубину" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-100 transition" />
-            </div>
+            {dimensionsLabels?.width && (
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">{dimensionsLabels.width}</label>
+                <input type="number" name="width" min="0" placeholder="Укажите ширину" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-100 transition" />
+              </div>
+            )}
+            {dimensionsLabels?.depth && (
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">{dimensionsLabels.depth}</label>
+                <input type="number" name="depth" min="0" placeholder="Укажите глубину" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-100 transition" />
+              </div>
+            )}
           </div>
         </div>
+        
         {/* 5. Высота */}
-        <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-emerald-300 transition-all duration-300">
-          <div class="flex items-center mb-4">
-            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold mr-3">5</div>
-            <label class="text-lg font-semibold text-gray-900">Высота</label>
+        {dimensionsLabels?.height && (
+          <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-emerald-300 transition-all duration-300">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold mr-3">5</div>
+              <label class="text-lg font-semibold text-gray-900">Высота</label>
+            </div>
+            <input type="number" name="height" min="0" placeholder={`Впишите желаемую высоту мебели (в см)`} class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition" />
           </div>
-          <input type="number" min="0" placeholder="Впишите желаемую высоту мебели (в см)" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition" />
-        </div>
+        )}
+        
         {/* Контакты */}
         <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-indigo-300 transition-all duration-300">
           <div class="grid md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Имя</label>
-              <input type="text" placeholder="Ваше имя" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition" />
+              <label class="block text-sm font-medium text-gray-700 mb-2">{contactFields.name}</label>
+              <input type="text" name="name" placeholder="Ваше имя" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition" />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Телефон</label>
-              <input type="tel" placeholder="+7 (___) ___-__-__" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition" />
+              <label class="block text-sm font-medium text-gray-700 mb-2">{contactFields.phone}</label>
+              <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition" />
             </div>
           </div>
         </div>
+        
         {/* CTA Text + Buttons */}
         <div class="text-center pt-6">
-          <p class="text-gray-600 mb-6 text-base">
-            Узнайте, сколько будет стоить шкаф вашей мечты — быстро, точно и без скрытых платежей.
-          </p>
+          {additionalText && (
+            <p class="text-gray-600 mb-6 text-base">
+              {additionalText}
+            </p>
+          )}
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg">
-              Хочу узнать стоимость
+              {buttonText}
             </button>
-            <a href="https://wa.me/77000000000" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg text-center">
-              Написать в WhatsApp
-            </a>
+            {whatsappButton && (
+              <a href={whatsappButton.href} target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg text-center">
+                {whatsappButton.text}
+              </a>
+            )}
           </div>
         </div>
       </form>

@@ -1,25 +1,28 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/sections/bedroomBeds/Hero.astro";
-import Services from "../components/sections/bedroomBeds/Services.astro";
-import KitchensPrices from "../components/sections/bedroomBeds/KitchensPrices.astro";
-import WhyUs from "../components/sections/bedroomBeds/WhyUs.astro";
-import TypeOfKitchen from "../components/sections/bedroomBeds/TypeOfKitchen.astro";
-import Form from "../components/sections/bedroomBeds/Form.astro";
-import KitchenProduction from "../components/sections/bedroomBeds/KitchenProduction.astro";
-import Calculator from "../components/sections/bedroomBeds/Calculator.astro";
-import Reviews from "../components/sections/bedroomBeds/Reviews.astro";
-import FAQ from "../components/sections/bedroomBeds/FAQ.astro";
-import HowGoing from "../components/sections/bedroomBeds/HowGoing.astro";
-import Advantages from "../components/sections/bedroomBeds/Advantages.astro";
-import Companys from "../components/sections/bedroomBeds/Companys.astro";
-import AboutUs from "../components/sections/bedroomBeds/AboutUs.astro";
-import Free3D from "../components/sections/bedroomBeds/Free3D.astro";
-import CompanyText from "../components/sections/bedroomBeds/CompanyText.astro";
-import News from "../components/sections/bedroomBeds/News.astro";
-import Materials from "../components/sections/bedroomBeds/Materials.astro";
-import PaymentMethods from "../components/sections/bedroomBeds/PaymentMethods.astro";
-import WillMade from "../components/sections/bedroomBeds/WillMade.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import CalculatorSofas from "../components/sections/CalculatorSofas.astro";
+import CalculatorCornerKitchens from "../components/sections/CalculatorCornerKitchens.astro";
+import CalculatorCommode from "../components/sections/CalculatorCommode.astro";
+import CalculatorBedroomBeds from "../components/sections/bedroomBeds/Calculator.astro";
+import Promotions from "../components/sections/Promotions.astro";
+import Reviews from "../components/sections/Reviews.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import WhatImportant from "../components/sections/WhatImportant.astro";
+import Companys from "../components/sections/Companys.astro";
+import AboutUs from "../components/sections/AboutUs.astro";
+import ReUsableTable from "../components/sections/ReUsableTable.astro";
+import CustomFurniture from "../components/sections/CustomFurniture.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
+import FeaturesCards from "../components/sections/FeaturesCards.astro";
+import TypeOfKitchen from "../components/sections/TypeOfKitchen.astro";
+import PaymentMethods from "../components/sections/PaymentMethods.astro";
+
+import { heroData, servicesData, whyUsData, howItWorksData, promotionsData, reUsableTableData, reUsableTableData2, reUsableTableData3, reUsableTableData4, customFurnitureData, whatImportantData, companysData, aboutUsData, reviewsData, calculatorData, contactFormData, featuresCardsData, typeOfKitchenData, servicesData2, paymentMethodsData } from "../data/bedroomBeds";
 
 const faqs = [
   {
@@ -79,21 +82,21 @@ const faqs = [
   title="1️⃣ Кровати на заказ в Алматы — за 7 дней и с гарантией"
   description="Кровати на заказ в Алматы ⭐ Изготовим по размерам за 7 дней! Гарантия качества и стильный дизайн ⭐ Закажите кровать прямо сейчас"
 >
-  <main>
-    <Hero />
-    <Advantages />
-    <WhyUs />
-    <WillMade />
-    <KitchensPrices />
-    <HowGoing />
-    <Calculator />
-    <KitchenProduction />
-    <Form />
-    <PaymentMethods />
-    <TypeOfKitchen />
-    <CompanyText />
-    <Companys />
-    <Reviews />
-    <FAQ faqs={faqs} title="Часто задаваемые вопросы" />
-  </main>
+<main>
+  <Hero {...heroData} />
+  <WhyUs {...whyUsData} />
+  <ReUsableTable {...reUsableTableData} />
+  <ReUsableTable {...reUsableTableData2} />
+  <ReUsableTable {...reUsableTableData3} />
+  <FeaturesCards {...featuresCardsData} gridCols={2}/>
+  <CalculatorBedroomBeds {...calculatorData} />
+  <HowItWorks {...howItWorksData} />
+  <ContactForm {...contactFormData} />
+  <CustomFurniture {...customFurnitureData} />
+  <ReUsableTable {...reUsableTableData4} />
+  <Services {...servicesData} items={[]} />
+  <Companys {...companysData} />
+  <Reviews {...reviewsData} />
+  <FAQ faqs={faqs} title="Часто задаваемые вопросы" />
+</main>
 </Layout>
