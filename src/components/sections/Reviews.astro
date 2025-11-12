@@ -104,13 +104,29 @@ const getInitial = (author: string, avatarInitial?: string): string => {
     "name": "Мебель на заказ",
     "review": reviews.map((review) => ({
       "@type": "Review",
-      "author": review.author,
+      "author": {
+        "@type": "Person",
+        "name": review.author
+      },
       "reviewBody": review.text.replace(/«|»/g, '"'),
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": String(review.rating || 5),
-        "bestRating": "5"
-      }
-    }))
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "datePublished": new Date().toISOString().split('T')[0]
+    })),
+    "aggregateRating": reviews.length > 0 ? {
+      "@type": "AggregateRating",
+      "ratingValue": String(
+        Math.round(
+          (reviews.reduce((sum, r) => sum + (r.rating || 5), 0) / reviews.length) * 10
+        ) / 10
+      ),
+      "reviewCount": String(reviews.length),
+      "bestRating": "5",
+      "worstRating": "1"
+    } : undefined
   })} />
 </Section>

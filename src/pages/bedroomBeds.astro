@@ -22,7 +22,28 @@ import FeaturesCards from "../components/sections/FeaturesCards.astro";
 import TypeOfKitchen from "../components/sections/TypeOfKitchen.astro";
 import PaymentMethods from "../components/sections/PaymentMethods.astro";
 
-import { heroData, servicesData, whyUsData, howItWorksData, promotionsData, reUsableTableData, reUsableTableData2, reUsableTableData3, reUsableTableData4, customFurnitureData, whatImportantData, companysData, aboutUsData, reviewsData, calculatorData, contactFormData, featuresCardsData, typeOfKitchenData, servicesData2, paymentMethodsData } from "../data/bedroomBeds";
+import {
+  heroData,
+  servicesData,
+  whyUsData,
+  howItWorksData,
+  promotionsData,
+  reUsableTableData,
+  reUsableTableData2,
+  reUsableTableData3,
+  reUsableTableData4,
+  customFurnitureData,
+  whatImportantData,
+  companysData,
+  aboutUsData,
+  reviewsData,
+  calculatorData,
+  contactFormData,
+  featuresCardsData,
+  typeOfKitchenData,
+  servicesData2,
+  paymentMethodsData,
+} from "../data/bedroomBeds";
 
 const faqs = [
   {
@@ -82,21 +103,27 @@ const faqs = [
   title="1️⃣ Кровати на заказ в Алматы — за 7 дней и с гарантией"
   description="Кровати на заказ в Алматы ⭐ Изготовим по размерам за 7 дней! Гарантия качества и стильный дизайн ⭐ Закажите кровать прямо сейчас"
 >
-<main>
-  <Hero {...heroData} />
-  <WhyUs {...whyUsData} />
-  <ReUsableTable {...reUsableTableData} />
-  <ReUsableTable {...reUsableTableData2} />
-  <ReUsableTable {...reUsableTableData3} />
-  <FeaturesCards {...featuresCardsData} gridCols={2}/>
-  <CalculatorBedroomBeds {...calculatorData} />
-  <HowItWorks {...howItWorksData} />
-  <ContactForm {...contactFormData} />
-  <CustomFurniture {...customFurnitureData} />
-  <ReUsableTable {...reUsableTableData4} />
-  <Services {...servicesData} items={[]} />
-  <Companys {...companysData} />
-  <Reviews {...reviewsData} />
-  <FAQ faqs={faqs} title="Часто задаваемые вопросы" />
-</main>
+  <main>
+    <Hero {...heroData} />
+    <WhyUs
+      {...whyUsData}
+      image1="/images/home/why-us-bedroom-beds1.webp"
+      image1Alt="Описание первой картинки"
+      image2="/images/home/why-us-bedroom-beds2.webp"
+      image2Alt="Описание второй картинки"
+    />
+    <ReUsableTable {...reUsableTableData} />
+    <ReUsableTable {...reUsableTableData2} />
+    <ReUsableTable {...reUsableTableData3} />
+    <FeaturesCards {...featuresCardsData} gridCols={2} />
+    <CalculatorSofas {...calculatorData} />
+    <HowItWorks {...howItWorksData} />
+    <ContactForm {...contactFormData} />
+    <CustomFurniture {...customFurnitureData} />
+    <ReUsableTable {...reUsableTableData4} />
+    <Services {...servicesData} items={[]} />
+    <Companys {...companysData} />
+    <Reviews {...reviewsData} />
+    <FAQ faqs={faqs} title="Часто задаваемые вопросы" />
+  </main>
 </Layout>

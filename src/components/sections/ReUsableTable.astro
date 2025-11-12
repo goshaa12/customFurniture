@@ -2,6 +2,7 @@
 import Section from "../ui/Section.astro";
 import Table from "../ui/Table.astro";
 import { reUsableTableData, type ReUsableTableColumn, type ReUsableTableRow } from "../../data/index";
+import { generatePriceMarkupFromTable } from "../../utils/schemaMarkup";
 
 interface Props {
   title?: string;
@@ -27,6 +28,17 @@ const {
   additionalText = defaultData.additionalText,
   ctaButton = defaultData.ctaButton,
 } = Astro.props;
+
+// Генерируем микроразметку для цен, если таблица содержит цены
+const hasPriceColumn = table.columns.some(col => 
+  col.header.toLowerCase().includes('цена') || 
+  col.header.toLowerCase().includes('стоимость') ||
+  col.header.toLowerCase().includes('тенге')
+);
+
+const priceMarkup = hasPriceColumn 
+  ? generatePriceMarkupFromTable(table.rows, table.columns, title || "Мебель на заказ")
+  : null;
 ---
 
 <Section id="why-us" class="py-24 bg-white">
@@ -113,4 +125,8 @@ const {
       </div>
     )}
   </div>
+
+  {priceMarkup && (
+    <script type="application/ld+json" set:html={JSON.stringify(priceMarkup)} />
+  )}
 </Section>

@@ -10,6 +10,10 @@ interface Props {
     text: string;
     href: string;
   };
+  image1?: string;
+  image1Alt?: string;
+  image2?: string;
+  image2Alt?: string;
 }
 
 // Получаем данные из централизованного хранилища или из props
@@ -20,6 +24,10 @@ const {
   subtitle = defaultData.subtitle,
   advantages = defaultData.advantages,
   ctaButton = defaultData.ctaButton,
+  image1,
+  image1Alt = "Изображение",
+  image2,
+  image2Alt = "Изображение",
 } = Astro.props;
 ---
 <Section id="why-us" class="py-24 bg-white">
@@ -31,6 +39,32 @@ const {
       <p class="text-stone-600 text-lg md:text-xl mb-14 text-center max-w-3xl mx-auto">
         {subtitle}
       </p>
+    )}
+
+    <!-- Две картинки -->
+    {(image1 || image2) && (
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-16">
+        {image1 && (
+          <div class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <img 
+              src={image1} 
+              alt={image1Alt}
+              class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </div>
+        )}
+        {image2 && (
+          <div class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <img 
+              src={image2} 
+              alt={image2Alt}
+              class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </div>
+        )}
+      </div>
     )}
 
     <!-- Преимущества -->

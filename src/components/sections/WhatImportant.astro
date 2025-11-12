@@ -11,6 +11,10 @@ interface Props {
     icon: any;
     bg: string;
   }>;
+  image1?: string;
+  image1Alt?: string;
+  image2?: string;
+  image2Alt?: string;
 }
 
 // Получаем данные из централизованного хранилища или из props
@@ -20,6 +24,10 @@ const {
   title = defaultData.title,
   subtitle = defaultData.subtitle,
   items: propItems,
+  image1,
+  image1Alt = "Изображение",
+  image2,
+  image2Alt = "Изображение",
 } = Astro.props;
 
 const items = (propItems || defaultData.items).map((item: any) => {
@@ -44,6 +52,32 @@ const items = (propItems || defaultData.items).map((item: any) => {
       </p>
     )}
   </div>
+
+  <!-- Две картинки -->
+  {(image1 || image2) && (
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-16 max-w-6xl mx-auto px-4">
+      {image1 && (
+        <div class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+          <img 
+            src={image1} 
+            alt={image1Alt}
+            class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+      )}
+      {image2 && (
+        <div class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+          <img 
+            src={image2} 
+            alt={image2Alt}
+            class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+      )}
+    </div>
+  )}
 
   <div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-10">
     {items.map((item, index) => (
